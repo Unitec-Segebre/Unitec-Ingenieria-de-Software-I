@@ -1,24 +1,16 @@
-# README
+# Agricultura de Precisión
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Bajar el repositorio
+```
+git clone https://github.com/Segebre/Unitec-Ingenieria-de-Software-I.git
+```
 
-Things you may want to cover:
+## Bajar las gemas del proyecto
+```
+bundle install
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Correr el servidor
+```
+rails s
+```

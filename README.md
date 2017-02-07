@@ -10,6 +10,11 @@ git clone https://github.com/Segebre/Unitec-Ingenieria-de-Software-I.git
 bundle install
 ```
 
+## Inicializar la base de datos
+```
+rake db:migrate
+```
+
 ## Correr el servidor
 ```
 rails s

@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  get 'projects/index'
-
-  get 'projects/new'
-
-  get 'projects/show'
-
+  resources :projects
   get 'lotes/new'
 
   get 'lotes/show'

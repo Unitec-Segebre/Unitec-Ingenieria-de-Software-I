@@ -8,29 +8,34 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-	<body style="overflow:hidden">
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: green; border:0px">
 		    <div class="navbar-header">
 		    	<div style="margin-top: 5px; margin-left:5px">
 		        	<%= image_tag('logo.jpeg', :size => "180x40") %>
 		        </div>
 		    </div>
 	  	</nav>
-
-	    <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-		    	<ul class="nav">
-			    	<li class="sidebar-button">
-			    		<%= link_to "Lotes", lotes_index_path %>
+	    <div class="nav navbar-nav side-nav" role="navigation" style="position:fixed">
+		    	<ul class="nav navbar-btn" id="side-menu">
+			    	<li >
+			    		<%=link_to projects_path do%>
+              <p style= "color :black">
+                Proyectos
+              </p>
+              <%end%>
 			    	</li>
-			    	<li class="sidebar-button">
-			    		<%= link_to "Proyectos", lotes_index_path %>
-			    	</li>
+            <li>
+              <%=link_to projects_path do%>
+              <p style= "color :black">
+                Lotes
+              </p>
+            </li>
+            <%end%>
 		    	</ul>
 		   	</div>
-	    </div>
 
-		<div class="pre-scrollable" id="page-wrapper">
+		<div id="page-wrapper" style="margin-top:60px;margin-left:220px">
 			<%= yield %>
 		</div>
   	</body>

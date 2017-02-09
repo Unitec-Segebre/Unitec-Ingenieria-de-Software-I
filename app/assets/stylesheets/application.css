@@ -16,6 +16,19 @@
  *= require font-awesome
  */
 
-.sidebar{
+.navbar.navbar-default.navbar-static-top{
+	background-color: green; 
+	margin-bottom:0;
+	border-color:black;
+}
+
+.navbar-default.sidebar{
 	background-color: green;
+	height:100%;
+	margin-top:0px;
+}
+
+.sidebar-button{
+	border-color: black;
+	color: black;
 }

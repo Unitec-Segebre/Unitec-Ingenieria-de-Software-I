@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'lots/index'
+
+  get 'lots/new'
+
+  get 'lots/show'
+
   get 'projects/index'
 
   get 'projects/new'

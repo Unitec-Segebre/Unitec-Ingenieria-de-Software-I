@@ -1,11 +1,10 @@
-<h2>Por favor llenar los siguientes campos: </h2>
 <%= form_for(project) do |f| %>
 <div class="form-group">
   <%= f.label :title, "Titulo" %>
   <%= f.text_field :title, class: "form-control" %>
 </div>
 <div class="form-group">
-  <%= f.label :manager, "Responsable por el Proyecto" %>
+  <%= f.label :manager, "Responsable del proyecto" %>
   <%= f.text_field :manager, class: "form-control" %>
 </div>
 <div class="form-group">
@@ -16,5 +15,4 @@
   <%= f.submit "Save",class: "btn btn-default" %>
   <%= link_to "Cancel", projects_path,class: "btn btn-default" %>
 </div>
-
 <% end %>

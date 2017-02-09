@@ -1,0 +1,12 @@
+<div class="background"></div>
+<div class="body"></div>
+	<div class="grad"></div>
+	<div class="header">
+    <%= image_tag('hc.png', class: :figura) %>
+	</div>
+	<br>
+	<div class="login">
+			<input class="login_inputs" type="text" placeholder="Usuario" name="user"><br>
+			<input class="login_inputs" type="password" placeholder="Contraseña" name="password"><br>
+      <%= button_to "Iniciar Sesión", projects_path, method: :get, class: :"login-button" %>
+	</div>

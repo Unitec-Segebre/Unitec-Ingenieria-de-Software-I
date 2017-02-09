@@ -1,4 +1,5 @@
 class LotsController < ApplicationController
+
   def new
     @project = Project.find(params[:project_id])
     @lot = @project.lots.build

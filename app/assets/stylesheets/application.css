@@ -12,4 +12,54 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap_sb_admin_base_v2
+ *= require font-awesome
  */
+
+.navbar-right {
+	padding-top: 15px;
+	padding-right: 60px;
+}
+
+.nav.in li a {
+	color: #689F38;
+}
+
+ .panel-body {
+	 height: 200px;
+ }
+
+img {
+	border: 2px solid;
+	border-radius: 5%;
+}
+
+.panel-heading {
+	font-size: 20px;
+	text-align: center;
+}
+
+.side-nav{
+	position: fixed;
+	top: 40px;
+	width: 225px;
+	border-radius: 0;
+	overflow-y: auto;
+	bottom: 0;
+	overflow-x: hidden;
+	padding-bottom: 40px;
+}
+.body-content {
+  margin-top: 60px;
+}
+.navbar-btn{
+	line-height: 20px;
+	font-size: 20px;
+}
+.navbar-btn:hover{
+	font-size: 25px;
+}
+
+#new-project-btn {
+	margin-bottom: 20px;
+}

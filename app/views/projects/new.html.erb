@@ -1,2 +1,6 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Nuevo Proyecto</h1>
+  </div>
+<%= render partial: "form", locals: {project: @project} %>
+</div>

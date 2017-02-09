@@ -16,6 +16,25 @@
  *= require font-awesome
  */
 
-.sidebar{
+.side-nav{
 	background-color: green;
+	position: fixed;
+	top: 40px;
+	width: 225px;
+	border: none;
+	border-radius: 0;
+	overflow-y: auto;
+	bottom: 0;
+	overflow-x: hidden;
+	padding-bottom: 40px;
+}
+.body-content {
+  margin-top: 60px;
+}
+.navbar-btn{
+	line-height: 20px;
+	font-size: 20px;
+}
+.navbar-btn:hover{
+	font-size: 25px;
 }

@@ -25,6 +25,7 @@
 .wrapper {
     width: 500px;
     overflow: hidden; /* will contain if #first is longer than #second */
+		margin-bottom: 20px;
 }
 .first {
     width: 300px;

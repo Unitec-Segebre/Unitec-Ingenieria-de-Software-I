@@ -9,7 +9,7 @@
   </head>
 
 	<body>
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color: green">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color: green; margin-bottom:0;border-color:black">
 		    <div class="navbar-header">
 		    	<div style="margin-top: 5px; margin-left:5px">
 		        	<%= image_tag('logo.jpeg', :size => "180x40") %>
@@ -17,25 +17,20 @@
 		    </div>
 	  	</nav>
 
-
-	    <div class="navbar-default sidebar" role="navigation" style="position:absolute">
+	    <div class="navbar-default sidebar" role="navigation" style="height:100%;background-color:green;margin-top:0px">
             <div class="sidebar-nav navbar-collapse">
 		    	<ul class="nav" id="side-menu">
-			    	<li>
-			    		<p>
-			    			Hello
-			    		</p>
+			    	<li class="sidebar-search" style="border-color:black">
+			    		Hello
 			    	</li>
-			    	<li>
-			    		<p>
-			    			Whatsup
-			    		</p>
+			    	<li class="sidebar-search" style="border-color:black">
+			    		LOL
 			    	</li>
 		    	</ul>
 		   	</div>
 	    </div>
 
-		<div id="page-wrapper">
+		<div class="pre-scrollable" id="page-wrapper">
 			<%= yield %>
 		</div>
   	</body>

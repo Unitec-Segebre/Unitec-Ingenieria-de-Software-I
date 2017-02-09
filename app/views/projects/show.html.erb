@@ -2,6 +2,7 @@
   <div class = "first">
     <h1>Lotes de <i><%=@project.title %></i></h1>
     <h4>Empleado encargado: <%=@project.manager%></h4>
+    <%= link_to "Nuevo Lote", new_project_lot_path(@project.id) %> 
   </div>
   <div class = "second">
     <% unless @project.image_url.blank? %>
@@ -9,4 +10,5 @@
     <%end%>
   </div>
 </div>
-<%=render partial: "lots/index"%>
+
+<%=render @project.lots%>

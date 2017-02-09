@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209201555) do
+ActiveRecord::Schema.define(version: 20170209212621) do
 
   create_table "lots", force: :cascade do |t|
     t.string   "name"
-    t.datetime "sown_at"
+    t.integer  "sown_at"
     t.string   "material"
     t.integer  "section"
     t.decimal  "hectares"

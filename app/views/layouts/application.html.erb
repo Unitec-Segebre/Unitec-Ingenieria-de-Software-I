@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AgriculturaDePrecision</title>
+    <title>Honducaribe Agricultura de Precisión</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: green; border:0px">
-		    <div class="navbar-header">
-		    	<div style="margin-top: 5px; margin-left:5px">
-		        	<%= image_tag('logo.jpeg', :size => "180x40") %>
-		        </div>
-		    </div>
-	  	</nav>
-	    <div class="nav navbar-nav side-nav" role="navigation" style="position:fixed">
-		    	<ul class="nav navbar-btn" id="side-menu">
-			    	<li >
-			    		<%=link_to projects_path do%>
-              <p style= "color :black">
-                Proyectos
-              </p>
-              <%end%>
-			    	</li>
-            <li>
-              <%=link_to projects_path do%>
-              <p style= "color :black">
-                Lotes
-              </p>
-            </li>
-            <%end%>
-		    	</ul>
-		   	</div>
+    <div id="wrapper">
+  		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  	    <div class="navbar-header">
+  	    	<div style="margin-top: 5px; margin-left:5px">
+  	        <%= image_tag('logo.jpeg', :size => "180x40") %>
+  	      </div>
+  	    </div>
 
-		<div id="page-wrapper" style="margin-top:60px;margin-left:220px">
-			<%= yield %>
-		</div>
-  	</body>
+        <div class="navbar-right">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          Conectado como admin
+        </div>
+
+        <div class="navbar-default sidebar" role="navigation">
+        	<div class="sidebar-nav navbar-collapse collapse">
+        		<ul class="nav in" id="side-menu">
+        			<li>
+        			  <%=link_to projects_path do%>
+                  <i class="fa fa-pagelines" aria-hidden="true"></i>
+                  Proyectos
+                <%end%>
+        			</li>
+              <li>
+                <%=link_to root_path do%>
+                <i class="fa fa-sign-out fa-fw"></i>
+                Cerrar sesión
+                <%end%>
+              </li>
+        		  </ul>
+          </div>
+      </nav>
+
+    	<div class="pre-scrollable" id="page-wrapper" style="max-height:1000px">
+    		<%= yield %>
+    	</div>
+
+    </div>
+  </body>
 </html>

@@ -16,12 +16,33 @@
  *= require font-awesome
  */
 
+.navbar-right {
+	padding-top: 15px;
+	padding-right: 60px;
+}
+
+.nav.in li a {
+	color: #689F38;
+}
+
+ .panel-body {
+	 height: 200px;
+ }
+
+img {
+	border: 2px solid;
+	border-radius: 5%;
+}
+
+.panel-heading {
+	font-size: 20px;
+	text-align: center;
+}
+
 .side-nav{
-	background-color: green;
 	position: fixed;
 	top: 40px;
 	width: 225px;
-	border: none;
 	border-radius: 0;
 	overflow-y: auto;
 	bottom: 0;
@@ -37,4 +58,8 @@
 }
 .navbar-btn:hover{
 	font-size: 25px;
+}
+
+#new-project-btn {
+	margin-bottom: 20px;
 }

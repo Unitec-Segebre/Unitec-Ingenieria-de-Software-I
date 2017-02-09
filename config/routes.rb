@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :projects do
-    resources :lots
-  end
-  get 'users/new'
+  root 'sessions#new'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :projects, only: [:index, :new, :create, :show] do
+    resources :lots, only: [:new, :create]
+  end
+
 end

@@ -1,7 +1,13 @@
-<font size= 6px>Proyectos</font>
- <span class="btn-group" role="group">
-	 <%=link_to "+",new_project_path, class:"btn btn-default btn-circle"%>
- </span>
-<div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Proyectos</h1>
+    <%= button_to new_project_path, method: :get, class: "btn btn-outline btn-success btn-lg", id: "new-project-btn" do %>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Agregar proyecto
+    <%end%>
+  </div>
+</div>
+
+<div class="row">
 	 <%= render @projects %>
 </div>

@@ -1,6 +1,6 @@
 class LotsController < ApplicationController
   def index
-    @lots = @project.lots
+    @projects = Project.all
   end
 
   def new

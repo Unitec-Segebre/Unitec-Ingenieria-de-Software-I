@@ -6,7 +6,7 @@
       </div>
       <div class="panel-body">
         <%if(project.image_url)%>
-          <%=link_to(image_tag("project_example.jpeg",:class=>"img_style", :title => "Click aqui para ver los lotes del proyecto"),project)%>
+          <%=link_to(image_tag(project.image_url,:class=>"img_style", :title => "Click aqui para ver los lotes del proyecto"),project)%>
         <%else%>
           <%=link_to(image_tag("project_example.jpeg",:class=>"img_style", :title => "Click aqui para ver los lotes del proyecto"),project)%>
         <%end%>

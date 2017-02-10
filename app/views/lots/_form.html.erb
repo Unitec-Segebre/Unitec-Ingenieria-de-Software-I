@@ -1,0 +1,23 @@
+<%= form_for [@project, @lot] do |f| %>
+<div class="form-group">
+  <%= f.label :sown_at, "Año de Siembra" %>
+  <br>
+  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
+</div>
+<div class="form-group">
+  <%= f.label :material, "Material" %>
+  <%= f.text_field :material, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :section, "Sección" %>
+  <%= f.number_field :section, step: 1.0, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :hectares, "Hectarias" %>
+  <%= f.number_field :hectares, step: 0.01, class: "form-control" %>
+</div>
+<div class="btn-group" role="group">
+  <%= f.submit "Guardar",class: "btn btn-primary" %>
+  <%= link_to "Cancelar", projects_path,class: "btn btn-danger" %>
+</div>
+<% end %>

@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209072541) do
+ActiveRecord::Schema.define(version: 20170209212621) do
 
   create_table "lots", force: :cascade do |t|
     t.string   "name"
-    t.datetime "sown_at"
+    t.integer  "sown_at"
     t.string   "material"
     t.integer  "section"
     t.decimal  "hectares"
-    t.integer  "proyect_id"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["proyect_id"], name: "index_lots_on_proyect_id"
+    t.index ["project_id"], name: "index_lots_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|

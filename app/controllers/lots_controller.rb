@@ -10,8 +10,9 @@ class LotsController < ApplicationController
     @lot = @project.lots.build(lot_params)
 
     if @lot.save
-      redirect_to @project, notice: "#{@lot.title} creado exitosamente"
+      redirect_to @project, notice: "#{@lot.id} creado exitosamente"
     else
+      puts @lot.errors.full_messages
       flash[:error] = "Un error ha ocurrido al crear un lote"
       render :new
     end
@@ -24,6 +25,6 @@ class LotsController < ApplicationController
 
   protected
     def lot_params
-      params.require(:lot).permit(:name, :sown_at, :material, :section, :hectares, :proyect_id)
+      params.require(:lot).permit(:sown_at, :material, :section, :hectares, :project_id)
     end
 end

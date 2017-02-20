@@ -5,13 +5,8 @@
         <%= project.title %>
       </strong>
     </div>
-    <div class="panel-body">
-    <!-- TODO: This looks disgusting, fix. Maybe add the address to the default image in the table instead of working it everywhere. -->
-      <%unless project.image_url.blank? %>
-        <%=link_to(image_tag(project.image_url,:class=>"img_style", :id=>"hoverable", :title => "Click aqui para ver los lotes del proyecto"),project)%>
-      <%else%>
-        <%=link_to(image_tag("project_example.jpeg",:class=>"img_style", :id=>"hoverable", :title => "Click aqui para ver los lotes del proyecto"),project)%>
-      <%end%>
+    <div class="panel-body"> 
+      <%=link_to(image_tag(project.get_image,:class=>"img_style", :id=>"hoverable", :title => "Click aqui para ver los lotes del proyecto"),project)%>
     </div>
   </div>
 </div>

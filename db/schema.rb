@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215221049) do
+ActiveRecord::Schema.define(version: 20170220232337) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lots", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +45,15 @@ ActiveRecord::Schema.define(version: 20170215221049) do
     t.string   "last_name"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "variables", force: :cascade do |t|
+    t.string   "name"
+    t.string   "unit"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_variables_on_category_id"
   end
 
 end

@@ -1,0 +1,21 @@
+<h1> Categorias </h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th class="col-md-10"> Nombre </th>
+			<th class="col-md-2" style="text-align:right"> Borrar </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @categories.each do |cat| %>
+			<tr>
+				<td class="col-md-10"><%= cat.name %></td>
+				<td class="col-md-2" style="text-align:right">
+				<!-- Andres, arregla esto si quieres. No se como se hace en HTML, solo HAML lol -->
+					<%= link_to '<span class="fa fa-trash"></span> Borrar'.html_safe, category_path(cat.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta categoria?"} %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

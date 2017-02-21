@@ -25,6 +25,6 @@ class LotsController < ApplicationController
 
   protected
     def lot_params
-      params.require(:lot).permit(:sown_at, :material, :section, :hectares, :project_id)
+      params.require(:lot).permit(:sown_at, :material, :hectares, :project_id)
     end
 end

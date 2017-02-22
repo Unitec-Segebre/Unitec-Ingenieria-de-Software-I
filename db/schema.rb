@@ -47,4 +47,27 @@ ActiveRecord::Schema.define(version: 20170222184818) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "valorizations", force: :cascade do |t|
+    t.integer  "lot_id"
+    t.integer  "variable_id"
+    t.date     "assigned_at"
+    t.integer  "amount"
+    t.decimal  "unit_cost"
+    t.decimal  "subtotal"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["lot_id"], name: "index_valorizations_on_lot_id"
+    t.index ["variable_id"], name: "index_valorizations_on_variable_id"
+  end
+
+  create_table "variables", force: :cascade do |t|
+    t.string   "measurement_unit"
+    t.decimal  "unit_cost"
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["category_id"], name: "index_variables_on_category_id"
+  end
+
 end

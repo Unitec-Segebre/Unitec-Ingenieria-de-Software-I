@@ -10,10 +10,11 @@
 	<tbody>
 		<% @categories.each do |cat| %>
 			<tr>
-				<td class="col-md-10"><%= cat.name %></td>
-				<td class="col-md-2" style="text-align:right">
-				<!-- Ghetto approach, change if possible-->
-					<%= link_to '<span class="fa fa-trash"></span> Borrar'.html_safe, category_path(cat.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta categoria?"} %>
+				<td class="col-md-9"><%= cat.name %></td>
+				<td class="col-md-3" style="text-align:center">
+					<%= link_to category_path(cat.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta categoria?"} do %>
+						<span class="fa fa-trash fa-2x"></span>
+					<% end %>
 				</td>
 			</tr>
 		<% end %>
@@ -29,13 +30,5 @@
 </table>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-  <div role="document">
-      <div class="modal-body">
-        OREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu d
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Crear</button>
-      </div>
-    </div>
+	<%= render partial: "form", locals: {new_category: @new_category} %>
 </div>

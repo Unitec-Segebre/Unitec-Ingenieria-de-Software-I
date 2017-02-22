@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   
   def index
   	@categories = Category.all
+  	@new_category = Category.new
   end
 
    def destroy
@@ -11,4 +12,20 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: "#{@category.name} eliminado correctamente!"
   end
 
+  def create
+    @category = Category.new(category_params)
+
+    if @category.save
+      redirect_to categories_path, notice: "#{@category.name} creado exitosamente!"
+    else
+      flash[:error] = "Un error ha ocurrido al crear una categoria."
+      render :index
+    end
+  end
+
+  protected
+
+  def category_params
+  	params.require(:category).permit(:name)
+  end
 end

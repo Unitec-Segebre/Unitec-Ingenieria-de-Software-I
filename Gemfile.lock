@@ -40,6 +40,8 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bootstrap-modal-rails (2.2.5)
+      railties (>= 3.1)
     bootstrap_sb_admin_base_v2 (0.3.5)
       font-awesome-rails
       jquery-rails
@@ -164,6 +166,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap-modal-rails
   bootstrap_sb_admin_base_v2
   byebug
   coffee-rails (~> 4.2)

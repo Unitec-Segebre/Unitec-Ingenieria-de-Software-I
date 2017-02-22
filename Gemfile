@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap-modal-rails'
+
 gem 'haml'
 
 gem 'bootstrap_sb_admin_base_v2'

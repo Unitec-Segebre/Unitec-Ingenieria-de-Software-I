@@ -1,5 +1,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
+  def content_type_whitelist
+    /image\//
+  end
+  
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick

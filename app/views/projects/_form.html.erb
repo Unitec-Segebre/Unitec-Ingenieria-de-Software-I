@@ -11,6 +11,9 @@
   <%= f.label :image_url, "URL de Imagen" %>
   <%= f.text_field :image_url, class: "form-control" %>
 </div>
+<div>
+  <%= f.file_field :image%>
+</div>
 <div class="btn-group" role="group">
   <%= f.submit "Guardar",class: "btn btn-primary" %>
   <%= link_to "Cancelar", projects_path,class: "btn btn-danger" %>

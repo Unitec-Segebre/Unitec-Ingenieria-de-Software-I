@@ -18,19 +18,6 @@ ActiveRecord::Schema.define(version: 20170222162859) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lot_variables", force: :cascade do |t|
-    t.integer  "lot_id"
-    t.integer  "variable_id"
-    t.datetime "assigned_at"
-    t.integer  "amount"
-    t.decimal  "unit_cost"
-    t.decimal  "subtotal"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["lot_id"], name: "index_lot_variables_on_lot_id"
-    t.index ["variable_id"], name: "index_lot_variables_on_variable_id"
-  end
-
   create_table "lots", force: :cascade do |t|
     t.string   "name"
     t.integer  "sown_at"

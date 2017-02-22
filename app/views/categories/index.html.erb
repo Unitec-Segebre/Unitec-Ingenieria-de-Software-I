@@ -12,10 +12,30 @@
 			<tr>
 				<td class="col-md-10"><%= cat.name %></td>
 				<td class="col-md-2" style="text-align:right">
-				<!-- Andres, arregla esto si quieres. No se como se hace en HTML, solo HAML lol -->
+				<!-- Ghetto approach, change if possible-->
 					<%= link_to '<span class="fa fa-trash"></span> Borrar'.html_safe, category_path(cat.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta categoria?"} %>
 				</td>
 			</tr>
 		<% end %>
+		<tr>
+			<td class="col-md-12">
+				<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+	 				Nueva Categoria
+				</button>
+			</td>
+			<td></td>
+		</tr>
 	</tbody>
 </table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div role="document">
+      <div class="modal-body">
+        OREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu dOREM LIPSUM ISAIDNdisabdiu d
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear</button>
+      </div>
+    </div>
+</div>

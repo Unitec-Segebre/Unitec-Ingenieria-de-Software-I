@@ -1,0 +1,6 @@
+<li>
+  <%= category.name %> <span class="fa arrow"></span>
+  <ul class="nav nav-second-level collapse in" aria-expanded="true">
+    <%= render :partial => "variable", :collection => category.variables %>
+  </ul>
+</li>

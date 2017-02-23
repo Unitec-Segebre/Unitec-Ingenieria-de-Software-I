@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :destroy, :create]
 
   resources :projects, only: [:index, :new, :create, :show] do
-    resources :lots, only: [:new, :create]
+    resources :lots, only: [:new, :create, :show]
   end
   resources :users, only: [:index, :new, :create, :show]
 

@@ -19,7 +19,8 @@ class CategoriesController < ApplicationController
       redirect_to categories_path, notice: "#{@category.name} creado exitosamente!"
     else
       flash[:error] = "Un error ha ocurrido al crear una categoria."
-      render :index
+      # Can't be render or @categories loses its value
+      redirect_to categories_path
     end
   end
 

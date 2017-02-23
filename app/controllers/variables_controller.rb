@@ -11,7 +11,7 @@ class VariablesController < ApplicationController
       redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!"
     else
       flash[:error] = "Un error ha ocurrido al crear una categoria."
-      render :index
+      redirect_to variables_path
     end
   end
 

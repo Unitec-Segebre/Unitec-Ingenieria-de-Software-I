@@ -3,6 +3,12 @@ class Lot < ApplicationRecord
   has_many :variables, through: :valorizations
   belongs_to :project
 
+  def today_values
+    self.variables
+      .select("variables.id, variables.name, valorizations.unit_cost, valorizations.amount")
+      .where("valorizations.assigned_at = ?", Date.today)
+  end
+
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
   #Returns nil if variable does not exist

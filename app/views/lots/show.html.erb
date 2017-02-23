@@ -1,2 +1,11 @@
-<h1>Lots#show</h1>
-<p>Find me in app/views/lots/show.html.erb</p>
+<div class="panel panel-default variables-panel">
+  <div class="panel-heading">
+    Variables
+  </div>
+
+  <div class="panel-body">
+    <div class="panel-group" id="accordion">
+      <%= render :partial => "category", :collection => Category.all, :locals => {lot: @lot} %>
+    </div>
+  </div>
+</div>

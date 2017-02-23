@@ -1,10 +1,9 @@
 <div class="col-md-3">
   <div class="panel panel-green">
-    <div class="panel-heading" style="text-align:center">
-      Lote # 
-      <%= lot.id %>
+    <div class="panel-heading lot-panel-heading" style="text-align:center">
+      <%= link_to "Lote #{lot.id}", project_lot_path(lot.project) %>
     </div>
-    <div class="panel-body" style="text-align:center">
+    <div class="panel-body lot-panel-body" style="text-align:center">
       <table class="table">
         <thead>
           <tr>

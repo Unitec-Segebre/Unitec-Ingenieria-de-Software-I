@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= category.id %>" aria-expanded="false" class="collapsed">
+        <%= category.name %>
+      </a>
+    </h4>
+  </div>
+
+  <div id="<%= category.id %>" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

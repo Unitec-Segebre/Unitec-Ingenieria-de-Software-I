@@ -1,0 +1,25 @@
+<div role="document" >
+	<div class="modal-header">
+			<h3>Nueva Categoría</h3>
+	</div>
+	<%= form_for @new_category do |c| %>
+		<div class="modal-body">
+	      	<div class="form-group">		
+				<%= c.label :name, "Nombre" %>
+				<%= c.text_field :name, id: "field", class: "form-control" %>
+	      	</div>
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group" role="group">
+			    <button type="button" class="btn btn-danger" data-dismiss="modal" onClick="clear_field()">Cancelar</button>
+				<%= c.submit "Guardar",class: "btn btn-primary" %>
+			</div>
+		</div>
+	<%end%>
+</div>
+
+<script type="text/javascript">
+function clear_field(){
+	$("#field").val("");
+}
+</script>

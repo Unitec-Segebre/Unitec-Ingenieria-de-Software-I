@@ -1,0 +1,40 @@
+<h1> Categorías </h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th class="col-md-10"> Nombre </th>
+			<th class="col-md-2" style="text-align:right"> Borrar </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @categories.each do |cat| %>
+			<tr>
+				<td class="col-md-9"><%= cat.name %></td>
+				<td class="col-md-3" style="text-align:center">
+					<%= link_to category_path(cat.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta categoria?"} do %>
+						<span class="fa fa-trash fa-2x"></span>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+		<tr>
+			<td class="col-md-12">
+				<button type="button" class="btn" data-toggle="modal" data-target="#myModal" onClick="focus_field()">
+	 				Nueva Categoría
+				</button>
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	<%= render partial: "form", locals: {new_category: @new_category} %>
+</div>
+
+<script>
+function focus_field(){
+	setTimeout(function() { $('#field').focus() }, 500);
+}
+</script>

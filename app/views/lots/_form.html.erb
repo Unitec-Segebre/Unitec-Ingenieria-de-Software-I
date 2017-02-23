@@ -2,7 +2,7 @@
 <div class="form-group">
   <%= f.label :sown_at, "Año de Siembra" %>
   <br>
-  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year) %>
+  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year), {}, class: "form-control" %>
 </div>
 <div class="form-group">
   <%= f.label :material, "Material" %>

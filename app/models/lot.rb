@@ -3,9 +3,10 @@ class Lot < ApplicationRecord
   has_many :variables, through: :valorizations
   belongs_to :project
 
-  def today_values
+  def today_values(category)
     self.variables
       .select("variables.id, variables.name, valorizations.unit_cost, valorizations.amount")
+      .where(category: category)
       .where("valorizations.assigned_at = ?", Date.today)
   end
 

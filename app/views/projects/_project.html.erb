@@ -1,11 +1,11 @@
 <div class="col-md-3">
   <div class="panel panel-green">
-    <div class="panel-heading">
+    <div class="panel-heading project-panel-heading">
       <strong id="title-wrapper">
         <%= project.title %>
       </strong>
     </div>
-    <div class="panel-body"> 
+    <div class="panel-body project-panel-body">
       <%=link_to(image_tag(project.get_image,:class=>"img_style", :id=>"hoverable", :title => "Click aqui para ver los lotes del proyecto"),project)%>
     </div>
   </div>

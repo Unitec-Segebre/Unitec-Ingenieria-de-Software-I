@@ -5,4 +5,8 @@ class Variable < ApplicationRecord
 
   validates :unit_cost, :name, presence: true
   validates :name, uniqueness: true
+
+  def self.measurement_units
+    ["Tonelada(s)", "Kilogramo(s)", "Libra(s)", "Hectare(s)", "Metro(s)", "Pulgada(s)", "Pie(s)", "Yarda(s)", "Pinta(s)", "Galon(es)", "Litro(s)"]
+  end
 end

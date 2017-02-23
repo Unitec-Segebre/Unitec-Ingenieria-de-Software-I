@@ -1,0 +1,36 @@
+<h1> Variables </h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="col-md-6"> Nombre </th>
+      <th class="col-md-2"> Categoría </th>
+      <th class="col-md-2"> Unidad </th>
+      <th class="col-md-1"> Costo </th>
+      <th class="col-md-1" style="text-align:center"> Borrar </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variables.each do |variable| %>
+      <tr>
+        <td><%= variable.name %></td>
+        <td><%= variable.category.name %></td>
+        <td><%= variable.measurement_unit %></td>
+        <td><%= number_to_currency(variable.unit_cost, :unit => "Lps. ") %></td>
+        <td style="text-align:center">
+          <%= link_to variable_path(variable.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta variable?"} do %>
+            <span class="fa fa-trash fa-2x"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+  Nueva Variable
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <%= render partial: "form", locals: {variable: @variable} %>
+</div>

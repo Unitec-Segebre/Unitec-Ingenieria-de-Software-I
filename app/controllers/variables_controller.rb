@@ -15,6 +15,20 @@ class VariablesController < ApplicationController
     end
   end
 
+  def edit
+    @variable = Variable.find(params[:id])
+  end
+
+  def update
+    @variable = Variable.find(params[:id])
+
+    if @variable.update_attributes(variable_params)
+      redirect_to variables_path, notice: "La variable #{@variable.name} se ha actualizado exitosamente"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @variable = Variable.find(params[:id])
 

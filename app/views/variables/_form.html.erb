@@ -3,7 +3,7 @@
       <h3>Nueva Variable</h3>
   </div>
   <div class="modal-body">
-    <%= form_for @variable do |f| %>
+    <%= form_for variable do |f| %>
       <div class="form-group">    
         <%= f.label :name, "Nombre" %>
         <%= f.text_field :name, id: "field", class: "form-control" %>

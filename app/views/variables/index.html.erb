@@ -14,7 +14,7 @@
     <% @variables.each do |variable| %>
       <tr>
         <td class="col-md-4"><%= variable.name %></td>
-        <td class="col-md-3"><%= variable.category %></td>
+        <td class="col-md-3"><%= variable.category.name %></td>
         <td class="col-md-1"><%= variable.measurement_unit %></td>
         <td class="col-md-2"><%= variable.unit_cost %></td>
         <td class="col-md-2" style="text-align:center">

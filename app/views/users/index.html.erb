@@ -1,39 +1,37 @@
 <h1 class="page-header">Lista de Usuarios</h1>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table width="100%" class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Editar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @user.each do |u| %>
-                                <tr>
-                                    <%@count = @count + 1%>
-                                    <td><%=@count%></td>
-                                    <td><%= link_to u.email, user_path(@count)%></td>
-                                    <td><%= u.first_name%></td>
-                                    <td><%= link_to '<span class="fa fa-edit"></span>'.html_safe , edit_user_path(@count) %></td>
-                                </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                <%= button_to new_user_path, method: :get, class: "btn btn-outline btn-success btn-lg" do %>
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Crear Usuario
-                <%end%>
-                </div>
-                <!-- /.table-responsive -->
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-    </div>
+
+<%= render 'shared/new_button', string: "Nuevo Usuario" %>
+
+<div class="table-responsive">
+    <table width="100%" class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Nombre</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |u| %>
+                <tr>
+                    <%@count = @count + 1%>
+                    <td><%=@count%></td>
+                    <td><%= link_to u.email, user_path(@count)%></td>
+                    <td><%= u.first_name%></td>
+                    <td><%= link_to '<span class="fa fa-edit"></span>'.html_safe , edit_user_path(@count) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <%= render partial: "form", locals: {user: @user} %>
+</div>
+
+<script>
+function focus_field(){
+  setTimeout(function() { $('#field').focus() }, 600);
+}
+</script>

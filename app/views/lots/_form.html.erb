@@ -1,19 +1,34 @@
-<%= form_for [@project, @lot] do |f| %>
-<div class="form-group">
-  <%= f.label :sown_at, "Año de Siembra" %>
-  <br>
-  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year), {}, class: "form-control" %>
+<div role="document">
+	<div class="modal-header">
+		<h3>Nuevo Lote</h3>
+	</div>
+	<%= form_for [@project, @new_lot] do |f| %>
+		<div class="modal-body">
+			<div class="form-group">
+			  <%= f.label :sown_at, "Año de Siembra" %>
+			  <br>
+			  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year), {}, id: "field", class: "form-control" %>
+			</div>
+			<div class="form-group">
+			  <%= f.label :material, "Material" %>
+			  <%= f.text_field :material, class: "form-control" %>
+			</div>
+			<div class="form-group">
+			  <%= f.label :hectares, "Hectarias" %>
+			  <%= f.number_field :hectares, step: 0.01, class: "form-control" %>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group" role="group">
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" onClick="clear_field()">Cancelar</button>
+			  <%= f.submit "Guardar",class: "btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
 </div>
-<div class="form-group">
-  <%= f.label :material, "Material" %>
-  <%= f.text_field :material, class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= f.label :hectares, "Hectarias" %>
-  <%= f.number_field :hectares, step: 0.01, class: "form-control" %>
-</div>
-<div class="btn-group" role="group">
-  <%= f.submit "Guardar",class: "btn btn-primary" %>
-  <%= link_to "Cancelar", projects_path,class: "btn btn-danger" %>
-</div>
-<% end %>
+
+<script type="text/javascript">
+function clear_field(){
+	$("#field").val("");
+}
+</script>

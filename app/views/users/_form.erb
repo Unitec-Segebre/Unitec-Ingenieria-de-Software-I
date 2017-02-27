@@ -1,8 +1,8 @@
 <div role="document" >
-  <div class="modal-header">
-      <h3>Nuevo Usuario</h3>
-  </div>
-    <%= form_for user do |f| %>
+    <div class="modal-header">
+        <h3>Nuevo Usuario</h3>
+    </div>
+    <%= form_for @user do |f| %>
         <div class="modal-body">
             <div class="form-group">
                 <%= f.label :email, "Usuario" %>

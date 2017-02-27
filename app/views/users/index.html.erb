@@ -1,4 +1,4 @@
-<h1 class="page-header">Lista de Usuarios</h1>
+<h1 class="page-header">Usuarios</h1>
 
 <%= render 'shared/new_button', string: "Nuevo Usuario" %>
 
@@ -9,17 +9,16 @@
                 <th>#</th>
                 <th>Usuario</th>
                 <th>Nombre</th>
-                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
             <% @users.each do |u| %>
                 <tr>
+                    <!-- TODO: Why not just show ID? -->
                     <%@count = @count + 1%>
                     <td><%=@count%></td>
                     <td><%= link_to u.email, user_path(@count)%></td>
                     <td><%= u.first_name%></td>
-                    <td><%= link_to '<span class="fa fa-edit"></span>'.html_safe , edit_user_path(@count) %></td>
                 </tr>
             <% end %>
         </tbody>
@@ -27,7 +26,7 @@
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-  <%= render partial: "form", locals: {user: @user} %>
+  <%= render partial: "form"%>
 </div>
 
 <script>

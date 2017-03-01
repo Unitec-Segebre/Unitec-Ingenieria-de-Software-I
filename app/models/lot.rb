@@ -13,7 +13,7 @@ class Lot < ApplicationRecord
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
   #Returns nil if variable does not exist
-  def getVariable(name)
+  def getValue(name)
     var = Variable.find_by_name(name)
     return nil if var.nil?
 
@@ -28,7 +28,7 @@ class Lot < ApplicationRecord
 
   #Sets today's current amount of the given variable
   #Returns true on success, otherwise false
-  def setVariable(name, amount)
+  def setValue(name, amount)
     var = Variable.find_by_name(name)
     return false if var.nil?
 
@@ -39,5 +39,12 @@ class Lot < ApplicationRecord
       value = self.valorizations.build(variable: var, amount: amount)
       value.save
     end
+  end
+
+  def values(category)
+    variables
+      .where(category: category)
+      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
+      .where("valorizations.assigned_at": Date.today)
   end
 end

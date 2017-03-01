@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
+            <%= render :partial => "variable", :collection => lot.values(category) %>
           </tbody>
         </table>
       </div>

@@ -1,13 +1,10 @@
-<div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header">Proyectos</h1>
-    <%= button_to new_project_path, method: :get, class: "btn btn-outline btn-success btn-lg", id: "new-project-btn" do %>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      Agregar proyecto
-    <%end%>
-  </div>
-</div>
+<h1 class="page-header">Proyectos</h1>
+<%= render 'shared/new_button', string: "Nuevo Proyecto" %>
 
 <div class="row">
-	 <%= render @projects %>
+	<%= render @projects %>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	<%= render partial: "form", locals: {project: @new_project} %>
 </div>

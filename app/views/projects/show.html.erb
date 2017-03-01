@@ -1,17 +1,16 @@
-<div id="nav-wrapper">
-	<div class="row">
-		<div class="col-md-10">	
-		    <h1 id="title-wrapper">Lotes de <i><%=@project.title %></i></h1>
-		    <h4>Empleado encargado: <%=@project.manager%></h4>
-		    <%= button_to new_project_lot_path(@project.id), method: :get, class: "btn btn-outline btn-success btn-lg", id: "new-project-btn" do %>
-      			<i class="fa fa-plus" aria-hidden="true"></i>
-      			Nuevo Lote
-    		<%end%>
-		</div>
-		<div class="col-md-2">
-			<%=link_to(image_tag(@project.get_image,:class=>"img_style")) %>
-		</div>
+<div class="row">
+	<div class="col-md-10">	
+	    <h1 class="page-header" id="title-wrapper">Lotes de <i><%=@project.title %></i></h1>
+	    <h4>Empleado encargado: <%=@project.manager%></h4>
+	    <%= render 'shared/new_button', string: "Nuevo Lote" %>
 	</div>
+	<div class="col-md-2">
+		<%=link_to(image_tag(@project.get_image,:class=>"img_style")) %>
+	</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	<%= render partial: "lots/form" %>
 </div>
 
 <%=render @project.lots%>

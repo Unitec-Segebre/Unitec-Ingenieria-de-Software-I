@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save(validate: false)
       flash[:notice] = 'Modificado exitosamente'
       redirect_to users_path
-    else 
+    else
       puts @user.errors.full_messages
         flash[:alert] = "Un error ha ocurrido al modificar el usuario"
       render :edit
@@ -42,9 +42,9 @@ class UsersController < ApplicationController
 
   protected
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :middle_name, :last_name)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :middle_name, :last_name, :image)
     end
     def edit_params
-      params.require(:user).permit(:first_name, :middle_name, :last_name)
+      params.require(:user).permit(:first_name, :middle_name, :last_name, :image)
     end
 end

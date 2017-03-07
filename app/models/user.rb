@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :email, :first_name, :last_name, presence: true
-  validates :email, uniqueness: true
+  validates :username, :first_name, :last_name, presence: true
+  validates :username, uniqueness: true
 
   mount_uploader :image, ImageUploader
 

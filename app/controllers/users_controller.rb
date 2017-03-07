@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       flash[:alert] = "Un error ha ocurrido al crear el usuario"
-      render :new
+      redirect_to users_path
     end
   end
 

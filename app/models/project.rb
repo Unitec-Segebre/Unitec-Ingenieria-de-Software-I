@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   validates :title, presence: true
+  validates :title, uniqueness: true
   has_many :lots
   mount_uploader :image, ImageUploader
 

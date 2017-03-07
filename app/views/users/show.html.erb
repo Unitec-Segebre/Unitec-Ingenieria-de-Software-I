@@ -1,5 +1,4 @@
 <h1 class="page-header">Información del Usuario</h1>
-<<<<<<< HEAD
 <div class="row">
     <div class="col-lg-12">
         <div class="panel">
@@ -13,6 +12,7 @@
                                 <th>Primer Nombre</th>
                                 <th>Segundo Nombre</th>
                                 <th>Apellido</th>
+                                <th>Editar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -22,6 +22,7 @@
                                 <td><%= @user.first_name%></td>
                                 <td><%= @user.middle_name%></td>
                                 <td><%= @user.last_name%></td>
+                                <td><a data-toggle="modal" data-target="#myModal" onClick="focus_field()" style="cursor:pointer"><span class="fa fa-edit fa-2x"></span></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -32,32 +33,7 @@
         </div>
         <!-- /.panel -->
     </div>
-=======
-
-<div class="table-responsive">
-    <table width="100%" class="table">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>
-                <th>Apellido</th>
-                <th>Editar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= @user.email%></td>
-                <td><%= @user.first_name%></td>
-                <td><%= @user.middle_name%></td>
-                <td><%= @user.last_name%></td>
-                <td><a data-toggle="modal" data-target="#myModal" onClick="focus_field()" style="cursor:pointer"><span class="fa fa-edit fa-2x"></span></a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
   <%= render partial: "edit"%>
->>>>>>> 58c577b2f737decb70789850d3019ddc9b65c926
 </div>

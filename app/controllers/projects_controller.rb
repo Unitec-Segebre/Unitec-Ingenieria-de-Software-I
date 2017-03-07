@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  
+
   def index
     @projects = Project.all
     @new_project = Project.new
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
       redirect_to projects_path, notice: "#{@project.title} creado exitosamente"
     else
       flash[:error] = "Un error ha ocurrido al crear un proyecto"
-      render :index
+      redirect_to projects_path
     end
   end
 

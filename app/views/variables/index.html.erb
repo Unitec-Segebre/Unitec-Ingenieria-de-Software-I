@@ -1,4 +1,6 @@
-<h1> Variables </h1>
+<h1 class="page-header"> Variables </h1>
+
+<%= render 'shared/new_button', string: "Nueva Variable" %>
 
 <table class="table table-hover">
   <thead>
@@ -26,10 +28,6 @@
     <% end %>
   </tbody>
 </table>
-
-<button type="button" class="btn" data-toggle="modal" data-target="#myModal" onClick="focus_field()">
-  Nueva Variable
-</button>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
   <%= render partial: "form", locals: {variable: @variable} %>

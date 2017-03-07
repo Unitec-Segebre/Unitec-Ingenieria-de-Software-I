@@ -1,10 +1,8 @@
 class ProjectsController < ApplicationController
+  
   def index
     @projects = Project.all
-  end
-
-  def new
-    @project = Project.new
+    @new_project = Project.new
   end
 
   def create
@@ -14,12 +12,13 @@ class ProjectsController < ApplicationController
       redirect_to projects_path, notice: "#{@project.title} creado exitosamente"
     else
       flash[:error] = "Un error ha ocurrido al crear un proyecto"
-      render :new
+      redirect_to projects_path
     end
   end
 
   def show
     @project = Project.find(params[:id])
+    @new_lot = Lot.new(project_id: @project.id) #small hack
   end
 
   protected

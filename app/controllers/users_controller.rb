@@ -1,18 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
+    @users = User.all
     @count = 0
-  end
-
-  def new
     @user = User.new
   end
-
+  
   def show
-    @user = User.find(params[:id])
-  end
-
-  def edit
     @user = User.find(params[:id])
   end
 
@@ -21,11 +14,11 @@ class UsersController < ApplicationController
     @user.assign_attributes(edit_params)
     if @user.save(validate: false)
       flash[:notice] = 'Modificado exitosamente'
-      redirect_to users_path
+      redirect_to @user
     else 
       puts @user.errors.full_messages
         flash[:alert] = "Un error ha ocurrido al modificar el usuario"
-      render :edit
+      redirect_to @user
     end
   end
 

@@ -10,6 +10,15 @@ class Lot < ApplicationRecord
       .where("valorizations.assigned_at = ?", Date.today)
   end
 
+  #TODO: Dynamic
+  def range_values(category)
+    variables
+      .where(category: category)
+      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
+      .where("valorizations.assigned_at": Date.today-7.days...Date.tomorrow)
+      .order("valorizations.assigned_at ASC")
+  end
+
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
   #Returns nil if variable does not exist

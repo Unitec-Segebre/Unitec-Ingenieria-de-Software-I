@@ -7,7 +7,7 @@ class Valorization < ApplicationRecord
   before_create :copy_unit_cost
   before_create :calculate_subtotal
 
-  #before_update :assign_current_date
+  before_update :assign_current_date
   before_update :assign_default_amount
   before_update :calculate_subtotal
 

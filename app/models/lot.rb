@@ -19,6 +19,12 @@ class Lot < ApplicationRecord
       .order("valorizations.assigned_at ASC")
   end
 
+  def sum_values(category)
+    range_values(category)
+    .pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)")
+    .first
+  end
+
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
   #Returns nil if variable does not exist

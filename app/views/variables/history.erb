@@ -1,6 +1,6 @@
 <h1 class="page-header">Historial de <%= @variable.name %></h1>
 
-<%= link_to project_lot_path(@lot.project.id, @lot.id), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+<%= link_to project_lot_path(@lot.project, @lot), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
   <span class="fa fa-mail-reply"></span>
   Regresar
 <% end %>
@@ -10,7 +10,7 @@
         <thead>
             <tr>
                 <th>Fecha</th>
-                <th>Cantidad</th>
+                <th>Cantidad en <%= @variable.measurement_unit%></th>
                 <th>Costo por Unidad</th>
                 <th>Subtotal</th>
             </tr>
@@ -18,17 +18,17 @@
         <tbody>
 			<% @days.each do |f| %>
 	        	<tr>
-				 	<td><%= f.assigned_at %></td>
+				 	<td><%= format_date(f.assigned_at.to_datetime) %></td>
 				 	<td><%= f.amount %></td>
-				 	<td><%= f.unit_cost %></td>
-				 	<td><%= f.subtotal %></td>
+				 	<td>Lps. <%= f.unit_cost %></td>
+				 	<td>Lps. <%= f.subtotal %></td>
 				</tr> 
 			<% end %>
 			<tr>
 				<th>Total</th>
-				<th><%= @days.sum(:amount) %></th>
-				<th><%= @days.sum(:unit_cost) %></th>
-				<th><%= @days.sum(:subtotal) %></th>
+				<th><%= @total.first.first %></th>
+				<th>Lps. <%= @total.first.second %></th>
+				<th>Lps. <%= @total.first.third %></th>
 			</tr>
         </tbody>
     </table>

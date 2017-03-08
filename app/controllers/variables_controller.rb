@@ -40,6 +40,7 @@ class VariablesController < ApplicationController
     @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])
     @days = @lot.range_values(@variable.category)
+    @total = @days.pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)")
   end
 
   protected

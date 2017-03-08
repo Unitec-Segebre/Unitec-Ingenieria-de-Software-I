@@ -37,8 +37,9 @@ class VariablesController < ApplicationController
   end
 
   def history
+    @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])
-    @days = Lot.find(params[:lot_id]).range_values(@variable.category)
+    @days = @lot.range_values(@variable.category)
   end
 
   protected

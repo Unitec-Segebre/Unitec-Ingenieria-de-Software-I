@@ -1,5 +1,10 @@
 <h1 class="page-header">Historial de <%= @variable.name %></h1>
 
+<%= link_to project_lot_path(@lot.project.id, @lot.id), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-mail-reply"></span>
+  Regresar
+<% end %>
+
 <div class="table-responsive">
     <table width="100%" class="table">
         <thead>
@@ -19,6 +24,12 @@
 				 	<td><%= f.subtotal %></td>
 				</tr> 
 			<% end %>
+			<tr>
+				<th>Total</th>
+				<th><%= @days.sum(:amount) %></th>
+				<th><%= @days.sum(:unit_cost) %></th>
+				<th><%= @days.sum(:subtotal) %></th>
+			</tr>
         </tbody>
     </table>
 </div>

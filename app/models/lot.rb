@@ -15,7 +15,7 @@ class Lot < ApplicationRecord
     variables
       .where(category: category)
       .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
-      .where("valorizations.assigned_at": Date.today-7.days...Date.tomorrow)
+      .where("valorizations.assigned_at": Date.today.in_time_zone('Central America')-7.days...Date.tomorrow.in_time_zone('Central America'))
       .order("valorizations.assigned_at ASC")
   end
 

@@ -17,7 +17,7 @@
                     <!-- TODO: Why not just show ID? -->
                     <%@count = @count + 1%>
                     <td><%=@count%></td>
-                    <td><%= link_to u.email, user_path(@count)%></td>
+                    <td><%= link_to u.username, user_path(@count)%></td>
                     <td><%= u.first_name%></td>
                 </tr>
             <% end %>

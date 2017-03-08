@@ -29,13 +29,13 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       flash[:alert] = "Un error ha ocurrido al crear el usuario"
-      render :new
+      redirect_to users_path
     end
   end
 
   protected
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :middle_name, :last_name)
+      params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :middle_name, :last_name)
     end
     def edit_params
       params.require(:user).permit(:first_name, :middle_name, :last_name)

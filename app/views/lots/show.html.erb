@@ -1,8 +1,8 @@
+  <%= render 'shared/new_button', string: "Reportes" %>
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
     Variables
   </div>
-
   <div class="panel-body">
     <div class="panel-group" id="accordion">
       <%= render :partial => "category", :collection => Category.all, :locals => {lot: @lot} %>

@@ -6,7 +6,6 @@
       </a>
     </h4>
   </div>
-
   <div id="<%= category.id %>" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="table-responsive">
@@ -14,13 +13,13 @@
           <thead>
             <tr>
               <th>Variable</th>
-              <th>Valor</th>
+              <th>Cantidad</th>
               <th>Costo</th>
-              <th><span class="table-add glyphicon glyphicon-floppy-disk"></span>
+              <th>Costo Unitario</th>
             </tr>
           </thead>
           <tbody>
-            <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
+            <%= render :partial => "reportVariables", :collection => category.variables, locals: {lot: lot} %>
           </tbody>
         </table>
       </div>

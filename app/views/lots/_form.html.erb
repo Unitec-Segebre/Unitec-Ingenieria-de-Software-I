@@ -2,7 +2,7 @@
 	<div class="modal-header">
 		<h3>Nuevo Lote</h3>
 	</div>
-	<%= form_for [@project, @new_lot] do |f| %>
+	<%= form_tag [@project, @new_lot] do |f| %>
 		<div class="modal-body">
 			<div class="form-group">
 			  <%= f.label :sown_at, "Año de Siembra" %>

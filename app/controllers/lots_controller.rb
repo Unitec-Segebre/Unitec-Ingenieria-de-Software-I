@@ -20,12 +20,27 @@ class LotsController < ApplicationController
   end
 
   def update
+    @project = Project.find(params[:project_id])
+    @lot = @project.lots.find(params[:id])
+    @variables = params[:variables]
+
+    @variables.each do |key, values|
+      @lot.setValue(key, values[:amount], values[:subtotal])
+    end
+
+    redirect_to project_lot_path(@project, @lot)
   end
 
   def report
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:lot_id])
   end
+
+  def values
+    @project = Project.find(params[:project_id])
+    @lot = @project.lots.find(params[:id])
+  end
+
   protected
     def lot_params
       params.require(:lot).permit(:sown_at, :material, :hectares, :project_id)

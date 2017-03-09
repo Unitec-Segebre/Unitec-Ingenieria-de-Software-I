@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :lots, only: [:create, :show, :update] do
       get 'report'
 
+      resources :lots, only: [:create, :show] do
+        post 'values', on: :member
+      end
+
       resources :variables, only: [] do
         get 'history'
       end

@@ -16,12 +16,12 @@
               <tr>
                 <th>Variable</th>
                 <th>Cantidad</th>
-                <th>Total</th>
+                <th>Subtotal</th>
                 <th>Costo por unidad</th>
               </tr>
             </thead>
             <tbody>
-              <%= render :partial => "variable", :collection => lot.values(category), locals: {lot: lot, f: f} %>
+              <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
             </tbody>
           </table>
         </div>

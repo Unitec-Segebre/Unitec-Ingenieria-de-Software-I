@@ -3,13 +3,12 @@
     <%= link_to variable.name, project_lot_variable_history_path(lot.project.id, lot.id, variable.id) %>
   </td>
   <td>
-    <%= f.label :name, variable.name %>
-    <%= f.text_field variable.name, id: variable.id, class: "form-control" %>
+    <%= number_field_tag "variables[#{variable.name}][amount]", lot.getValue(variable.name)[:amount], class: 'form-control' %>
   </td>
   <td>
-    <%= f.label variable.name %>
-    <%= f.text_field variable.name, id: variable.id, class: "form-control" %>
+    <%= number_field_tag "variables[#{variable.name}][subtotal]", lot.getValue(variable.name)[:subtotal], class: 'form-control' %>
   </td>
   <td>
+    <%= lot.getValue(variable.name)[:unit_cost] %>
   </td>
 </tr>

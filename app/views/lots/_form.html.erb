@@ -7,28 +7,22 @@
 			<div class="form-group">
 			  <%= f.label :sown_at, "Año de Siembra" %>
 			  <br>
-			  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year), {}, id: "field", class: "form-control" %>
+			  <%= f.select :sown_at, (Time.zone.now.year - 50)..(Time.zone.now.year), {}, id: "field1", class: "form-control" %>
 			</div>
 			<div class="form-group">
 			  <%= f.label :material, "Material" %>
-			  <%= f.text_field :material, class: "form-control" %>
+			  <%= f.text_field :material, id: "field2", class: "form-control" %>
 			</div>
 			<div class="form-group">
 			  <%= f.label :hectares, "Hectareas" %>
-			  <%= f.number_field :hectares, step: 0.01, class: "form-control" %>
+			  <%= f.number_field :hectares, step: 0.01, id: "field3", class: "form-control" %>
 			</div>
 		</div>
 		<div class="modal-footer">
 			<div class="btn-group" role="group">
-			  <button type="button" class="btn btn-danger" data-dismiss="modal" onClick="clear_field()">Cancelar</button>
+			  <button type="button" class="btn btn-danger" data-dismiss="modal" onClick="clear_field(['#field1','#field2','#field3'])">Cancelar</button>
 			  <%= f.submit "Guardar",class: "btn btn-primary" %>
 			</div>
 		</div>
 	<% end %>
 </div>
-
-<script type="text/javascript">
-function clear_field(){
-	$("#field").val("");
-}
-</script>

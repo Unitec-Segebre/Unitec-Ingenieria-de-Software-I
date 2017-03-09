@@ -9,7 +9,7 @@ class LotsController < ApplicationController
     else
       puts @lot.errors.full_messages
       flash[:error] = "Un error ha ocurrido al crear un lote"
-      render :new
+      redirect_to @project
     end
   end
 

@@ -18,6 +18,10 @@ class LotsController < ApplicationController
     @lot = @project.lots.find(params[:id])
   end
 
+  def report
+    @project = Project.find(params[:project_id])
+    @lot = @project.lots.find(params[:lot_id])
+  end
   protected
     def lot_params
       params.require(:lot).permit(:sown_at, :material, :hectares, :project_id)

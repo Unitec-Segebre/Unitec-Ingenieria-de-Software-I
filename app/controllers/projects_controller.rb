@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
       redirect_to projects_path, notice: "#{@project.title} creado exitosamente"
     else
       flash[:error] = "Un error ha ocurrido al crear un proyecto"
-      render :index
+      redirect_to projects_path
     end
   end
 
@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @new_lot = Lot.new(project_id: @project.id) #small hack
   end
-
   protected
     def project_params
       params.require(:project).permit(:title, :manager, :image)

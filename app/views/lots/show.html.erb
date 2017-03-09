@@ -1,4 +1,8 @@
-  <%= render 'shared/new_button', string: "Reportes" %>
+<%= link_to project_lot_report_path(@lot.project, @lot), class: "btn btn-outline btn-success btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-newspaper-o"></span>
+  Reportes
+<% end %>
+
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
     Variables

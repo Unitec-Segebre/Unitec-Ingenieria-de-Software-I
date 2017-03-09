@@ -1,40 +1,43 @@
-<div class="col-md-3">
-  <div class="panel panel-green">
-    <div class="panel-heading lot-panel-heading" style="text-align:center">
-      <%= link_to "Lote #{lot.id}", project_lot_path(lot.project) %>
-    </div>
-    <div class="panel-body lot-panel-body" style="text-align:center">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col-md-7" style="text-align:center">Año Siembra</th>
-            <th class="col-md-5" style="text-align:center">Material</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-md-7">
-              <%= lot.sown_at %>
-            </td>
-            <td class="col-md-5">
-              <%= lot.material %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table" style="text-align:center">
-        <thead>
-          <tr>
-            <th class="col-md-12" style="text-align:center">Hectáreas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-md-12" style="text-align:center">
-              <%= lot.hectares %>
-          </tr>
-        </tbody>
-      </table>
+<%= link_to project_lot_path(lot.project), {:style=>"color:#000"} do%>
+  <div class="col-md-3">
+    <div class="panel panel-green">
+      <div class="panel-heading lot-panel-heading" style="text-align:center">
+        Lote #
+        <%=lot.id %>
+      </div>
+      <div class="panel-body lot-panel-body" style="text-align:center">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col-md-7" style="text-align:center">Año Siembra</th>
+              <th class="col-md-5" style="text-align:center">Material</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-md-7">
+                <%= lot.sown_at %>
+              </td>
+              <td class="col-md-5">
+                <%= lot.material %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table" style="text-align:center">
+          <thead>
+            <tr>
+              <th class="col-md-12" style="text-align:center">Hectáreas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-md-12" style="text-align:center">
+                <%= lot.hectares %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

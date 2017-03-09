@@ -4,7 +4,7 @@
 	    <h4>Empleado encargado: <%=@project.manager%></h4>
 	    <%= render 'shared/new_button', string: "Nuevo Lote" %>
 	</div>
-	<div class="col-md-2">
+	<div class="col-md-2" style="margin-top:25px">
 		<%=link_to(image_tag(@project.get_image,:class=>"img_style")) %>
 	</div>
 </div>

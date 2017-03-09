@@ -16,6 +16,7 @@ class LotsController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:id])
+    @categories = Category.all
   end
 
   protected

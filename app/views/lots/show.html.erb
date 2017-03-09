@@ -20,10 +20,9 @@
   <div class="panel-heading">
     Categorias
   </div>
-
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render :partial => "category", :collection => Category.all, :locals => {lot: @lot} %>
+      <%= render partial: "category", collection: @categories, locals: {lot: @lot} %>
     </div>
   </div>
 </div>

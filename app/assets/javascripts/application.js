@@ -17,3 +17,4 @@
 //= require bootstrap_sb_admin_base_v2
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require ./modals

@@ -11,6 +11,22 @@ class Lot < ApplicationRecord
       .where("valorizations.assigned_at = ?", Date.today)
   end
 
+  #TODO: Dynamic date range
+  def range_values(category, var_id)
+    self.variables
+      .where("category": category)
+      .where("id": var_id)
+      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
+      .where("valorizations.assigned_at": Date.today.in_time_zone('Central America')-7.days...Date.tomorrow.in_time_zone('Central America'))
+      .order("valorizations.assigned_at ASC")
+  end
+
+  def sum_values(category, var_id)
+    range_values(category, var_id)
+    .pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)")
+    .first
+  end
+
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
   #Returns nil if variable does not exist

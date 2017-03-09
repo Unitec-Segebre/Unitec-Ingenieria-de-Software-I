@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :destroy, :create]
 
   resources :projects, only: [:index, :create, :show] do
-    resources :lots, only: [:create, :show]
+    resources :lots, only: [:create, :show] do
+    	resources :variables, only: [] do
+        get 'history'
+      end
+	  end
   end
 
 end

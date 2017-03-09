@@ -2,5 +2,7 @@
   <div class="col-lg-12">
     <h1 class="page-header">Nuevo Proyecto</h1>
   </div>
+<%= render partial: "shared/errors", locals: { obj: @project } %>
+
 <%= render partial: "form", locals: {project: @project} %>
 </div>

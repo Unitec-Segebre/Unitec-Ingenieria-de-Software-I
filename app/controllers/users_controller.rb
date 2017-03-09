@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @count = 0
     @user = User.new
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @user.assign_attributes(edit_params)
     if @user.save(validate: false)
       flash[:notice] = 'Modificado exitosamente'
-      redirect_to @user
-    else 
+      redirect_to users_path
+    else
       puts @user.errors.full_messages
         flash[:alert] = "Un error ha ocurrido al modificar el usuario"
       redirect_to @user
@@ -35,9 +35,9 @@ class UsersController < ApplicationController
 
   protected
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :middle_name, :last_name)
+      params.require(:user).permit(:username, :password, :password_confirmation, :first_name, :middle_name, :last_name, :image)
     end
     def edit_params
-      params.require(:user).permit(:first_name, :middle_name, :last_name)
+      params.require(:user).permit(:first_name, :middle_name, :last_name, :image)
     end
 end

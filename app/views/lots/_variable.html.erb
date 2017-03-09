@@ -2,7 +2,13 @@
   <td>
     <%= link_to variable.name, project_lot_variable_history_path(lot.project.id, lot.id, variable.id) %>
   </td>
-  <td>
+  <td style="text-align:center">
     <%= lot.getVariable(variable.name)[:amount] %>
+  </td>
+  <td>
+    <%= lot.getVariable(variable.name)[:unit_cost] %>
+  </td>
+  <td>
+    <%= lot.getVariable(variable.name)[:subtotal] %>
   </td>
 </tr>

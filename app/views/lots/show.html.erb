@@ -1,3 +1,9 @@
+<h1 class="page-header">Lote #<%= @lot.id %></h1>
+
+<%= link_to project_path(@lot.project), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-mail-reply"></span>
+  Regresar
+<% end %>
 <table class= "table" style= "margin-bottom: -45px">
   <thead>
     <tr>
@@ -16,6 +22,7 @@
     </tr>
   </tbody>
 </table>
+
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
     Categorias

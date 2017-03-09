@@ -2,11 +2,13 @@
   <td>
     <%= link_to variable.name, project_lot_variable_history_path(lot.project.id, lot.id, variable.id) %>
   </td>
-  <td contenteditable="true">
-  </td>
-  <td contenteditable="true">
-  	<%= variable.unit_cost%>
+  <td>
+    <%= number_field_tag "variables[#{variable.name}][amount]", lot.getValue(variable.name)[:amount], class: 'form-control' %>
   </td>
   <td>
+    <%= number_field_tag "variables[#{variable.name}][subtotal]", lot.getValue(variable.name)[:subtotal], class: 'form-control' %>
+  </td>
+  <td>
+    <%= lot.getValue(variable.name)[:unit_cost] %>
   </td>
 </tr>

@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :destroy, :create]
 
   resources :projects, only: [:index, :create, :show] do
-    resources :lots, only: [:create, :show] do
+    resources :lots, only: [:create, :show, :update] do
       get 'report'
-    	resources :variables, only: [] do
+      resources :lots, only: [:create, :show] do
+        post 'values', on: :member
+      end
+      resources :variables, only: [] do
         get 'history'
       end
-	  end
-  end
-
+    end
+	end
 end

@@ -9,21 +9,24 @@
 
   <div id="<%= category.id %>" class="panel-collapse collapse">
     <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Variable</th>
-              <th>Valor</th>
-              <th>Costo</th>
-              <th><span class="table-add glyphicon glyphicon-floppy-disk"></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
-          </tbody>
-        </table>
-      </div>
+      <%= form_for [@lot.project, @lot] do |f| %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Costo por unidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
+            </tbody>
+          </table>
+        </div>
+        <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
+      <% end %>
     </div>
   </div>
 </div>

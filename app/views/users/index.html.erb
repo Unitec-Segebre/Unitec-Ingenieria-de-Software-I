@@ -1,6 +1,6 @@
 <h1 class="page-header">Usuarios</h1>
 
-<%= render 'shared/new_button', string: "Nuevo Usuario" %>
+<%= button("btn-success", "fa-plus", "Nuevo Usuario") %>
 
 <div class="table-responsive">
     <table width="100%" class="table">
@@ -28,9 +28,3 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
   <%= render partial: "form"%>
 </div>
-
-<script>
-function focus_field(){
-  setTimeout(function() { $('#field').focus() }, 600);
-}
-</script>

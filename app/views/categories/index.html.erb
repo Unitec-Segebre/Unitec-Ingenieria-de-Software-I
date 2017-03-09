@@ -1,6 +1,6 @@
 <h1 class="page-header"> Categorías </h1>
 
-<%= render 'shared/new_button', string: "Nueva Categoría" %>
+<%= button("btn-success", "fa-plus", "Nueva Categoria") %>
 
 <table class="table">
 	<thead>
@@ -26,9 +26,3 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 	<%= render partial: "form", locals: {new_category: @new_category} %>
 </div>
-
-<script>
-function focus_field(){
-	setTimeout(function() { $('#field').focus() }, 500);
-}
-</script>

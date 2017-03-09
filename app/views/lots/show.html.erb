@@ -1,3 +1,11 @@
+
+<h1 class="page-header">Lote #<%= @lot.id %></h1>
+
+<%= link_to project_path(@lot.project), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-mail-reply"></span>
+  Regresar
+<% end %>
+
 <%= link_to project_lot_report_path(@lot.project, @lot), class: "btn btn-outline btn-success btn-lg", style: "margin-bottom: 20px" do%>
   <span class="fa fa-newspaper-o"></span>
   Reportes
@@ -9,7 +17,7 @@
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render :partial => "category", :collection => Category.all, :locals => {lot: @lot} %>
+      <%= render partial: "category", collection: @categories, locals: {lot: @lot} %>
     </div>
   </div>
 </div>

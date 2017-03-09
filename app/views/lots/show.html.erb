@@ -4,15 +4,34 @@
   <span class="fa fa-mail-reply"></span>
   Regresar
 <% end %>
-
 <%= link_to project_lot_report_path(@lot.project, @lot), class: "btn btn-outline btn-success btn-lg", style: "margin-bottom: 20px" do%>
   <span class="fa fa-newspaper-o"></span>
   Reportes
 <% end %>
 
+<table class= "table" style= "margin-bottom: -45px">
+  <thead>
+    <tr>
+      <th class="col-md-2">Año Siembra</th>
+      <th class="col-md-2">Material</th>
+      <th class="col-md-2">Hectareas</th>
+      <th class="col-md-2">Project Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="col-md-2"><%=@lot.sown_at%></td>
+      <td class="col-md-2"><%=@lot.material%></td>
+      <td class="col-md-2"><%=@lot.hectares%></td>
+      <td class="col-md-2"><%=@lot.project.title%></td>
+    </tr>
+  </tbody>
+</table>
+
+
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
-    Variables
+    Categorias
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">

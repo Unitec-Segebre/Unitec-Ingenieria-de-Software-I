@@ -2,6 +2,7 @@ class Lot < ApplicationRecord
   has_many :valorizations
   has_many :variables, through: :valorizations
   belongs_to :project
+  validates :sown_at, :material, :hectares, :project_id, presence: true
 
   def today_values(category)
     self.variables

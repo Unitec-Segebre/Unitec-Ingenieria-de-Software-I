@@ -16,12 +16,16 @@
           <%= f.label :last_name, "Apellidos" %>
           <%= f.text_field :last_name, id: "field3", class: "form-control" %>
       </div>
+      <div style= "margin-bottom:10px">
+        <%= f.label :image, "Imagen" %>
+        <%= f.file_field :image%>
+      </div>
     </div>
     <div class="modal-footer">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <%= f.submit "Guardar", class: "btn btn-primary" %>
       </div>
-    </div>
-  <% end %>
+  </div>
 </div>
+<% end %>

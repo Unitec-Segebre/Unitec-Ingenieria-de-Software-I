@@ -39,8 +39,8 @@ class VariablesController < ApplicationController
   def history
     @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])
-    @days = @lot.range_values(@variable.category)
-    @total = @lot.sum_values(@variable.category)
+    @days = @lot.range_values(@variable.category, @variable.id)
+    @total = @lot.sum_values(@variable.category, @variable.id)
   end
 
   protected

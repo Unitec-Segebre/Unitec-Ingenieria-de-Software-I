@@ -28,6 +28,10 @@
                 <%= f.label :last_name, "Apellidos" %>
                 <%= f.text_field :last_name, class: "form-control", :required => true %>
             </div>
+            <div style= "margin-bottom:10px">
+                <%= f.label :image, "Imagen" %>
+                <%= f.file_field :image%>
+            </div>
             <div class="modal-footer">
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-danger" data-dismiss="modal" onClick="clear_field()">Cancelar</button>

@@ -2,10 +2,13 @@
   <td>
     <%= link_to variable.name, project_lot_variable_history_path(lot.project.id, lot.id, variable.id) %>
   </td>
-  <td contenteditable="true">
+  <td>
+    <%= f.label :name, variable.name %>
+    <%= f.text_field variable.name, id: variable.id, class: "form-control" %>
   </td>
-  <td contenteditable="true">
-  	<%= variable.unit_cost%>
+  <td>
+    <%= f.label variable.name %>
+    <%= f.text_field variable.name, id: variable.id, class: "form-control" %>
   </td>
   <td>
   </td>

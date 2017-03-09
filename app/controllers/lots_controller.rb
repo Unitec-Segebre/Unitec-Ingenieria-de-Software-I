@@ -19,6 +19,9 @@ class LotsController < ApplicationController
     @categories = Category.all
   end
 
+  def update
+  end
+
   def report
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:lot_id])

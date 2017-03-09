@@ -1,12 +1,16 @@
+<% @variables.each do |v| %>
 <tr>
   <td>
     <%= reportVariables.name %>
   </td>
   <td>
+  <%= @lot.sum_values(v.category) %> 
+  </td>
+  <td>
+
   </td>
   <td>
   	<%= reportVariables.unit_cost%>
   </td>
-  <td>
-  </td>
 </tr>
+<% end %>

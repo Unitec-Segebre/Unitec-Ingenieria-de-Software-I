@@ -16,11 +16,13 @@ class LotsController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:id])
+    @categories = Category.all
   end
 
   def report
     @project = Project.find(params[:project_id])
-    @lot = @project.lots.find(params[:lot_id])
+    @lot = Lot.find(params[:lot_id])
+    @variables = Variable.all
   end
   protected
     def lot_params

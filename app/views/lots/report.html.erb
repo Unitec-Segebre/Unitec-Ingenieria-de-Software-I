@@ -1,0 +1,17 @@
+<h1 class="page-header">Reporte Lote #<%= @lot.id %> </h1>
+
+<%= link_to project_lot_path(@lot.project, @lot), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-mail-reply"></span>
+  Regresar
+<% end %>
+
+<div class="panel panel-default variables-panel">
+  <div class="panel-heading">
+    Variables
+  </div>
+  <div class="panel-body">
+    <div class="panel-group" id="accordion">
+      <%= render :partial => "reports", :collection => Category.all %>
+    </div>
+  </div>
+</div>

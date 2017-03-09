@@ -1,0 +1,17 @@
+<% @variables.each do |v| %>
+  <% @total = @lot.sum_values(v.category, v.id) %>
+  <tr>
+    <td>
+      <%= v.name %>
+    </td>
+    <td>
+      <%= @total.first %> 
+    </td>
+    <td>
+      <%= @total.second %>
+    </td>
+    <td>
+    	<%= @total.third %>
+    </td>
+  </tr>
+<% end %>

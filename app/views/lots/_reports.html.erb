@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= reports.id %>" aria-expanded="false" class="collapsed">
+        <%= reports.name %>
+      </a>
+    </h4>
+  </div>
+
+  <div id="<%= reports.id %>" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Valor</th>
+              <th>Costo Unitario</th>
+              <th>Costo Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @variables.each do |v| %>
+              <% @total = @lot.sum_values(v.category, v.id) %>
+              <tr>
+                <td><%= v.name %></td>
+                <td><%= @total.first %></td>
+                <td><%= @total.second %></td>
+                <td><%= @total.third %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

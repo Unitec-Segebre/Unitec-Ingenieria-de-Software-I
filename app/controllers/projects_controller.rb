@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @new_lot = Lot.new(project_id: @project.id) #small hack
   end
-
   protected
     def project_params
       params.require(:project).permit(:title, :manager, :image)

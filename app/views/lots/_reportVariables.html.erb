@@ -1,16 +1,17 @@
 <% @variables.each do |v| %>
-<tr>
-  <td>
-    <%= reportVariables.name %>
-  </td>
-  <td>
-  <%= @lot.sum_values(v.category, v.id) %> 
-  </td>
-  <td>
-
-  </td>
-  <td>
-  	<%= reportVariables.unit_cost%>
-  </td>
-</tr>
+  <% @total = @lot.sum_values(v.category, v.id) %>
+  <tr>
+    <td>
+      <%= v.name %>
+    </td>
+    <td>
+      <%= @total.first %> 
+    </td>
+    <td>
+      <%= @total.second %>
+    </td>
+    <td>
+    	<%= @total.third %>
+    </td>
+  </tr>
 <% end %>

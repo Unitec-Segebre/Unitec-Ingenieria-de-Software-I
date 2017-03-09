@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :create, :show] do
     resources :lots, only: [:create, :show] do
+      get 'report'
     	resources :variables, only: [] do
         get 'history'
-        get 'report'
       end
 	  end
   end

@@ -23,6 +23,7 @@ class LotsController < ApplicationController
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
     @variables = Variable.all
+    @total = nil
   end
   protected
     def lot_params

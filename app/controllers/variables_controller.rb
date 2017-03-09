@@ -36,6 +36,13 @@ class VariablesController < ApplicationController
       redirect_to variables_path, notice: "Variable #{@variable.name} eliminada correctamente!"
   end
 
+  def history
+    @lot = Lot.find(params[:lot_id])
+    @variable = Variable.find(params[:variable_id])
+    @days = @lot.range_values(@variable.category)
+    @total = @lot.sum_values(@variable.category)
+  end
+
   protected
     def variable_params
       params.require(:variable).permit(:name, :category_id, :measurement_unit, :unit_cost)

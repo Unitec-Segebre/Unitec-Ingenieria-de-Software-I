@@ -1,0 +1,35 @@
+<h1 class="page-header">Historial de <%= @variable.name %></h1>
+
+<%= link_to project_lot_path(@lot.project, @lot), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
+  <span class="fa fa-mail-reply"></span>
+  Regresar
+<% end %>
+
+<div class="table-responsive">
+    <table width="100%" class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Cantidad en <%= @variable.measurement_unit%></th>
+                <th>Costo por Unidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+			<% @days.each do |f| %>
+	        	<tr>
+				 	<td><%= format_date(f.assigned_at.to_datetime) %></td>
+				 	<td><%= f.amount %></td>
+				 	<td>Lps. <%= f.unit_cost %></td>
+				 	<td>Lps. <%= f.subtotal %></td>
+				</tr> 
+			<% end %>
+			<tr>
+				<th>Total</th>
+				<th><%= @total.first %></th>
+				<th>Lps. <%= @total.second %></th>
+				<th>Lps. <%= @total.third %></th>
+			</tr>
+        </tbody>
+    </table>
+</div>

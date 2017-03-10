@@ -16,7 +16,6 @@
  *= require font-awesome
  *= require bootstrap-modal-bs3patch
  *= require bootstrap-modal
- *= require bootstrap-datepicker
  */
 
 .navbar-top-links li span {

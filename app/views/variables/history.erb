@@ -1,15 +1,6 @@
 <h1 class="page-header">Historial de <%= @variable.name %></h1>
 
-<%= link_to project_lot_path(@lot.project, @lot), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
-  <span class="fa fa-mail-reply"></span>
-  Regresar
-<% end %>
-
-<div class="input-daterange" id="datepicker">
-    <input type="text" class="input-small" name="start" />
-    <span class="add-on">to</span>
-    <input type="text" class="input-small" name="end" />
-</div>
+<%= return_button(project_lot_path(@lot.project, @lot)) %>
 
 <div class="table-responsive">
     <table width="100%" class="table">
@@ -28,7 +19,7 @@
 				 	<td><%= f.amount %></td>
 				 	<td>Lps. <%= f.unit_cost %></td>
 				 	<td>Lps. <%= f.subtotal %></td>
-				</tr> 
+				</tr>
 			<% end %>
 			<tr>
 				<th>Total</th>

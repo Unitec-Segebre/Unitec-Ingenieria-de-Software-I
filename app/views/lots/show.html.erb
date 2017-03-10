@@ -1,9 +1,7 @@
 <h1 class="page-header">Lote #<%= @lot.id %></h1>
 
-<%= link_to project_path(@lot.project), class: "btn btn-outline btn-danger btn-lg", style: "margin-bottom: 20px" do%>
-  <span class="fa fa-mail-reply"></span>
-  Regresar
-<% end %>
+<%= return_button(project_path(@lot.project)) %>
+
 <%= link_to project_lot_report_path(@lot.project, @lot), class: "btn btn-outline btn-success btn-lg", style: "margin-bottom: 20px" do%>
   <span class="fa fa-newspaper-o"></span>
   Reportes
@@ -15,7 +13,7 @@
       <th class="col-md-2">Año Siembra</th>
       <th class="col-md-2">Material</th>
       <th class="col-md-2">Hectareas</th>
-      <th class="col-md-2">Project Name</th>
+      <th class="col-md-2">Proyecto</th>
     </tr>
   </thead>
   <tbody>

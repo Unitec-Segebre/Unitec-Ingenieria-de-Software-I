@@ -5,8 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap-datepicker-rails'
-
 gem 'bootstrap-modal-rails'
 
 gem 'haml'

@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><%=link_to(image_tag(@user.get_image,:class=>"img_style"),@user) %></td>
+                                <td class="thumb-td"><%=link_to(image_tag(@user.get_image,:class=>"img_style thumb"),@user) %></td>
                                 <td><%= @user.username%></td>
                                 <td><%= @user.first_name%></td>
                                 <td><%= @user.middle_name%></td>
@@ -32,11 +32,8 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.table-responsive -->
             </div>
-            <!-- /.panel-body -->
         </div>
-        <!-- /.panel -->
     </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
   <%= render partial: "edit"%>

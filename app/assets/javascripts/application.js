@@ -18,3 +18,4 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require ./modals
+//= require bootstrap-datepicker

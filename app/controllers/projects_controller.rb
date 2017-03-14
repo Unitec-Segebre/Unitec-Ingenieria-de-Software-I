@@ -8,11 +8,13 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    if @project.save
-      redirect_to projects_path, notice: "#{@project.title} creado exitosamente"
-    else
-      flash[:error] = "Un error ha ocurrido al crear un proyecto"
-      redirect_to projects_path
+    respond_to do |format|
+      if @project.save
+        format.html{ redirect_to projects_path, notice: "#{@project.title} creado exitosamente" }
+      else
+        flash[:error] = @project.errors.full_messages
+        format.js{ render action: "index" }
+      end
     end
   end
 

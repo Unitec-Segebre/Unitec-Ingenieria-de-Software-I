@@ -1,13 +1,12 @@
 class CategoriesController < ApplicationController
-  
+
   def index
   	@categories = Category.all
   	@new_category = Category.new
   end
 
-   def destroy
+  def destroy
     @category = Category.find(params[:id])
-    
     @category.destroy
     redirect_to categories_path, notice: "#{@category.name} eliminado correctamente!"
   end
@@ -15,12 +14,13 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
 
-    if @category.save
-      redirect_to categories_path, notice: "#{@category.name} creado exitosamente!"
-    else
-      flash[:error] = "Un error ha ocurrido al crear una categoria."
-      # Can't be render or @categories loses its value
-      redirect_to categories_path
+    respond_to do |format|
+      if @category.save
+        format.html{ redirect_to categories_path, notice: "#{@category.name} creado exitosamente!" }
+      else
+        flash[:error] = @category.errors.full_messages
+        format.js{ render action: "index" }
+      end
     end
   end
 

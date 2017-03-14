@@ -6,6 +6,7 @@ window.clear_field = (ids) ->
   while index < ids.length
     $(ids[index]).val ''
     ++index
+  $('#error_div').html ''
   return
 
 window.focus_field = (id) ->

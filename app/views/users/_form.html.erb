@@ -7,19 +7,19 @@
         <div class="modal-body">
             <div class="form-group">
                 <%= f.label :username, "Usuario" %>
-                <%= f.text_field :username, class: "form-control", id: "field1", :required => true %>
+                <%= f.text_field :username, class: "form-control", id: "field1" %>
             </div>
             <div class="form-group">
                 <%= f.label :password, "Contraseña" %>
-                <%= f.password_field :password, class: "form-control", id: "field2",:required => true%>
+                <%= f.password_field :password, class: "form-control", id: "field2"%>
             </div>
             <div class="form-group">
                 <%= f.label :password_confirmation, "Confirmar Contraseña" %>
-                <%= f.password_field :password_confirmation, id: "field3",class: "form-control", :required => true%>
+                <%= f.password_field :password_confirmation, id: "field3",class: "form-control"%>
             </div>
             <div class="form-group">
                 <%= f.label :first_name, "Primer Nombre" %>
-                <%= f.text_field :first_name, class: "form-control", id: "field4",:required => true %>
+                <%= f.text_field :first_name, class: "form-control", id: "field4" %>
             </div>
             <div class="form-group">
                 <%= f.label :middle_name, "Segundo Nombre" %>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <%= f.label :last_name, "Apellidos" %>
-                <%= f.text_field :last_name, class: "form-control", id: "field6",:required => true %>
+                <%= f.text_field :last_name, class: "form-control", id: "field6" %>
             </div>
             <div style= "margin-bottom:10px">
                 <%= f.label :image, "Imagen" %>

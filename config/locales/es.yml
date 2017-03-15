@@ -6,6 +6,27 @@ es:
         restrict_dependent_destroy:
           has_one: El registro no puede ser eliminado pues existe un %{record} dependiente
           has_many: El registro no puede ser eliminado pues existen %{record} dependientes
+    attributes:
+      category:
+        name: "Nombre"
+      lot:
+        sown_at: "Año de Siembra"
+        hectares: "Hectareas"
+      project:
+        title: "Título"
+        manager: "Encargado"
+        image: "Imagen"
+      user:
+        username: "Usuario"
+        password: "Contraseña"
+        first_name: "Primer Nombre"
+        middle_name: "Segundo Nombre"
+        last_name: "Apellidos"
+        image: "Imagen"
+      variable:
+        measurement_unit: "Unidad de Medición"
+        unit_cost: "Costo"
+        name: "Nombre"
   date:
     abbr_day_names:
     - dom
@@ -16,7 +37,6 @@ es:
     - vie
     - sáb
     abbr_month_names:
-    -
     - ene
     - feb
     - mar

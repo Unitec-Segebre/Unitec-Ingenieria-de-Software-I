@@ -2,6 +2,8 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
+<%= column_chart @lot.variables.pluck("variables.name, valorizations.subtotal") %>
+
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
     Variables

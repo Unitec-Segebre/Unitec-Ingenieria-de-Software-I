@@ -3,6 +3,7 @@
 
   <head>
     <title>Honducaribe Agricultura de Precisión</title>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -64,7 +65,7 @@
           </div>
         </div>
       </nav>
-      
+
       <div id="page-wrapper" class="pre-scrollable" style="max-height:1000px;">
         <%= yield %>
         <div class="col-md-12" style="visibilty:hidden; min-height:200px"></div>

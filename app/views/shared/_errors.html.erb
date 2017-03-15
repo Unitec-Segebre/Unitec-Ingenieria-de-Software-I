@@ -1,6 +1,5 @@
 <% if flash[:error] %>
-	<div class="form_errors">
-			Por favor corrija los siguientes problemas:
+	<div class="form_errors" style="background-color:#dd4949; color:white;">
 			<ul>
 				<%- flash[:error].each do |msg| %>
 					<li><%= t(msg) %></li>

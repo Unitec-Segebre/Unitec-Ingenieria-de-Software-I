@@ -4,6 +4,27 @@ class Lot < ApplicationRecord
   belongs_to :project
   validates :sown_at, :material, :hectares, :project_id, presence: true
 
+  def self.columns_chart
+    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectarea','3']]
+  end
+
+  def self.chart_values(id)
+    case id
+      when 1
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
+      when 2
+        {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Subtotal'}
+      when 3
+        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Unidad'}
+      else
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
+    end
+  end
+
+  def column_chart(hAxis, vAxis)
+    self.variables.pluck("#{hAxis}, #{vAxis}")
+  end
+
   def today_values(category)
     self.variables
       .select("variables.id, variables.name, valorizations.unit_cost, valorizations.amount")

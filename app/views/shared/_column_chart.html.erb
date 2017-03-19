@@ -1,0 +1,15 @@
+<div id="chart_div<%=val%>", class="hidden", style="width:400px; height:400px;">
+  <% hash = Lot.chart_values(val) %>
+  <%= bar_chart data = {
+  labels: @lot.variables.pluck(:name),
+  datasets: [
+    {
+        data: @lot.variables.pluck(hash['vAxis']),
+        label: hash['vAxisLabel']
+    }
+  ]
+  }, options = {
+            scales: {yAxes: [{ticks: {beginAtZero:true}}]
+  }
+}%>
+</div>

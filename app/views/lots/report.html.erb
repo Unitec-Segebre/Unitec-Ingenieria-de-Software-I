@@ -2,7 +2,10 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
-<%= column_chart @lot.variables.pluck("variables.name, valorizations.subtotal") %>
+<%= select_tag('',options_for_select(Lot.columns_chart), id: 'drop') %>
+<%= render partial: "shared/column_chart", locals: {val: 1}%>
+<%= render partial: "shared/column_chart", locals: {val: 2}%>
+<%= render partial: "shared/column_chart", locals: {val: 3}%>
 
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
@@ -14,3 +17,25 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $("#drop").change(function () {
+    var num = $('#drop').val();
+    var div_id = '#chart_div';
+    for(i = 1; i <= 3; i++)
+    {
+      if(num == i){
+        $(div_id+num).removeClass("hidden");
+        console.log("Remove Hidden " + div_id+num);
+      }
+      else if(! $(div_id+i).hasClass("hidden")){
+        $(div_id+i).addClass("hidden");
+        console.log("Hidden " + div_id+i);
+      }
+    }
+  });
+
+  $(document).ready(function(){
+      $('#chart_div1').removeClass("hidden");
+  });
+</script>

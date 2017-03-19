@@ -33,10 +33,18 @@ class LotsController < ApplicationController
   end
 
   def report
+    puts "report"
+
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
     @variables = Variable.all
     @total = nil
+    @hAxis = 'variables.name'
+    @hAxisLabel = "Variable"
+  end
+
+  def chart_action
+
   end
 
   def values

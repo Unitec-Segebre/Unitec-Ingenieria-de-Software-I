@@ -18,4 +18,4 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require ./modals
-//= require chartkick
+//= require Chart.min

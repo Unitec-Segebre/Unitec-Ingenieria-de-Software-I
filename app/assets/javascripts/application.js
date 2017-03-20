@@ -19,3 +19,4 @@
 //= require bootstrap-modalmanager
 //= require ./modals
 //= require Chart.min
+//= require jquery-ui

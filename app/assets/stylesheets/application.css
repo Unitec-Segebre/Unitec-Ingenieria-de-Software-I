@@ -16,6 +16,7 @@
  *= require font-awesome
  *= require bootstrap-modal-bs3patch
  *= require bootstrap-modal
+ *= require jquery-ui
  */
 
 .navbar-top-links li span {

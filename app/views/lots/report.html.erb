@@ -2,6 +2,7 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
+<p>Desde: <input class="datepicker" type="text" id="from_date"> Hasta: <input class="datepicker" type="text" id="to_date"></p>
 <%= select_tag('',options_for_select(Lot.columns_chart), id: 'drop') %>
 <%= render partial: "shared/column_chart", locals: {val: 1}%>
 <%= render partial: "shared/column_chart", locals: {val: 2}%>
@@ -19,6 +20,11 @@
 </div>
 
 <script type="text/javascript">
+  $.datepicker.setDefaults({
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    maxDate: "+0d"});
+
   $("#drop").change(function () {
     var num = $('#drop').val();
     var div_id = '#chart_div';
@@ -26,11 +32,9 @@
     {
       if(num == i){
         $(div_id+num).removeClass("hidden");
-        console.log("Remove Hidden " + div_id+num);
       }
       else if(! $(div_id+i).hasClass("hidden")){
         $(div_id+i).addClass("hidden");
-        console.log("Hidden " + div_id+i);
       }
     }
   });

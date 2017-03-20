@@ -2,11 +2,21 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
-<p>Desde: <input class="datepicker" type="text" id="from_date"> Hasta: <input class="datepicker" type="text" id="to_date"></p>
+<%= form_for(:report, remote: true) do |f| %>
+  <%= f.label :from, "Desde" %>
+  <%= f.text_field :from, class: "datepicker", id: "from_date" %>
+  <%= f.label :to, "Hasta" %>
+  <%= f.text_field :to, class: "datepicker", id: "to_date" %>
+  <%= f.hidden_field :lot_id, value: @lot.id %>
+  <%= f.submit %>
+<% end %>
+
 <%= select_tag('',options_for_select(Lot.columns_chart), id: 'drop') %>
-<%= render partial: "shared/column_chart", locals: {val: 1}%>
-<%= render partial: "shared/column_chart", locals: {val: 2}%>
-<%= render partial: "shared/column_chart", locals: {val: 3}%>
+<div id="charts">
+<%= render partial: "shared/column_chart", locals: {val: 1, lot: @lot.variables}%>
+<%= render partial: "shared/column_chart", locals: {val: 2, lot: @lot.variables}%>
+<%= render partial: "shared/column_chart", locals: {val: 3, lot: @lot.variables}%>
+</div>
 
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
@@ -23,7 +33,8 @@
   $.datepicker.setDefaults({
     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-    maxDate: "+0d"});
+    maxDate: "+0d",
+    dateFormat: 'yy-mm-dd'});
 
   $("#drop").change(function () {
     var num = $('#drop').val();

@@ -33,7 +33,10 @@ class LotsController < ApplicationController
   end
 
   def report
-    puts "report"
+    respond_to do |format|
+      format.html
+      format.js { render "report", locals: {lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.created_at BETWEEN ? AND ?', DateTime.parse(params[:report][:from]), DateTime.parse(params[:report][:to]))} }
+    end
 
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])

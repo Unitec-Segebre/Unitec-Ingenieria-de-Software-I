@@ -1,0 +1,5 @@
+console.log("yis");
+$("#charts").html("<%= j render partial: 'shared/column_chart', locals: {val: 1, lot: lot} %>");
+$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 2, lot: lot}%>");
+$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 3, lot: lot}%>");
+$("#chart_div1").removeClass("hidden");

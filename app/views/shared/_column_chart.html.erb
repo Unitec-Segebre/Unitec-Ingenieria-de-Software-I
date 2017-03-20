@@ -1,10 +1,10 @@
 <div id="chart_div<%=val%>", class="hidden", style="width:400px; height:400px;">
   <% hash = Lot.chart_values(val) %>
   <%= bar_chart data = {
-  labels: @lot.variables.uniq.pluck(:name),
+  labels: lot.uniq.pluck(:name),
   datasets: [
     {
-        data: @lot.variables.group(:name).sum(hash['vAxis']).values,
+        data: lot.group(:name).sum(hash['vAxis']).values,
         label: hash['vAxisLabel'],
             backgroundColor: "rgba(75,192,192, 0.6)",
             borderColor: "rgba(75,192,192,1)"

@@ -2,9 +2,10 @@
 	<div class="modal-header">
 			<h3>Nueva Categoría</h3>
 	</div>
-	<%= form_for @new_category do |c| %>
+	<div id="error_div"></div>
+	<%= form_for(@new_category, remote: true) do |c| %>
 		<div class="modal-body">
-	      	<div class="form-group">		
+	      	<div class="form-group">
 				<%= c.label :name, "Nombre" %>
 				<%= c.text_field :name, id: "field1", class: "form-control" %>
 	      	</div>

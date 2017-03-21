@@ -4,12 +4,13 @@ class LotsController < ApplicationController
     @project = Project.find(params[:project_id])
     @lot = @project.lots.build(lot_params)
 
-    if @lot.save
-      redirect_to @project, notice: "#{@lot.id} creado exitosamente"
-    else
-      puts @lot.errors.full_messages
-      flash[:error] = "Un error ha ocurrido al crear un lote"
-      redirect_to @project
+    respond_to do |format|
+      if @lot.save
+        format.html { redirect_to @project, notice: "#{@lot.id} creado exitosamente" }
+      else
+        flash[:error] = @lot.errors.full_messages
+        format.js { render @project }
+      end
     end
   end
 

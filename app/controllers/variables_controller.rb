@@ -7,11 +7,13 @@ class VariablesController < ApplicationController
   def create
     @variable = Variable.new(variable_params)
 
-    if @variable.save
-      redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!"
-    else
-      flash[:error] = "Un error ha ocurrido al crear una categoria."
-      redirect_to variables_path
+    respond_to do |format|
+      if @variable.save
+        format.html { redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!" }
+      else
+        flash[:error] = @variable.errors.full_messages
+        format.js { render action: "index" }
+      end
     end
   end
 

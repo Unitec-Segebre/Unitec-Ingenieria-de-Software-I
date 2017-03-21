@@ -24,12 +24,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:notice] = 'Creado exitosamente'
-      redirect_to users_path
-    else
-      flash[:alert] = "Un error ha ocurrido al crear el usuario"
-      redirect_to users_path
+
+    respond_to do |format|
+      if @user.save
+        format.html{ redirect_to users_path, notice: "Usuario creado exitosamente" }
+      else
+        flash[:error] = @user.errors.full_messages
+        format.js{ render action: "index" }
+      end
     end
   end
 

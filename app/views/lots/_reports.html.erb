@@ -1,13 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#<%= reports.id %>" aria-expanded="false" class="collapsed">
-        <%= reports.name %>
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= category.id %>" aria-expanded="false" class="collapsed">
+        <%= category.name %>
       </a>
     </h4>
   </div>
 
-  <div id="<%= reports.id %>" class="panel-collapse collapse">
+  <div id="<%= category.id %>" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="table-responsive">
         <table class="table">
@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @variables.each do |v| %>
+            <% @variables.where(category_id: category).each do |v| %>
               <% @total = @lot.sum_values(v.category, v.id) %>
               <tr>
                 <td><%= v.name %></td>

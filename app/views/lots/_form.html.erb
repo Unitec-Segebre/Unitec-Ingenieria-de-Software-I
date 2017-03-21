@@ -2,7 +2,8 @@
 	<div class="modal-header">
 		<h3>Nuevo Lote</h3>
 	</div>
-	<%= form_for [@project, @new_lot] do |f| %>
+	<div id="error_div"></div>
+	<%= form_for([@project, @new_lot], remote: true) do |f| %>
 		<div class="modal-body">
 			<div class="form-group">
 			  <%= f.label :sown_at, "Año de Siembra" %>

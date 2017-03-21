@@ -2,7 +2,7 @@
 	<div class="col-md-10">
 	    <h1 class="page-header" id="title-wrapper">Lotes de <i><%=@project.title %></i></h1>
 	    <h4>Empleado encargado: <%=@project.manager%></h4>
-		<%= button("btn-success", "fa-plus", "Nuevo Lote") %>
+		<%= modal_button("btn-success", "fa-plus", "Nuevo Lote") %>
 	</div>
 	<div class="col-md-2" style="margin-top:25px">
 		<%=link_to(image_tag(@project.get_image,:class=>"img_style")) %>

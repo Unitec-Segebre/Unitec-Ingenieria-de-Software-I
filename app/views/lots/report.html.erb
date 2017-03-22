@@ -7,13 +7,14 @@
   <%= f.text_field :from, class: "datepicker", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
   <%= f.label :to, "Hasta: " %>
   <%= f.text_field :to, class: "datepicker", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
+  <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();"} %>
   <%= f.hidden_field :lot_id, value: @lot.id %>
 <% end %>
 
 <div id="charts", class="row">
-<%= render partial: "shared/column_chart", locals: {val: 1, lot: @lot_variables}%>
-<%= render partial: "shared/column_chart", locals: {val: 2, lot: @lot_variables}%>
-<%= render partial: "shared/column_chart", locals: {val: 3, lot: @lot_variables}%>
+<%= render partial: "shared/column_chart", locals: {val: 1, lot: @lot_variables, graph: "Barra"}%>
+<%= render partial: "shared/column_chart", locals: {val: 2, lot: @lot_variables, graph: "Barra"}%>
+<%= render partial: "shared/column_chart", locals: {val: 3, lot: @lot_variables, graph: "Barra"}%>
 </div>
 
 <div class="panel panel-default variables-panel">

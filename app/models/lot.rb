@@ -11,11 +11,11 @@ class Lot < ApplicationRecord
   def self.chart_values(id)
     case id
       when 1
-        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectareas'}
       when 2
-        {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Subtotal'}
+        {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Costo de Mano de Obra'}
       when 3
-        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Unidad'}
+        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Hectarea'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end

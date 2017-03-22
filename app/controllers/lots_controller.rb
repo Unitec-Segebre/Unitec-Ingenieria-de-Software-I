@@ -35,12 +35,12 @@ class LotsController < ApplicationController
   def report
     respond_to do |format|
       format.html
-      format.js { render "report", locals: {lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.created_at BETWEEN ? AND ?', DateTime.parse(params[:report][:from]), DateTime.parse(params[:report][:to]).change({hour: 23, minute: 59}))} }
+      format.js { render "report", locals: {lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
     end
 
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
-    @variables = Variable.all
+    @lot_variables = @lot.variables.where('valorizations.created_at BETWEEN ? AND ?',  (Date.today - Date.today.wday + 1), Date.tomorrow)
     @total = nil
     @hAxis = 'variables.name'
     @hAxisLabel = "Variable"

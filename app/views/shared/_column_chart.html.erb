@@ -1,17 +1,17 @@
-<div id="chart_div<%=val%>", class="hidden", style="width:400px; height:400px;">
+<div id="chart_div<%=val%>", class="col-md-4">
   <% hash = Lot.chart_values(val) %>
   <%= bar_chart data = {
   labels: lot.uniq.pluck(:name),
   datasets: [
     {
-        data: lot.group(:name).sum(hash['vAxis']).values,
-        label: hash['vAxisLabel'],
-            backgroundColor: "rgba(75,192,192, 0.6)",
-            borderColor: "rgba(75,192,192,1)"
+      data: lot.group(:name).sum(hash['vAxis']).values,
+      backgroundColor: "rgba(61, 198, 185, 0.7)",
+      borderColor: "rgba(75,192,192,1)"
     }
   ]
   }, options = {
-            scales: {yAxes: [{ticks: {beginAtZero:true}}]
-  }
+      legend: {display: false},
+      scales: {yAxes: [{ticks: {beginAtZero:true}}]},
+      title: {display: true, text: hash['vAxisLabel']}
 }%>
 </div>

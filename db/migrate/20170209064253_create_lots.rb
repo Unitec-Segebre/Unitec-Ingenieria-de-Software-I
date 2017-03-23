@@ -6,7 +6,7 @@ class CreateLots < ActiveRecord::Migration[5.0]
       t.string :material
       t.integer :section
       t.decimal :hectares
-      t.references :proyect, foreign_key: true
+      t.references :project, foreign_key: true
 
       t.timestamps
     end

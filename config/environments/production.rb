@@ -21,10 +21,10 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
-  
+
   #Fix assets not showing in Heroku
   config.assets.compile = true
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

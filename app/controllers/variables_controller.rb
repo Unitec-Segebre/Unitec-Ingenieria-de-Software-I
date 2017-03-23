@@ -39,10 +39,14 @@ class VariablesController < ApplicationController
   end
 
   def history
+
+    respond_to do |format|
+      format.html
+      format.js { render "history", locals: {graph: params[:history][:graph], variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to]).next_day)}}
+    end
+    #.variables.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)
     @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])
-    @days = @lot.range_values(@variable.category, @variable.id)
-    @total = @lot.sum_values(@variable.category, @variable.id)
   end
 
   protected

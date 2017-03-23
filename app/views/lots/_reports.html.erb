@@ -20,8 +20,8 @@
             </tr>
           </thead>
           <tbody>
-            <% @variables.where(category_id: category).each do |v| %>
-              <% @total = @lot.sum_values(v.category, v.id) %>
+            <% Variable.all.where(category_id: category).each do |v| %>
+              <% @total = sum_values_date(lot, v.category, v.id) %>
               <tr>
                 <td><%= v.name %></td>
                 <td><%= @total.first %></td>

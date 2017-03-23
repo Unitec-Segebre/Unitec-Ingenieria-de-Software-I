@@ -1,0 +1,42 @@
+<div id="chart_div<%=val%>", class="col-md-4">
+  <% hash = Lot.chart_values(val) %>
+  <% data_val =  lot.group(:name).sum(hash['vAxis']) %>
+
+  <% data = {
+    labels: data_val.keys,
+    datasets:
+      [
+        {
+          data: data_val.values.map {|val| sprintf("%.2f", val)},
+          backgroundColor: "rgba(61, 198, 185, 0.7)",
+          borderColor: "rgba(0,0,0,1)"
+        }
+      ]
+  } %>
+
+  <% data_pie = {
+    labels: data_val.keys,
+    datasets:
+      [
+        {
+          data: data_val.values.map {|val| sprintf("%.2f", val)},
+          backgroundColor: ["#44C5B3", "#BB9913", "#787163", "#6FFFFB", "#F1D3D4", "#DDDDD3", "#E4F8B8", "#884422", "#444FF6"],
+          borderColor: "rgba(0,0,0,1)"
+        }
+      ]
+  } %>
+
+  <% options = {
+    legend: {display: false},
+    scales: {yAxes: [{ticks: {beginAtZero:true}}]},
+    title: {display: true, text: hash['vAxisLabel']}
+  } %>
+
+  <% if graph == "Linea" %>
+    <%= line_chart data, options %>
+  <% elsif graph == "Pie" %>
+    <%= pie_chart data_pie, options %>
+  <% else %>
+    <%= bar_chart data, options %>
+  <% end %>
+</div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :create, :show] do
     resources :lots, only: [:create, :show, :update] do
       get 'report'
+      post 'report'
       resources :lots, only: [:create, :show] do
         post 'values', on: :member
       end

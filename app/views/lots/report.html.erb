@@ -2,13 +2,42 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
+<%= form_for(:report, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
+  <div class="col-md-4">
+    <%= f.label :from, "Desde: ", class:"col-md-2"%>
+    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :to, "Hasta: ", class:"col-md-2"%>
+    <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+  </div>
+  <%= f.hidden_field :lot_id, value: @lot.id %>
+<% end %>
+
+<div id="charts", class="row">
+<%= render partial: "shared/column_chart", locals: {val: 1, lot: @lot_variables, graph: "Barra"}%>
+<%= render partial: "shared/column_chart", locals: {val: 2, lot: @lot_variables, graph: "Barra"}%>
+<%= render partial: "shared/column_chart", locals: {val: 3, lot: @lot_variables, graph: "Barra"}%>
+</div>
+
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
     Variables
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render :partial => "reports", :collection => Category.all, as: :category %>
+      <%= render :partial => "reports", :collection => Category.all, as: :category, locals: {lot: @lot_variables} %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $.datepicker.setDefaults({
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    maxDate: "+0d",
+    dateFormat: 'yy-mm-dd'});
+</script>

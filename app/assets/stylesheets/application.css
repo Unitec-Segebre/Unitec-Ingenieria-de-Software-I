@@ -16,6 +16,7 @@
  *= require font-awesome
  *= require bootstrap-modal-bs3patch
  *= require bootstrap-modal
+ *= require jquery-ui
  */
 
 .navbar-top-links li span {
@@ -63,4 +64,8 @@ img {
   width: 100%;
   display: block;
   overflow: hidden
+}
+
+.hidden{
+  display: none;
 }

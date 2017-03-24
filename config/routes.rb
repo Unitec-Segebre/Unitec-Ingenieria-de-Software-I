@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
       resources :variables, only: [] do
         get 'history'
+        post 'history'
       end
     end
 	end

@@ -1,0 +1,19 @@
+<% days = lot.range_values(variable.category, variable.id) %>
+<% total = days.pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)").first %>
+
+<% days.each do |f| %>
+  <tr>
+    <td><%= format_date(f.assigned_at.to_datetime) %></td>
+    <!-- TODO: This line is dumb, leave for now !-->
+    <td><%= number_to_currency(f.amount, :unit => "", :precision => 2) %></td>
+    <td><%= number_to_currency(f.subtotal, :unit => "Lps. ", :precision => 2) %></td>
+    <td><%= number_to_currency(f.unit_cost, :unit => "Lps. ", :precision => 2) %></td>
+  </tr>
+<% end %>
+<tr>
+  <th>Total</th>
+  <!-- TODO: This line is dumb, leave for now !-->
+  <th><%= number_to_currency(total.first, :unit => "", :precision => 2) %></th>
+  <th><%= number_to_currency(total.third, :unit => "Lps. ", :precision => 2) %></th>
+  <th><%= number_to_currency(total.second, :unit => "Lps. ", :precision => 2) %></th>
+</tr>

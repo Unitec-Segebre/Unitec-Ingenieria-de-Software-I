@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170301172751) do
   end
 
   create_table "lots", force: :cascade do |t|
-    t.string   "name"
     t.integer  "sown_at"
     t.string   "material"
     t.decimal  "hectares"

@@ -1,0 +1,49 @@
+<h1 class="page-header">Historial de <%= @variable.name %></h1>
+
+<%= return_button(project_lot_path(@lot.project, @lot)) %>
+
+<%= form_for(:history, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
+  <div class="col-md-4">
+    <%= f.label :from, "Desde: ", class:"col-md-2"%>
+    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :to, "Hasta: ", class:"col-md-2"%>
+    <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.select :graph, ["Barra", "Linea"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+  </div>
+  <%= f.hidden_field :lot_id, value: @lot.id %>
+  <%= f.hidden_field :variable_id, value: @variable.id %>
+<% end %>
+
+<div id="charts", class="row">
+  <%= render partial: "shared/history_chart", locals: {val: 1, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 2, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 3, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+</div>
+
+<div class="table-responsive">
+    <table width="100%" class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Cantidad de Hectáreas</th>
+                <th>Costo por Mano de Obra</th>
+                <th>Costo por Hectárea</th>
+            </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+  $.datepicker.setDefaults({
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    maxDate: "+0d",
+    dateFormat: 'yy-mm-dd'});
+</script>

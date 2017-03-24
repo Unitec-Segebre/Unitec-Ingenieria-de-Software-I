@@ -2,11 +2,11 @@ class CreateLots < ActiveRecord::Migration[5.0]
   def change
     create_table :lots do |t|
       t.string :name
-      t.datetime :sown_at
+      t.integer :sown_at
       t.string :material
       t.integer :section
       t.decimal :hectares
-      t.references :proyect, foreign_key: true
+      t.references :project, foreign_key: true
 
       t.timestamps
     end

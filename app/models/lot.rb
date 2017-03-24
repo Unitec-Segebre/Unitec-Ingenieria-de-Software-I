@@ -5,17 +5,17 @@ class Lot < ApplicationRecord
   validates :sown_at, :material, :hectares, :project_id, presence: true
 
   def self.columns_chart
-    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectarea','3']]
+    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectárea','3']]
   end
 
   def self.chart_values(id)
     case id
       when 1
-        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectareas'}
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectáreas'}
       when 2
         {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Costo de Mano de Obra'}
       when 3
-        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Hectarea'}
+        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Hectárea'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end
@@ -37,10 +37,10 @@ class Lot < ApplicationRecord
       .where("category": category)
       .where("id": var_id)
       .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
-      .where("valorizations.assigned_at": Date.today.in_time_zone('Central America')-7.days...Date.tomorrow.in_time_zone('Central America'))
       .order("valorizations.assigned_at ASC")
   end
 
+  #This is a waste, just does the same query twice
   def sum_values(category, var_id)
     range_values(category, var_id)
     .pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)")

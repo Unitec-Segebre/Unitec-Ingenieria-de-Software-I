@@ -11,7 +11,7 @@ es:
         name: "Nombre"
       lot:
         sown_at: "Año de Siembra"
-        hectares: "Hectareas"
+        hectares: "Hectáreas"
       project:
         title: "Título"
         manager: "Encargado"

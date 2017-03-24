@@ -17,7 +17,6 @@
         <td><%= variable.name %></td>
         <td><%= variable.category.name %></td>
         <td><%= variable.measurement_unit %></td>
-        <td><%= number_to_currency(variable.unit_cost, :unit => "Lps. ") %></td>
         <td style="text-align:center">
           <%= link_to variable_path(variable.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta variable?"} do %>
             <span class="fa fa-trash fa-2x"></span>

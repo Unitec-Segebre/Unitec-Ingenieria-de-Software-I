@@ -5,13 +5,13 @@ class Lot < ApplicationRecord
   validates :sown_at, :material, :hectares, :project_id, presence: true
 
   def self.columns_chart
-    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectarea','3']]
+    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectárea','3']]
   end
 
   def self.chart_values(id)
     case id
       when 1
-        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectareas'}
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectáreas'}
       when 2
         {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Costo de Mano de Obra'}
       when 3

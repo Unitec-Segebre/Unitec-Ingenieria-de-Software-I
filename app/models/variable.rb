@@ -3,7 +3,7 @@ class Variable < ApplicationRecord
   has_many :lots, through: :valorizations
   belongs_to :category
 
-  validates :unit_cost, :name, presence: true
+  validates :name, presence: true
   validates :name, uniqueness: true
 
   def self.measurement_units

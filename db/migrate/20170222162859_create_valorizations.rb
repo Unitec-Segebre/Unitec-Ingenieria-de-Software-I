@@ -4,7 +4,7 @@ class CreateValorizations < ActiveRecord::Migration[5.0]
       t.references :lot, foreign_key: true
       t.references :variable, foreign_key: true
       t.date :assigned_at
-      t.integer :amount
+      t.decimal :amount
       t.decimal :unit_cost
       t.decimal :subtotal
 

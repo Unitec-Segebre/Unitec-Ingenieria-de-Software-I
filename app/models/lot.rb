@@ -15,7 +15,7 @@ class Lot < ApplicationRecord
       when 2
         {'vAxis' => 'valorizations.subtotal', 'vAxisLabel' => 'Costo de Mano de Obra'}
       when 3
-        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Hectarea'}
+        {'vAxis' => 'valorizations.unit_cost', 'vAxisLabel' => 'Costo por Hectárea'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end

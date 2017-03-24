@@ -1,6 +1,6 @@
 <div id="chart_div<%=val%>", class="col-md-4">
   <% hash = Lot.chart_values(val) %>
-  <% data_val =  lot.group(:name).sum(hash['vAxis']) %>
+  <% data_val =  lot.group(:name).order("valorizations.created_at").sum(hash['vAxis']) %>
 
   <% data = {
     labels: data_val.keys,

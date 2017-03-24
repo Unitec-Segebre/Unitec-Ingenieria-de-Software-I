@@ -16,7 +16,7 @@
               <th>Variable</th>
               <th>Cantidad de Hectáreas</th>
               <th>Costo por Mano de Obra</th>
-              <th>Costo Total</th>
+              <th>Costo por Hectárea</th>
             </tr>
           </thead>
           <tbody>
@@ -26,8 +26,8 @@
                 <td><%= v.name %></td>
                 <!-- TODO: This first line is dumb, leave for now !-->
                 <td><%= number_to_currency(@total.first, :unit => "", :precision => 2) %></td>
-                <td><%= number_to_currency(@total.second, :unit => "Lps. ", :precision => 2) %></td>
                 <td><%= number_to_currency(@total.third, :unit => "Lps. ", :precision => 2) %></td>
+                <td><%= number_to_currency(@total.second, :unit => "Lps. ", :precision => 2) %></td>
               </tr>
             <% end %>
           </tbody>

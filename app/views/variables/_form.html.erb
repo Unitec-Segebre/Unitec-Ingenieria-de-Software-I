@@ -17,10 +17,6 @@
           <%= f.label :measurement_unit, "Unidad" %>
           <%= f.select :measurement_unit, Variable.measurement_units, {}, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :unit_cost, "Costo" %>
-          <%= f.number_field :unit_cost, id: "field", :step => 0.01, id: "field2", class: "form-control" %>
-        </div>
     </div>
     <div class="modal-footer">
       <div class="btn-group" role="group">

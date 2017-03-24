@@ -6,9 +6,9 @@
     <%= number_field_tag "variables[#{variable.name}][amount]", lot.getValue(variable.name)[:amount], class: 'form-control' %>
   </td>
   <td>
-    <%= number_field_tag "variables[#{variable.name}][subtotal]", lot.getValue(variable.name)[:subtotal], class: 'form-control' %>
+    <%= number_field_tag "variables[#{variable.name}][subtotal]", lot.getValue(variable.name)[:subtotal], :step => 0.01, class: 'form-control' %>
   </td>
   <td>
-    <%= lot.getValue(variable.name)[:unit_cost] %>
+    <%= number_to_currency(lot.getValue(variable.name)[:unit_cost], :unit => "Lps. ", :precision => 2) %>
   </td>
 </tr>

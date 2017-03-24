@@ -2,12 +2,18 @@
 
 <%= return_button(project_lot_path(@lot.project, @lot)) %>
 
-<%= form_for(:report, remote: true, html: {id:'form_date'}) do |f| %>
-  <%= f.label :from, "Desde: " %>
-  <%= f.text_field :from, class: "datepicker", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
-  <%= f.label :to, "Hasta: " %>
-  <%= f.text_field :to, class: "datepicker", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
-  <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();"} %>
+<%= form_for(:report, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
+  <div class="col-md-4">
+    <%= f.label :from, "Desde: ", class:"col-md-2"%>
+    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :to, "Hasta: ", class:"col-md-2"%>
+    <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+  </div>
   <%= f.hidden_field :lot_id, value: @lot.id %>
 <% end %>
 

@@ -7,7 +7,7 @@
     datasets:
       [
         {
-          data: data_val.values,
+          data: data_val.values.map {|val| sprintf("%.2f", val)},
           backgroundColor: "rgba(61, 198, 185, 0.7)",
           borderColor: "rgba(0,0,0,1)"
         }
@@ -19,7 +19,7 @@
     datasets:
       [
         {
-          data: data_val.values,
+          data: data_val.values.map {|val| sprintf("%.2f", val)},
           backgroundColor: ["#44C5B3", "#BB9913", "#787163", "#6FFFFB", "#F1D3D4", "#DDDDD3", "#E4F8B8", "#884422", "#444FF6"],
           borderColor: "rgba(0,0,0,1)"
         }

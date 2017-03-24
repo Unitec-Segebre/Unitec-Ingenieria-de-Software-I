@@ -12,7 +12,7 @@
     <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
   </div>
   <div class="col-md-4">
-    <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+    <%= f.select :graph, ["Barra", "Linea"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
   </div>
   <%= f.hidden_field :lot_id, value: @lot.id %>
   <%= f.hidden_field :variable_id, value: @variable.id %>

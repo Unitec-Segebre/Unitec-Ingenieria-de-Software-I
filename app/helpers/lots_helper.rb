@@ -4,7 +4,7 @@ module LotsHelper
     lot
       .where("category": category)
       .where("id": var_id)
-      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost, valorizations.subtotal, valorizations.assigned_at")
+      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.subtotal, valorizations.assigned_at")
       .order("valorizations.assigned_at ASC")
   end
 

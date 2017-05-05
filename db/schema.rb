@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
   end
 
   create_table "lots", force: :cascade do |t|
+    t.string   "name"
     t.integer  "sown_at"
     t.string   "material"
     t.decimal  "hectares"
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.integer  "lot_id"
     t.integer  "variable_id"
     t.date     "assigned_at"
-    t.integer  "amount"
+    t.decimal  "amount"
     t.decimal  "unit_cost"
     t.decimal  "subtotal"
     t.datetime "created_at",  null: false

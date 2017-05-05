@@ -20,7 +20,7 @@ class Valorization < ApplicationRecord
       self.amount = 0 if self.amount.nil?
     end
 
-    def copy_unit_cost
+    def copy_unit_cost_mano
       self.unit_cost = self.variable.unit_cost
     end
 

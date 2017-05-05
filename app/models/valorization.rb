@@ -9,7 +9,7 @@ class Valorization < ApplicationRecord
 
   before_update :assign_current_date
   before_update :assign_default_amount
-  before_update :calculate_unit_cost
+  before_update :calculate_unit_cost_mano
 
   protected
     def assign_current_date

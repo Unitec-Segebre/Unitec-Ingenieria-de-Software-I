@@ -4,7 +4,7 @@ class Valorization < ApplicationRecord
 
   before_create :assign_current_date
   before_create :assign_default_amount
-  before_create :copy_unit_cost
+  before_create :copy_unit_cost_mano
   before_create :calculate_unit_cost
 
   before_update :assign_current_date

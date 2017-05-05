@@ -27,7 +27,7 @@ class Lot < ApplicationRecord
 
   def today_values(category)
     self.variables
-      .select("variables.id, variables.name, valorizations.unit_cost, valorizations.amount")
+      .select("variables.id, variables.name, valorizations.unit_cost_mano, valorizations.amount")
       .where(category: category)
       .where("valorizations.assigned_at = ?", Date.today)
   end

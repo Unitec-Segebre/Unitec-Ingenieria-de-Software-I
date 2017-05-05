@@ -1,5 +1,5 @@
 <% days = lot.range_values(variable.category, variable.id) %>
-<% total = days.pluck("sum(amount), sum(valorizations.unit_cost), sum(subtotal)").first %>
+<% total = days.pluck("sum(amount), sum(valorizations.unit_cost_mano), sum(subtotal)").first %>
 
 <% days.each do |f| %>
   <tr>

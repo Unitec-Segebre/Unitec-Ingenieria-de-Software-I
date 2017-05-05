@@ -25,6 +25,6 @@ class Valorization < ApplicationRecord
     end
 
     def calculate_unit_cost_mano
-      self.unit_cost = self.subtotal / self.amount
+      self.unit_cost_mano = self.subtotal / self.amount
     end
 end

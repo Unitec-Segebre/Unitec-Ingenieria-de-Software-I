@@ -65,7 +65,7 @@ class Lot < ApplicationRecord
 
   #Sets today's current amount of the given variable
   #Returns true on success, otherwise false
-  def setValue(name, amount, subtotal)
+  def setValue(name, amount, cost_mano)
     var = Variable.find_by_name(name)
     return false if var.nil?
 

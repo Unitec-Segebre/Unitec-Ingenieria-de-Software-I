@@ -9,6 +9,9 @@
     <%= number_field_tag "variables[#{variable.name}][cost_mano]", lot.getValue(variable.name)[:cost_mano], :step => 0.01, class: 'form-control' %>
   </td>
   <td>
+    <%= number_field_tag "variables[#{variable.name}][cost_insumo]", lot.getValue(variable.name)[:cost_insumo], :step => 0.01, class: 'form-control' %>
+  </td>
+  <td>
     <%= number_to_currency(lot.getValue(variable.name)[:unit_cost_mano], :unit => "Lps. ", :precision => 2) %>
   </td>
   <td>

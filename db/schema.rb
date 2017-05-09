@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.decimal  "unit_cost_mano"
     t.decimal  "unit_cost_insumo"
     t.decimal  "cost_mano"
+    t.decimal  "cost_insumo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"

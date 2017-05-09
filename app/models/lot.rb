@@ -13,7 +13,7 @@ class Lot < ApplicationRecord
       when 1
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectáreas'}
       when 2
-        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo de Mano de Obra'}
+        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo por Mano de Obra'}
       when 3
         {'vAxis' => 'valorizations.unit_cost_mano', 'vAxisLabel' => 'Costo por Hectárea por Mano de Obra'}
       when 4

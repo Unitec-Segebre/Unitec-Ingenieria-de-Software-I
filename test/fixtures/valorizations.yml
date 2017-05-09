@@ -14,4 +14,4 @@ two:
   assigned_at: 2017-02-22
   amount: 1
   unit_cost_mano: 9.99
-  subtotal: 9.99
+  cost_mano: 9.99

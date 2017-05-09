@@ -81,7 +81,7 @@ class Lot < ApplicationRecord
   def values(category)
     variables
       .where(category: category)
-      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.subtotal, valorizations.assigned_at")
+      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.cost_mano, valorizations.assigned_at")
       .where("valorizations.assigned_at": Date.today)
   end
 end

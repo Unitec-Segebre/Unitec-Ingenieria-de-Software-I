@@ -77,7 +77,7 @@ class Lot < ApplicationRecord
     unless value.nil?
       value.update_attributes(amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo)
     else
-      value = self.valorizations.build(variable: var, amount: amount, cost_mano: cost_mano)
+      value = self.valorizations.build(variable: var, amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo)
       value.save
     end
   end

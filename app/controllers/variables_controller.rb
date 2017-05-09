@@ -51,7 +51,7 @@ class VariablesController < ApplicationController
 
   protected
     def variable_params
-      params.require(:variable).permit(:name, :category_id, :measurement_unit, :unit_cost_mano)
+      params.require(:variable).permit(:name, :category_id, :measurement_unit, :unit_cost_mano, :unit_cost_insumo)
     end
 
 end

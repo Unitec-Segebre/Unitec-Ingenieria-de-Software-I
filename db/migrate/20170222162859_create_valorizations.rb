@@ -6,6 +6,7 @@ class CreateValorizations < ActiveRecord::Migration[5.0]
       t.date :assigned_at
       t.decimal :amount
       t.decimal :unit_cost_mano
+      t.decimal :unit_cost_insumo
       t.decimal :cost_mano
 
       t.timestamps

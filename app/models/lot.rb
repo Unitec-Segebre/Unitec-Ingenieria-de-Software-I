@@ -47,7 +47,7 @@ class Lot < ApplicationRecord
   #This is a waste, just does the same query twice
   def sum_values(category, var_id)
     range_values(category, var_id)
-    .pluck("sum(amount), sum(valorizations.unit_cost), sum(cost_mano)")
+    .pluck("sum(amount), sum(valorizations.unit_cost_mano), sum(cost_mano), sum(valorizations.unit_cost_insumo), sum(cost_insumo)")
     .first
   end
 

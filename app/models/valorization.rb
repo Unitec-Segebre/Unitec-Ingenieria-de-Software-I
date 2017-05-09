@@ -12,6 +12,7 @@ class Valorization < ApplicationRecord
   before_update :assign_current_date
   before_update :assign_default_amount
   before_update :calculate_unit_cost_mano
+  before_update :calculate_unit_cost_insumo
 
   protected
     def assign_current_date

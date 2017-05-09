@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.date     "assigned_at"
     t.decimal  "amount"
     t.decimal  "unit_cost_mano"
+    t.decimal  "unit_cost_insumo"
     t.decimal  "cost_mano"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"
     t.index ["variable_id"], name: "index_valorizations_on_variable_id"
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
   create_table "variables", force: :cascade do |t|
     t.string   "measurement_unit"
     t.decimal  "unit_cost_mano"
+    t.decimal  "unit_cost_insumo"
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at",       null: false

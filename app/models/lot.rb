@@ -19,7 +19,7 @@ class Lot < ApplicationRecord
       when 4
         {'vAxis' => 'valorizations.unit_cost_insumo', 'vAxisLabel' => 'Costo por Hectárea por Insumo'}
       when 5
-        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo de Insumo'}
+        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo por Insumo'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end

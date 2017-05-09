@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.decimal  "amount"
     t.decimal  "unit_cost_mano"
     t.decimal  "unit_cost_insumo"
+    t.decimal  "unit_cost_total"
     t.decimal  "cost_mano"
     t.decimal  "cost_insumo"
     t.datetime "created_at",       null: false

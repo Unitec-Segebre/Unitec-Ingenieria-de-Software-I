@@ -61,7 +61,7 @@ class Lot < ApplicationRecord
     return nil if var.nil?
 
     value = self.valorizations.find_by(variable: var, assigned_at: Date.today)
-    hash = { name: var.name, unit_cost_mano: var.unit_cost_mano, unit_cost_insumo: var.unit_cost_insumo, amount: 0, cost_mano: 0, cost_insumo: 0 }
+    hash = { name: var.name, unit_cost_mano: var.unit_cost_mano, unit_cost_insumo: var.unit_cost_insumo, unit_cost_total: var.unit_cost_total, amount: 0, cost_mano: 0, cost_insumo: 0 }
     unless value.nil?
       hash.merge!({ unit_cost_mano: value.unit_cost_mano, unit_cost_insumo: value.unit_cost_insumo, amount: value.amount, cost_mano: value.cost_mano, cost_insumo: value.cost_insumo })
     end

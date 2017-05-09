@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.date     "assigned_at"
     t.decimal  "amount"
     t.decimal  "unit_cost_mano"
-    t.decimal  "subtotal"
+    t.decimal  "cost_mano"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"

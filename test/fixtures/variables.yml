@@ -3,6 +3,7 @@
 one:
   measurement_unit: MyString
   unit_cost_mano: 9.99
+  unit_cost_insumo: 9.99
   name: MyString
   category: one
 

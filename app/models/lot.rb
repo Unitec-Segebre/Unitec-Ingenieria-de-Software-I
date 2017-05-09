@@ -5,7 +5,7 @@ class Lot < ApplicationRecord
   validates :sown_at, :material, :hectares, :project_id, presence: true
 
   def self.columns_chart
-    [['Cantidad','1'], ['Costo Mano de Obra','2'], ['Costo por Hectárea por Mano de Obra','3'], ['Costo por Hectárea por Insumo','4']]
+    [['Cantidad','1'], ['Costo por Mano de Obra','2'], ['Costo por Hectárea por Mano de Obra','3'], ['Costo por Hectárea por Insumo','4'], ['Costo por Insumo','5']]
   end
 
   def self.chart_values(id)

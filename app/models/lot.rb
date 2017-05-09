@@ -48,7 +48,7 @@ class Lot < ApplicationRecord
   end
 
   #Returns today's current amount of the given variable as a hash
-  #e.g. { name: "VarName", unit_cost: 200, amount: 2, subtotal: 400 }
+  #e.g. { name: "VarName", unit_cost_mano: 200, amount: 2, cost_mano: 400 }
   #Returns nil if variable does not exist
   def getValue(name)
     var = Variable.find_by_name(name)

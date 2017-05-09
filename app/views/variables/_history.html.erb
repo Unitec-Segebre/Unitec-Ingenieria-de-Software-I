@@ -6,7 +6,7 @@
     <td><%= format_date(f.assigned_at.to_datetime) %></td>
     <!-- TODO: This line is dumb, leave for now !-->
     <td><%= number_to_currency(f.amount, :unit => "", :precision => 2) %></td>
-    <td><%= number_to_currency(f.subtotal, :unit => "Lps. ", :precision => 2) %></td>
+    <td><%= number_to_currency(f.cost_mano, :unit => "Lps. ", :precision => 2) %></td>
     <td><%= number_to_currency(f.unit_cost_mano, :unit => "Lps. ", :precision => 2) %></td>
   </tr>
 <% end %>

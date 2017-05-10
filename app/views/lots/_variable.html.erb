@@ -20,4 +20,7 @@
   <td>
     <%= number_to_currency(lot.getValue(variable.name)[:unit_cost_total], :unit => "Lps. ", :precision => 2) %>
   </td>
+  <td>
+    <%= number_to_currency(lot.getValue(variable.name)[:cost_total], :unit => "Lps. ", :precision => 2) %>
+  </td>
 </tr>

@@ -22,6 +22,10 @@
   <%= render partial: "shared/history_chart", locals: {val: 1, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
   <%= render partial: "shared/history_chart", locals: {val: 2, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
   <%= render partial: "shared/history_chart", locals: {val: 3, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 4, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 5, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 6, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 7, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
 </div>
 
 <div class="table-responsive">
@@ -31,7 +35,11 @@
                 <th>Fecha</th>
                 <th>Cantidad de Hectáreas</th>
                 <th>Costo por Mano de Obra</th>
+                <th>Costo por Insumo</th>
+                <th>Costo por Hectárea por Mano de Obra</th>
+                <th>Costo por Hectárea por Insumo</th>
                 <th>Costo por Hectárea</th>
+                <th>Costo Total</th>
             </tr>
         </thead>
         <tbody>

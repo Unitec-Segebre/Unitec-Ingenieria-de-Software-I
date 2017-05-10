@@ -46,4 +46,8 @@ class Valorization < ApplicationRecord
     def calculate_unit_cost_total
       self.unit_cost_total = self.unit_cost_mano + self.unit_cost_insumo
     end
+
+    def calculate_cost_total
+      self.cost_total = self.cost_mano + self.cost_insumo
+    end
 end

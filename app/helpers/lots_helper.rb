@@ -10,7 +10,7 @@ module LotsHelper
 
   def sum_values_date(lot, category, var_id)
     range_values_date(lot, category, var_id)
-    .pluck("sum(amount), sum(valorizations.unit_cost_mano), sum(cost_mano), sum(valorizations.unit_cost_insumo), sum(cost_insumo), sum(valorizations.unit_cost_total), sum(valorizations.cost_total)")
+    .pluck("sum(amount), sum(valorizations.unit_cost_mano), sum(cost_mano), sum(valorizations.unit_cost_insumo), sum(cost_insumo), sum(valorizations.unit_cost_total), sum(cost_total)")
     .first
   end
 

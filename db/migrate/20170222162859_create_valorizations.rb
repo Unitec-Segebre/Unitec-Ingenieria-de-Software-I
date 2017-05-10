@@ -10,6 +10,7 @@ class CreateValorizations < ActiveRecord::Migration[5.0]
       t.decimal :unit_cost_total
       t.decimal :cost_mano
       t.decimal :cost_insumo
+      t.decimal :cost_total
 
       t.timestamps
     end

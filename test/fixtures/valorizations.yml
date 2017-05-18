@@ -5,13 +5,17 @@ one:
   variable: one
   assigned_at: 2017-02-22
   amount: 1
-  unit_cost: 9.99
-  subtotal: 9.99
+  unit_cost_mano: 9.99
+  unit_cost_insumo: 9.99
+  cost_mano: 9.99
+  cost_insumo: 9.99
 
 two:
   lot: two
   variable: two
   assigned_at: 2017-02-22
   amount: 1
-  unit_cost: 9.99
-  subtotal: 9.99
+  unit_cost_mano: 9.99
+  unit_cost_insumo: 9.99
+  cost_mano: 9.99
+  cost_insumo: 9.99

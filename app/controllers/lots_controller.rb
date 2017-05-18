@@ -26,7 +26,7 @@ class LotsController < ApplicationController
     @variables = params[:variables]
 
     @variables.each do |key, values|
-      @lot.setValue(key, values[:amount], values[:subtotal])
+      @lot.setValue(key, values[:amount], values[:cost_mano], values[:cost_insumo])
     end
 
     redirect_to project_lot_path(@project, @lot)

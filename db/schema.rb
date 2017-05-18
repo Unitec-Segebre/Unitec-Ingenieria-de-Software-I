@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170301172751) do
   end
 
   create_table "lots", force: :cascade do |t|
+    t.string   "name"
     t.integer  "sown_at"
     t.string   "material"
     t.decimal  "hectares"
@@ -51,18 +52,23 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.integer  "lot_id"
     t.integer  "variable_id"
     t.date     "assigned_at"
-    t.integer  "amount"
-    t.decimal  "unit_cost"
-    t.decimal  "subtotal"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.decimal  "amount"
+    t.decimal  "unit_cost_mano"
+    t.decimal  "unit_cost_insumo"
+    t.decimal  "unit_cost_total"
+    t.decimal  "cost_mano"
+    t.decimal  "cost_insumo"
+    t.decimal  "cost_total"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"
     t.index ["variable_id"], name: "index_valorizations_on_variable_id"
   end
 
   create_table "variables", force: :cascade do |t|
     t.string   "measurement_unit"
-    t.decimal  "unit_cost"
+    t.decimal  "unit_cost_mano"
+    t.decimal  "unit_cost_insumo"
     t.string   "name"
     t.integer  "category_id"
     t.datetime "created_at",       null: false

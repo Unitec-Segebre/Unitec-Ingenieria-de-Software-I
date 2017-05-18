@@ -25,7 +25,8 @@ es:
         image: "Imagen"
       variable:
         measurement_unit: "Unidad de Medición"
-        unit_cost: "Costo"
+        unit_cost_mano: "Costo por Mano de Obra"
+        unit_cost_insumo: "Costo por Insumo"
         name: "Nombre"
   date:
     abbr_day_names:

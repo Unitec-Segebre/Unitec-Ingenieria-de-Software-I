@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
+
   resources :users, except: [:new, :edit]
 
   resources :variables, only: [:index, :destroy, :create]
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :create, :show] do
     resources :lots, only: [:create, :show, :update] do
+      post '', to: 'lots#date'
       get 'report'
       post 'report'
       resources :lots, only: [:create, :show] do

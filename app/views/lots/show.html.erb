@@ -26,14 +26,24 @@
   </tbody>
 </table>
 
-
 <div class="panel panel-default variables-panel">
   <div class="panel-heading">
-    Categorias
+    <%= form_for([@lot.project, @lot], method: :post, remote: true, html: {id:'form_date'}) do |f| %>
+        <%= f.label :date, "Categorias"%>
+        <%= f.text_field :date, class: "datepicker", value: Date.today, id: "date", onchange: "$('#form_date').submit();" %>
+    <% end %>
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render partial: "category", collection: @categories, locals: {lot: @lot} %>
+      <%= render partial: "category", collection: @categories, locals: {lot_id: @lot.id, date: Date.today} %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $.datepicker.setDefaults({
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    maxDate: "+0d",
+    dateFormat: 'yy-mm-dd'});
+</script>

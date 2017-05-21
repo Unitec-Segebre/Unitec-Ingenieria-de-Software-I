@@ -58,30 +58,29 @@ class Lot < ApplicationRecord
   #Returns today's current amount of the given variable as a hash
   #e.g. { name: "VarName", unit_cost_mano: 200, unit_cost_insumo: 300, unit_cost_total: 500, amount: 2, cost_mano: 400, cost_insumo: 600, cost_total: 1000 }
   #Returns nil if variable does not exist
-  def getValue(name)
+  def getValue(name, date)
     var = Variable.find_by_name(name)
     return nil if var.nil?
 
-    value = self.valorizations.find_by(variable: var, assigned_at: Date.today)
+    value = self.valorizations.find_by(variable: var, assigned_at: date)
     hash = { name: var.name, unit_cost_mano: var.unit_cost_mano, unit_cost_insumo: var.unit_cost_insumo, amount: 0, cost_mano: 0, cost_insumo: 0, unit_cost_total: 0, cost_total: 0}
     unless value.nil?
       hash.merge!({ unit_cost_mano: value.unit_cost_mano, unit_cost_insumo: value.unit_cost_insumo, amount: value.amount, cost_mano: value.cost_mano, cost_insumo: value.cost_insumo, unit_cost_total: value.unit_cost_total, cost_total: value.cost_total })
     end
-
-    hash
+    return hash
   end
 
   #Sets today's current amount of the given variable
   #Returns true on success, otherwise false
-  def setValue(name, amount, cost_mano, cost_insumo)
+  def setValue(name, amount, cost_mano, cost_insumo, date)
     var = Variable.find_by_name(name)
     return false if var.nil?
 
-    value = self.valorizations.find_by(variable: var, assigned_at: Date.today)
+    value = self.valorizations.find_by(variable: var, assigned_at: date)
     unless value.nil?
       value.update_attributes(amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo)
     else
-      value = self.valorizations.build(variable: var, amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo)
+      value = self.valorizations.build(variable: var, amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo, assigned_at: date)
       value.save
     end
   end

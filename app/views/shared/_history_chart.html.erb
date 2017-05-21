@@ -1,13 +1,13 @@
 <div id="chart_div<%=val%>", class="col-md-4">
   <% hash = Lot.chart_values(val) %>
-  <% data_val =  variable.group(:created_at).sum(hash['vAxis']) %>
+  <% data_val =  variable.group(:assigned_at).sum(hash['vAxis']) %>
 
   <% data = {
     labels: data_val.keys.map{|val| format_date(val)},
     datasets:
       [
         {
-          data: data_val.values.map {|val| sprintf("%.2f", val)},
+          data: data_val.values.map {|val| sprintf("%.3f", val)},
           backgroundColor: "rgba(61, 198, 185, 0.7)",
           borderColor: "rgba(0,0,0,1)"
         }

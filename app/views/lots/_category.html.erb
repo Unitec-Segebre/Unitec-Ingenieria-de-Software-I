@@ -7,30 +7,36 @@
     </h4>
   </div>
 
-  <div id="<%= category.id %>" class="panel-collapse collapse">
+  <div id="<%= category.id %>" class="panel-collapse collapse in">
     <div class="panel-body">
-      <%= form_for [@lot.project, @lot] do |f| %>
+      <% lot = Lot.find(lot_id) %>
+      <%= form_for [lot.project, lot] do |f| %>
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th>Variable</th>
-                <th>Cantidad de Hectáreas</th>
+                <th>Hectáreas</th>
                 <th>Costo por Mano de Obra</th>
                 <th>Costo por Insumo</th>
-                <th>Costo por Hectárea por Mano de Obra</th>
-                <th>Costo por Hectárea por Insumo</th>
+                <th>CxH por Mano de Obra</th>
+                <th>CxH por Insumo</th>
                 <th>Costo por Hectárea</th>
                 <th>Costo Total</th>
               </tr>
             </thead>
             <tbody>
-              <%= render :partial => "variable", :collection => category.variables, locals: {lot: lot} %>
+              <%= render partial: "variable", collection: category.variables, locals: {lot: lot, date: date} %>
             </tbody>
           </table>
         </div>
+        <%= f.hidden_field :date, value: "", id: "hidden_date" %>
         <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+$('#hidden_date').val($('#date').val());
+</script>

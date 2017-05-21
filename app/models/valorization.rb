@@ -2,7 +2,7 @@ class Valorization < ApplicationRecord
   belongs_to :lot
   belongs_to :variable
 
-  before_create :assign_current_date
+  #before_create :assign_current_date
   before_create :assign_default_amount
   before_create :copy_unit_cost_mano
   before_create :copy_unit_cost_insumo
@@ -11,7 +11,7 @@ class Valorization < ApplicationRecord
   before_create :calculate_unit_cost_total
   before_create :calculate_cost_total
 
-  before_update :assign_current_date
+  #before_update :assign_current_date
   before_update :assign_default_amount
   before_update :calculate_unit_cost_mano
   before_update :calculate_unit_cost_insumo

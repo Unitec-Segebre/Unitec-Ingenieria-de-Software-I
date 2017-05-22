@@ -33,7 +33,8 @@
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render partial: "category", collection: @categories, locals: {lot: @lot} %>
+      <%= render partial: "category", locals: {lot: @lot} %>
+      <%= render partial: "category_cosecha", locals: {lot: @lot} %>
     </div>
   </div>
 </div>

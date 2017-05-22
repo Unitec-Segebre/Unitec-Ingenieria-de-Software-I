@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= @category_cosecha.id %>" aria-expanded="false" class="collapsed">
+        <%= @category_cosecha.name %>
+      </a>
+    </h4>
+  </div>
+
+  <div id="<%= @category_cosecha.id %>" class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= form_for [@lot.project, @lot] do |f| %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>HAS Recorridas</th>
+                <th>T.M.FF</th>
+                <th>Costo Cosecha</th>
+                <th>Racimos Cosechados</th>
+                <th>Sacos Recolectados</th>
+                <th>Costo/Toneladas</th>
+                <th>Racimos/HAS_Totales</th>
+                <th>Racimos/Plantas</th>
+                <th>Sacos Recolectados/HAS Recorridas</th>
+                <th>Peso Racimos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render :partial => "variables_cosecha", :collection => @category_cosecha.variables, locals: {lot: lot} %>
+            </tbody>
+          </table>
+        </div>
+        <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
+      <% end %>
+    </div>
+  </div>
+</div>

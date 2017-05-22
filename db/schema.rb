@@ -59,8 +59,16 @@ ActiveRecord::Schema.define(version: 20170301172751) do
     t.decimal  "cost_mano"
     t.decimal  "cost_insumo"
     t.decimal  "cost_total"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.decimal  "metric_tons"
+    t.decimal  "clusters"
+    t.decimal  "bags"
+    t.decimal  "unit_cost_ton"
+    t.decimal  "clusters_per_amount"
+    t.decimal  "plants"
+    t.decimal  "bags_per_amount"
+    t.decimal  "cluster_weight"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"
     t.index ["variable_id"], name: "index_valorizations_on_variable_id"
   end

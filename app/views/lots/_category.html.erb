@@ -7,7 +7,7 @@
     </h4>
   </div>
 
-  <div id="<%= category.id %>" class="panel-collapse collapse in">
+  <div id="<%= category.id %>" class="panel-collapse collapse">
     <div class="panel-body">
       <% lot = Lot.find(lot_id) %>
       <%= form_for [lot.project, lot] do |f| %>

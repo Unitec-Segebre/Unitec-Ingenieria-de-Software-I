@@ -25,17 +25,17 @@
           </thead>
           <tbody>
             <% Variable.all.where(category_id: category).each do |v| %>
-              <% @total = sum_values_date(lot, v.category, v.id) %>
+              <% total = sum_values_date(lot, v.category, v.id) %>
               <tr>
                 <td><%= v.name %></td>
                 <!-- TODO: This first line is dumb, leave for now !-->
-                <td><%= number_to_currency(@total.first, unit: "", precision: 3) %></td>
-                <td><%= number_to_currency(@total.third, unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(@total.fifth, unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(@total.second, unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(@total.fourth, unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(@total[5], unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(@total[6], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:amount], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cost_mano], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cost_insumo], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:unit_cost_mano], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:unit_cost_insumo], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:unit_cost_total], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cost_total], unit: "Lps. ", precision: 3) %></td>
               </tr>
             <% end %>
           </tbody>

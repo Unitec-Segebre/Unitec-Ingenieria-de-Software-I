@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= category.id %>" aria-expanded="false" class="collapsed">
+        <%= category.name %>
+      </a>
+    </h4>
+  </div>
+
+  <div id="<%= category.id %>" class="panel-collapse collapse in">
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>HAS Recorridas</th>
+              <th>T.M.FF</th>
+              <th>Costo Cosecha</th>
+              <th>Racimos Cosechados</th>
+              <th>Sacos Recolectados</th>
+              <th>Costo/Toneladas</th>
+              <th>Racimos/HAS Totales</th>
+              <th>Racimos/Plantas</th>
+              <th>Sacos Recolectados/HAS Recorridas</th>
+              <th>Peso Racimos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Variable.all.where(category_id: category).each do |v| %>
+              <% total = sum_values_date(lot, v.category, v.id) %>
+              <tr>
+                <td><%= v.name %></td>
+                <!-- TODO: This first line is dumb, leave for now !-->
+                <td><%= number_to_currency(total[:amount], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:metric_tons], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cost_total], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:clusters], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:bags], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:unit_cost_ton], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:clusters_per_amount], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:plants], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:bags_per_amount], unit: "", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cluster_weight], unit: "", precision: 3) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

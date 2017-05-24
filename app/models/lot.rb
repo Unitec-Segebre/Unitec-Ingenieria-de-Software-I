@@ -24,6 +24,26 @@ class Lot < ApplicationRecord
         {'vAxis' => 'valorizations.unit_cost_total', 'vAxisLabel' => 'Costo por Hectárea'}
       when 7
         {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Total'}
+      when 8
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectareas Recorridas'}
+      when 9
+        {'vAxis' => 'valorizations.metric_tons', 'vAxisLabel' => 'Toneladas Metricas Cosechadas'}
+      when 10
+        {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Cosecha'}
+      when 11
+        {'vAxis' => 'valorizations.clusters', 'vAxisLabel' => 'Racimos Cosechados'}
+      when 12
+        {'vAxis' => 'valorizations.bags', 'vAxisLabel' => 'Sacos Recolectados'}
+      when 13
+        {'vAxis' => 'valorizations.unit_cost_ton', 'vAxisLabel' => 'Costo Por Tonelada'}
+      when 14
+        {'vAxis' => 'valorizations.clusters_per_amount', 'vAxisLabel' => 'Racimos Por Hectareas Totales'}
+      when 15
+        {'vAxis' => 'valorizations.plants', 'vAxisLabel' => 'Plantas'}
+      when 16
+        {'vAxis' => 'valorizations.bags_per_amount', 'vAxisLabel' => 'Sacos Recolectados / Hectareas Recorridas'}
+      when 17
+        {'vAxis' => 'valorizations.cluster_weight', 'vAxisLabel' => 'Peso De Racimos'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end

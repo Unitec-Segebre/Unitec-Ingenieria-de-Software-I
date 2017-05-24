@@ -19,29 +19,24 @@
 <% end %>
 <div id="charts", class="row">
   <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
-  <%= render partial: "shared/history_chart", locals: {val: 3, variable: var, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 4, variable: var, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 7, variable: var, graph: "Barra"}%>
+  <% if @variable.category.id == 1%>
+    <% range = 1..7 %>
+  <% else %>
+    <% range = 8..17 %>
+  <% end %>
+  <% for x in range %>
+    <%= render partial: "shared/history_chart", locals: {val: x, variable: var, graph: "Barra"}%>
+  <% end %>
 </div>
 
 <div class="table-responsive">
-    <table width="100%" class="table">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Cantidad de Hectáreas</th>
-                <th>Costo por Mano de Obra</th>
-                <th>Costo por Insumo</th>
-                <th>Costo por Hectárea por Mano de Obra</th>
-                <th>Costo por Hectárea por Insumo</th>
-                <th>Costo por Hectárea</th>
-                <th>Costo Total</th>
-            </tr>
-        </thead>
-        <tbody>
-          <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
-        </tbody>
-    </table>
+  <table width="100%" class="table">
+    <% if @variable.category.id == 1 %>
+      <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
+    <% else %>
+      <%= render partial: "history_cosecha", locals: {lot: @lot, variable: @variable}%>
+    <% end %>
+  </table>
 </div>
 
 <script type="text/javascript">

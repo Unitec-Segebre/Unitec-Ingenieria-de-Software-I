@@ -1,9 +1,10 @@
-$("#charts").html("<%= j render partial: 'shared/column_chart', locals: {val: 3, lot: lot, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 4, lot: lot, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 7, lot: lot, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 13, lot: lot, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 14, lot: lot, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: 15, lot: lot, graph: graph}%>");
+$("#charts").html("<% for x in 1..17 %>");
+$("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: x, lot: lot, graph: graph}%>");
+$("#charts").append("<% end %>");
 
 $("#accordion").html("<%= j render partial: 'reports', locals: {category: Category.find(1), lot: lot}%>");
 $("#accordion").append("<%= j render partial: 'reports_cosecha', locals: {category: Category.find(2), lot: lot}%>");
+
+$(":checkbox").each(function(){
+  $(this).attr('checked',false);
+});

@@ -1,4 +1,4 @@
-<div id="chart_div<%=val%>", class="col-md-4">
+<div id="chart_div<%=val%>", class="col-md-4 hidden">
   <% hash = Lot.chart_values(val) %>
   <% if val < 8 %>
     <% data_val =  lot.where(category_id: 1).group(:name).order("valorizations.assigned_at").sum(hash['vAxis']) %>

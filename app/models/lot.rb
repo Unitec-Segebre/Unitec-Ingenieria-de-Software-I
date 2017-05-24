@@ -1,4 +1,4 @@
-class Lot < ApplicationRecord
+  class Lot < ApplicationRecord
   has_many :valorizations
   has_many :variables, through: :valorizations
   belongs_to :project
@@ -39,7 +39,7 @@ class Lot < ApplicationRecord
       when 14
         {'vAxis' => 'valorizations.clusters_per_amount', 'vAxisLabel' => 'Racimos Por Hectareas Totales'}
       when 15
-        {'vAxis' => 'valorizations.plants', 'vAxisLabel' => 'Plantas'}
+        {'vAxis' => 'valorizations.plants', 'vAxisLabel' => 'Racimos Por Plantas'}
       when 16
         {'vAxis' => 'valorizations.bags_per_amount', 'vAxisLabel' => 'Sacos Recolectados / Hectareas Recorridas'}
       when 17
@@ -64,7 +64,7 @@ class Lot < ApplicationRecord
     self.variables
       .where("category": category)
       .where("id": var_id)
-      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.cost_mano, valorizations.unit_cost_insumo, valorizations.cost_insumo, valorizations.unit_cost_total, valorizations.cost_total, valorizations.assigned_at")
+      .select("variables.id, variables.name, valorizations.*")
       .order("valorizations.assigned_at ASC")
   end
 

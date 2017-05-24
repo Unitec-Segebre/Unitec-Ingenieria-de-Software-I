@@ -11,19 +11,19 @@
     <%= f.label :to, "Hasta: ", class:"col-md-2"%>
     <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+  </div>
+  <div class="col-md-2">
+    <%= modal_button("btn-info", "fa-filter", "Gráficos") %>
   </div>
   <%= f.hidden_field :lot_id, value: @lot.id %>
 <% end %>
 
 <div id="charts", class="row">
-<%= render partial: "shared/column_chart", locals: {val: 3, lot: @lot_variables, graph: "Barra"}%>
-<%= render partial: "shared/column_chart", locals: {val: 4, lot: @lot_variables, graph: "Barra"}%>
-<%= render partial: "shared/column_chart", locals: {val: 7, lot: @lot_variables, graph: "Barra"}%>
-<%= render partial: "shared/column_chart", locals: {val: 13, lot: @lot_variables, graph: "Barra"}%>
-<%= render partial: "shared/column_chart", locals: {val: 14, lot: @lot_variables, graph: "Barra"}%>
-<%= render partial: "shared/column_chart", locals: {val: 15, lot: @lot_variables, graph: "Barra"}%>
+<% for x in 1..17 %>
+  <%= render partial: "shared/column_chart", locals: {val: x, lot: @lot_variables, graph: "Barra"}%>
+<% end %>
 </div>
 
 <div class="panel panel-default variables-panel">
@@ -38,10 +38,55 @@
   </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div role="document">
+  	<div class="modal-header">
+  		<h3>Elección de Gráficos</h3>
+  	</div>
+  	<div class="modal-body">
+      <table class= "table">
+        <thead>
+          <tr>
+            <th class="col-md-9">Gráfico</th>
+            <th class="col-md-3">Mostrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for x in 1..17 %>
+            <% if x == 1 %>
+              <tr><th>Mantenimiento</th></tr>
+            <% elsif x == 8 %>
+              <tr><th>Cosechas</th></tr>
+            <% end %>
+            <tr>
+              <td class="col-md-9"> <%=Lot.chart_values(x)["vAxisLabel"] %> </td>
+              <td class="col-md-3"> <%= check_box("", x, {}, x, 0) %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
   $.datepicker.setDefaults({
     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
     maxDate: "+0d",
     dateFormat: 'yy-mm-dd'});
+
+  $(":checkbox").change(function() {
+    $(':checkbox:checked').each(function() {
+        var div = $("#chart_div"+$(this).val())
+        div.removeClass("hidden")
+    });
+    $(':checkbox:not(:checked)').each(function() {
+        var div = $("#chart_div"+$(this).val())
+        if(!div.hasClass("hidden")){
+          div.addClass("hidden")
+        }
+    });
+  });
+
 </script>

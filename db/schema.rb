@@ -61,14 +61,14 @@ ActiveRecord::Schema.define(version: 20170523220059) do
     t.decimal  "cost_total"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "metric_tons"
-    t.string   "clusters"
-    t.string   "bags"
-    t.string   "unit_cost_ton"
-    t.string   "clusters_per_amount"
-    t.string   "plants"
-    t.string   "bags_per_amount"
-    t.string   "cluster_weight"
+    t.decimal  "metric_tons"
+    t.decimal  "clusters"
+    t.decimal  "bags"
+    t.decimal  "unit_cost_ton"
+    t.decimal  "clusters_per_amount"
+    t.decimal  "plants"
+    t.decimal  "bags_per_amount"
+    t.decimal  "cluster_weight"
     t.index ["lot_id"], name: "index_valorizations_on_lot_id"
     t.index ["variable_id"], name: "index_valorizations_on_variable_id"
   end

@@ -6,6 +6,7 @@ class VariablesController < ApplicationController
 
   def create
     @variable = Variable.new(variable_params)
+    @variable_cosecha = Variable.new(variable_cosecha_params)
 
     respond_to do |format|
       if @variable.save
@@ -15,6 +16,15 @@ class VariablesController < ApplicationController
         format.js { render action: "index" }
       end
     end
+
+    respond_to do |format|
+      if @variable_cosecha.save
+        format.html { redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!" }
+      else
+        flash[:error] = @variable.errors.full_messages
+        format.js { render action: "index" }
+      end
+    end    
   end
 
   def edit
@@ -54,4 +64,7 @@ class VariablesController < ApplicationController
       params.require(:variable).permit(:name, :category_id, :measurement_unit, :unit_cost_mano, :unit_cost_insumo)
     end
 
+    def variable_cosecha_params
+      params.require(:variable).permit(:name, :category_id, :amount, :metric_tons, :clusters, :bags)
+    end
 end

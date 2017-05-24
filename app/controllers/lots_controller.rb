@@ -24,7 +24,8 @@ class LotsController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:id])
-    @categories = Category.all
+    @category_mantenimiento = Category.find(1)
+    @category_cosecha = Category.find(2)
   end
 
   def update

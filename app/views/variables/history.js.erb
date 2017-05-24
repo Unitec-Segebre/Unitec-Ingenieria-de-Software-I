@@ -1,3 +1,13 @@
-$("#charts").html("<%= j render partial: 'shared/history_chart', locals: {val: 3, variable: variable, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/history_chart', locals: {val: 4, variable: variable, graph: graph}%>");
-$("#charts").append("<%= j render partial: 'shared/history_chart', locals: {val: 7, variable: variable, graph: graph}%>");
+var charts = $("#charts");
+charts.html("<% if category_id == 1 %>");
+charts.append("<% range = 1..7 %>");
+charts.append("<% else %>");
+charts.append("<% range = 8..17 %>");
+charts.append("<% end %>");
+charts.append("<% for x in range %>");
+charts.append("<%= j render partial: 'shared/history_chart', locals: {val: x, variable: variable, graph: graph}%>");
+charts.append("<% end %>");
+
+$(":checkbox").each(function(){
+  $(this).attr('checked',false);
+});

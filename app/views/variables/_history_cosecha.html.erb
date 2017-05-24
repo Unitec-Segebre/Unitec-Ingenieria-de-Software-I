@@ -18,19 +18,19 @@
 </thead>
 <tbody>
   <% days.each do |f| %>
-  <tr>
-    <td><%= format_date(f.assigned_at.to_datetime) %></td>
-    <td><%= number_to_currency(f.amount, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.metric_tons, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.cost_mano, unit: "Lps. ", precision: 3) %></td>
-    <td><%= number_to_currency(f.clusters, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.bags, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.unit_cost_ton, unit: "Lps. ", precision: 3) %></td>
-    <td><%= number_to_currency(f.clusters_per_amount, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.plants, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.bags_per_amount, unit: "", precision: 3) %></td>
-    <td><%= number_to_currency(f.cluster_weight, unit: "", precision: 3) %></td>
-  </tr>
+    <tr>
+      <td><%= format_date(f.assigned_at.to_datetime) %></td>
+      <td><%= number_to_currency(f.amount, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.metric_tons, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.cost_mano, unit: "Lps. ", precision: 3) %></td>
+      <td><%= number_to_currency(f.clusters, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.bags, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.unit_cost_ton, unit: "Lps. ", precision: 3) %></td>
+      <td><%= number_to_currency(f.clusters_per_amount, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.plants, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.bags_per_amount, unit: "", precision: 3) %></td>
+      <td><%= number_to_currency(f.cluster_weight, unit: "", precision: 3) %></td>
+    </tr>
   <% end %>
   <tr>
     <th>Total</th>

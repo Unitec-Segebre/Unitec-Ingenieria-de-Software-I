@@ -43,7 +43,7 @@ class VariablesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js { render "history", locals: {graph: params[:history][:graph], variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to]).next_day)}}
+      format.js { render "history", locals: {category_id: Variable.find(params[:variable_id]).category.id, graph: params[:history][:graph], variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to]).next_day)}}
     end
     @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])

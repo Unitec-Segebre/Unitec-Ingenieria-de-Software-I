@@ -18,8 +18,9 @@ module LotsHelper
     when 2
       total =
       values
-      .pluck("sum(amount), sum(metric_tons), sum(cost_mano), sum(clusters), sum(bags), sum(unit_cost_ton), sum(clusters_per_amount), sum(plants), sum(plants), sum(bags_per_amount), sum(cluster_weight)")
+      .pluck("sum(amount), sum(metric_tons), sum(valorizations.cost_mano), sum(valorizations.clusters), sum(valorizations.bags), sum(valorizations.unit_cost_ton), sum(valorizations.clusters_per_amount), sum(valorizations.plants), sum(valorizations.bags_per_amount), sum(valorizations.cluster_weight)")
       .first
+      puts total
       return {amount: total[0], metric_tons: total[1], cost_mano: total[2], clusters: total[3], bags: total[4], unit_cost_ton: total[5], clusters_per_amount: total[6], plants: total[7], bags_per_amount: total[8], cluster_weight: total[9]}
     end
   end

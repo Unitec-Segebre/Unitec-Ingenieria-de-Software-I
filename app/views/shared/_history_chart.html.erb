@@ -1,4 +1,4 @@
-<div id="chart_div<%=val%>", class="col-md-4">
+<div id="chart_div<%=val%>", class="col-md-4 hidden">
   <% hash = Lot.chart_values(val) %>
   <% data_val =  variable.group(:assigned_at).sum(hash['vAxis']) %>
 

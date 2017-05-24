@@ -36,18 +36,26 @@ class Valorization < ApplicationRecord
     end
 
     def calculate_unit_cost_mano
-      self.unit_cost_mano = self.cost_mano / self.amount
+      if(self.variable.category.id == 1)
+        self.unit_cost_mano = self.cost_mano / self.amount
+      end
     end
 
     def calculate_unit_cost_insumo
-      self.unit_cost_insumo = self.cost_insumo / self.amount
+      if(self.variable.category.id == 1)
+        self.unit_cost_insumo = self.cost_insumo / self.amount
+      end
     end
 
     def calculate_unit_cost_total
-      self.unit_cost_total = self.unit_cost_mano + self.unit_cost_insumo
+      if(self.variable.category.id == 1)
+        self.unit_cost_total = self.unit_cost_mano + self.unit_cost_insumo
+      end
     end
 
     def calculate_cost_total
-      self.cost_total = self.cost_mano + self.cost_insumo
+      if(self.variable.category.id == 1)
+        self.cost_total = self.cost_mano + self.cost_insumo
+      end
     end
 end

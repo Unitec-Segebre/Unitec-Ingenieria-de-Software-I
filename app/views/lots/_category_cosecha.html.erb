@@ -1,15 +1,16 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#<%= @category_cosecha.id %>" aria-expanded="false" class="collapsed">
-        <%= @category_cosecha.name %>
+      <a data-toggle="collapse" data-parent="#accordion" href="#<%= category.id %>" aria-expanded="false" class="collapsed">
+        <%= category.name %>
       </a>
     </h4>
   </div>
 
-  <div id="<%= @category_cosecha.id %>" class="panel-collapse collapse">
+  <div id="<%= category.id %>" class="panel-collapse collapse">
     <div class="panel-body">
-      <%= form_for [@lot.project, @lot] do |f| %>
+      <% lot = Lot.find(lot_id) %>
+      <%= form_for [lot.project, lot] do |f| %>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -28,12 +29,17 @@
               </tr>
             </thead>
             <tbody>
-              <%= render :partial => "variables_cosecha", :collection => @category_cosecha.variables, locals: {lot: lot} %>
+              <%= render partial: "variables_cosecha", collection: category.variables, locals: {lot: lot, date: date} %>
             </tbody>
           </table>
         </div>
+        <%= f.hidden_field :date, value: "", id: "hidden_date" %>
         <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
       <% end %>
     </div>
   </div>
 </div>
+
+<script>
+  $('#hidden_date').val($('#date').val());
+</script>

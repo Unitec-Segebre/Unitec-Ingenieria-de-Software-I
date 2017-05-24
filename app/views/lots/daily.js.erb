@@ -1,2 +1,2 @@
-console.log("penis")
-$("#accordion").html("<%= j render partial: 'category', collection: Category.all, locals: {lot_id: lot, date: date} %>")
+$("#accordion").html("<%= j render partial: 'category', locals: {category: Category.where(name: 'Mantenimiento')[0], lot_id: lot, date: date} %>")
+$("#accordion").append("<%= j render partial: 'category_cosecha', locals: {category: Category.where(name: 'Cosechas')[0], lot_id: lot, date: date} %>")

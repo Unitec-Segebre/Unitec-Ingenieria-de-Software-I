@@ -11,20 +11,14 @@ class VariablesController < ApplicationController
     respond_to do |format|
       if @variable.save
         format.html { redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!" }
+      elsif @variable_cosecha.save
+        format.html { redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!" }
       else
         flash[:error] = @variable.errors.full_messages
         format.js { render action: "index" }
       end
     end
 
-    respond_to do |format|
-      if @variable_cosecha.save
-        format.html { redirect_to variables_path, notice: "Variable #{@variable.name} creada exitosamente!" }
-      else
-        flash[:error] = @variable.errors.full_messages
-        format.js { render action: "index" }
-      end
-    end    
   end
 
   def edit

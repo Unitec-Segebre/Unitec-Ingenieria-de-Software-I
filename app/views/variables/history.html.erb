@@ -17,11 +17,11 @@
   <%= f.hidden_field :lot_id, value: @lot.id %>
   <%= f.hidden_field :variable_id, value: @variable.id %>
 <% end %>
-
 <div id="charts", class="row">
-  <%= render partial: "shared/history_chart", locals: {val: 3, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 4, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 7, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
+  <%= render partial: "shared/history_chart", locals: {val: 3, variable: var, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 4, variable: var, graph: "Barra"}%>
+  <%= render partial: "shared/history_chart", locals: {val: 7, variable: var, graph: "Barra"}%>
 </div>
 
 <div class="table-responsive">

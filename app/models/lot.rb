@@ -63,9 +63,17 @@ class Lot < ApplicationRecord
     return nil if var.nil?
 
     value = self.valorizations.find_by(variable: var, assigned_at: date)
-    hash = { name: var.name, unit_cost_mano: var.unit_cost_mano, unit_cost_insumo: var.unit_cost_insumo, amount: 0, cost_mano: 0, cost_insumo: 0, unit_cost_total: 0, cost_total: 0}
-    unless value.nil?
-      hash.merge!({ unit_cost_mano: value.unit_cost_mano, unit_cost_insumo: value.unit_cost_insumo, amount: value.amount, cost_mano: value.cost_mano, cost_insumo: value.cost_insumo, unit_cost_total: value.unit_cost_total, cost_total: value.cost_total })
+    case var.category.id
+    when 1
+      hash = { name: var.name, unit_cost_mano: var.unit_cost_mano, unit_cost_insumo: var.unit_cost_insumo, amount: 0, cost_mano: 0, cost_insumo: 0, unit_cost_total: 0, cost_total: 0}
+      unless value.nil?
+        hash.merge!({ unit_cost_mano: value.unit_cost_mano, unit_cost_insumo: value.unit_cost_insumo, amount: value.amount, cost_mano: value.cost_mano, cost_insumo: value.cost_insumo, unit_cost_total: value.unit_cost_total, cost_total: value.cost_total })
+      end
+    when 2
+      hash = { name: var.name, amount: 0, metric_tons: 0, cost_total: 0, clusters: 0, bags: 0, unit_cost_ton: 0, clusters_per_amount: 0, plants: 0, bags_per_amount: 0, cluster_weight: 0}
+      unless value.nil?
+        hash.merge!({ amount: value.amount, metric_tons: value.metric_tons, cost_total: value.metric_tons, clusters: value.clusters, bags: value.bags, unit_cost_ton: value.unit_cost_ton, clusters_per_amount: value.clusters_per_amount, plants: value.plants, bags_per_amount: value.bags_per_amount, cluster_weight: value.cluster_weight })
+      end
     end
     return hash
   end

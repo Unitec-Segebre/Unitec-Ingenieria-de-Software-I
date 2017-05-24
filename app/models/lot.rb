@@ -24,7 +24,7 @@ class Lot < ApplicationRecord
         {'vAxis' => 'valorizations.unit_cost_total', 'vAxisLabel' => 'Costo por Hectárea'}
       when 7
         {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Total'}
-      when 8
+      when 8 #>= 8 == Cosechas
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Hectareas Recorridas'}
       when 9
         {'vAxis' => 'valorizations.metric_tons', 'vAxisLabel' => 'Toneladas Metricas Cosechadas'}
@@ -100,7 +100,7 @@ class Lot < ApplicationRecord
 
   #Sets today's current amount of the given variable
   #Returns true on success, otherwise false
-  def setValue(name, amount, cost_mano, cost_insumo, date)
+  def setValueMantenimiento(name, amount, cost_mano, cost_insumo, date)
     var = Variable.find_by_name(name)
     return false if var.nil?
 
@@ -109,6 +109,23 @@ class Lot < ApplicationRecord
       value.update_attributes(amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo)
     else
       value = self.valorizations.build(variable: var, amount: amount, cost_mano: cost_mano, cost_insumo: cost_insumo, assigned_at: date)
+      value.save
+    end
+  end
+
+  #Sets today's current amount of the given variable
+  #Returns true on success, otherwise false
+  def setValueCosecha(name, amount, metric_tons, cost_total, clusters, bags, date)
+    var = Variable.find_by_name(name)
+    return false if var.nil?
+
+    value = self.valorizations.find_by(variable: var, assigned_at: date)
+    unless value.nil?
+      puts "Updating Valorization"
+      value.update_attributes(amount: amount, metric_tons: metric_tons, cost_total: cost_total, clusters: clusters, bags: bags)
+    else
+      puts "Creating Valorization"
+      value = self.valorizations.build(variable: var, amount: amount, metric_tons: metric_tons, cost_total: cost_total, clusters: clusters, bags: bags, assigned_at: date)
       value.save
     end
   end

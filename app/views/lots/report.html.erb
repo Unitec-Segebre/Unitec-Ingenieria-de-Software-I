@@ -17,6 +17,7 @@
   <div class="col-md-2">
     <%= modal_button("btn-info", "fa-filter", "Gráficos") %>
   </div>
+  <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
   <%= f.hidden_field :lot_id, value: @lot.id %>
 <% end %>
 
@@ -76,9 +77,14 @@
     maxDate: "+0d",
     dateFormat: 'yy-mm-dd'});
 
+  var check = [];
+
   $(":checkbox").change(function() {
+    check = [];
     $(':checkbox:checked').each(function() {
-        var div = $("#chart_div"+$(this).val())
+        var tmp = $(this).val();
+        check.push(parseInt(tmp));
+        var div = $("#chart_div"+tmp)
         div.removeClass("hidden")
     });
     $(':checkbox:not(:checked)').each(function() {
@@ -87,6 +93,7 @@
           div.addClass("hidden")
         }
     });
+    $('#checked_boxes').val(check);
   });
 
 </script>

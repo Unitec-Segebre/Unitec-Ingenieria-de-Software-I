@@ -8,6 +8,13 @@ charts.append("<% for x in range %>");
 charts.append("<%= j render partial: 'shared/history_chart', locals: {val: x, variable: variable, graph: graph}%>");
 charts.append("<% end %>");
 
+var checkboxes = "<%= check_box %>"
 $(":checkbox").each(function(){
-  $(this).attr('checked',false);
+  var tmp = $(this).val();
+  if (checkboxes.indexOf(tmp) == -1){
+    $(this).attr('checked',false);
+  }else{
+    var div = $("#chart_div"+tmp)
+    div.removeClass("hidden")
+  }
 });

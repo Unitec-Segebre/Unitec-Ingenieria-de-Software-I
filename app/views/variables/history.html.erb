@@ -19,6 +19,7 @@
   </div>
   <%= f.hidden_field :lot_id, value: @lot.id %>
   <%= f.hidden_field :variable_id, value: @variable.id %>
+  <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
 <% end %>
 <div id="charts", class="row">
   <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
@@ -75,9 +76,14 @@
     maxDate: "+0d",
     dateFormat: 'yy-mm-dd'});
 
+  var check = [];
+
   $(":checkbox").change(function() {
+    check = [];
     $(':checkbox:checked').each(function() {
-        var div = $("#chart_div"+$(this).val())
+        var tmp = $(this).val();
+        check.push(parseInt(tmp));
+        var div = $("#chart_div"+tmp)
         div.removeClass("hidden")
     });
     $(':checkbox:not(:checked)').each(function() {
@@ -86,5 +92,6 @@
           div.addClass("hidden")
         }
     });
+    $('#checked_boxes').val(check);
   });
 </script>

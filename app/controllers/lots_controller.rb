@@ -46,8 +46,8 @@ class LotsController < ApplicationController
 
   def report
     respond_to do |format|
-      format.html
-      format.js { render "report", locals: {graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
+      format.html {}
+      format.js { render "report", locals: {check_box: params[:report][:check_box], graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
     end
 
     @project = Project.find(params[:project_id])

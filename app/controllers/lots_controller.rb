@@ -37,7 +37,7 @@ class LotsController < ApplicationController
       if params[:lot][:category] == "Mantenimiento"
         @lot.setValueMantenimiento(key, values[:amount], values[:cost_mano], values[:cost_insumo], params[:lot][:date])
       elsif params[:lot][:category] == "Cosecha"
-        @lot.setValueCosecha(key, values[:amount], values[:metric_tons], values[:cost_total], values[:clusters], values[:bags], params[:lot][:date])
+        @lot.setValueCosecha(key, values[:amount], values[:metric_tons], values[:cost_mano], values[:clusters], values[:bags], params[:lot][:date])
       end
     end
 

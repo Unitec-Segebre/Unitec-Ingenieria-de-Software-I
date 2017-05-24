@@ -29,7 +29,7 @@ class Lot < ApplicationRecord
       when 9
         {'vAxis' => 'valorizations.metric_tons', 'vAxisLabel' => 'Toneladas Metricas Cosechadas'}
       when 10
-        {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Cosecha'}
+        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo Cosecha'}
       when 11
         {'vAxis' => 'valorizations.clusters', 'vAxisLabel' => 'Racimos Cosechados'}
       when 12
@@ -90,9 +90,9 @@ class Lot < ApplicationRecord
         hash.merge!({ unit_cost_mano: value.unit_cost_mano, unit_cost_insumo: value.unit_cost_insumo, amount: value.amount, cost_mano: value.cost_mano, cost_insumo: value.cost_insumo, unit_cost_total: value.unit_cost_total, cost_total: value.cost_total })
       end
     when 2
-      hash = { name: var.name, amount: 0, metric_tons: 0, cost_total: 0, clusters: 0, bags: 0, unit_cost_ton: 0, clusters_per_amount: 0, plants: 0, bags_per_amount: 0, cluster_weight: 0}
+      hash = { name: var.name, amount: 0, metric_tons: 0, cost_mano: 0, clusters: 0, bags: 0, unit_cost_ton: 0, clusters_per_amount: 0, plants: 0, bags_per_amount: 0, cluster_weight: 0}
       unless value.nil?
-        hash.merge!({ amount: value.amount, metric_tons: value.metric_tons, cost_total: value.metric_tons, clusters: value.clusters, bags: value.bags, unit_cost_ton: value.unit_cost_ton, clusters_per_amount: value.clusters_per_amount, plants: value.plants, bags_per_amount: value.bags_per_amount, cluster_weight: value.cluster_weight })
+        hash.merge!({ amount: value.amount, metric_tons: value.metric_tons, cost_mano: value.metric_tons, clusters: value.clusters, bags: value.bags, unit_cost_ton: value.unit_cost_ton, clusters_per_amount: value.clusters_per_amount, plants: value.plants, bags_per_amount: value.bags_per_amount, cluster_weight: value.cluster_weight })
       end
     end
     return hash
@@ -115,25 +115,19 @@ class Lot < ApplicationRecord
 
   #Sets today's current amount of the given variable
   #Returns true on success, otherwise false
-  def setValueCosecha(name, amount, metric_tons, cost_total, clusters, bags, date)
+  def setValueCosecha(name, amount, metric_tons, cost_mano, clusters, bags, date)
     var = Variable.find_by_name(name)
     return false if var.nil?
 
     value = self.valorizations.find_by(variable: var, assigned_at: date)
     unless value.nil?
       puts "Updating Valorization"
-      value.update_attributes(amount: amount, metric_tons: metric_tons, cost_total: cost_total, clusters: clusters, bags: bags)
+      value.update_attributes(amount: amount, metric_tons: metric_tons, cost_mano: cost_mano, clusters: clusters, bags: bags)
     else
       puts "Creating Valorization"
-      value = self.valorizations.build(variable: var, amount: amount, metric_tons: metric_tons, cost_total: cost_total, clusters: clusters, bags: bags, assigned_at: date)
+      value = self.valorizations.build(variable: var, amount: amount, metric_tons: metric_tons, cost_mano: cost_mano, clusters: clusters, bags: bags, assigned_at: date)
       value.save
     end
   end
 
-  def values(category)
-    variables
-      .where(category: category)
-      .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.cost_mano, valorizations.unit_cost_insumo, valorizations.cost_insumo, valorizations.unit_cost_total, valorizations.cost_total, valorizations.assigned_at")
-      .where("valorizations.assigned_at": Date.today)
-  end
 end

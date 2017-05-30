@@ -14,6 +14,7 @@ class Valorization < ApplicationRecord
   before_create :calculate_plants
   before_create :calculate_bags_per_amount
   before_create :calculate_cluster_weight
+  before_create :calculate_fertilization
 
 
   before_update :assign_default_amount
@@ -26,6 +27,7 @@ class Valorization < ApplicationRecord
   before_update :calculate_plants
   before_update :calculate_bags_per_amount
   before_update :calculate_cluster_weight
+  before_update :calculate_fertilization
 
   protected
     def assign_default_amount
@@ -91,6 +93,12 @@ class Valorization < ApplicationRecord
     def calculate_cluster_weight
       if(self.variable.category.id == 2)
         self.cluster_weight = (self.metric_tons*2200)/self.clusters
+      end
+    end
+
+     def calculate_fertilization
+      if(self.variable.category.id == 3)
+        self.cost_total = ((self.amount * self.unit_cost_insumo)+cost_mano)/self.lot.hectares
       end
     end
 end

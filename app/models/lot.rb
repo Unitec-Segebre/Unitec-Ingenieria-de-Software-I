@@ -19,7 +19,7 @@
       when 4
         {'vAxis' => 'valorizations.unit_cost_insumo', 'vAxisLabel' => 'Costo por Hectárea por Insumo'}
       when 5
-        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo por Insumo'}
+        {'vAxis' => 'valorizations.cost_insumo', 'vAxisLabel' => 'Costo por Insumo'}
       when 6
         {'vAxis' => 'valorizations.unit_cost_total', 'vAxisLabel' => 'Costo por Hectárea'}
       when 7

@@ -7,6 +7,6 @@ class Variable < ApplicationRecord
   validates :name, uniqueness: true
 
   def self.measurement_units
-    ["Hectárea(s)", "Kilogramo(s)", "Libra(s)", "Tonelada(s)", "Metro(s)", "Pulgada(s)", "Pie(s)", "Yarda(s)", "Pinta(s)", "Galon(es)", "Litro(s)"]
+    ["Hectárea(s)", "Tonelada(s)", "Metro(s)", "Pulgada(s)", "Pie(s)", "Yarda(s)", "Pinta(s)", "Galon(es)", "Litro(s)"]
   end
 end

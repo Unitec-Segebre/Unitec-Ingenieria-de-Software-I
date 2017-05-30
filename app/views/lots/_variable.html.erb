@@ -1,26 +1,27 @@
 <tr>
+  <% hash = lot.getValue(variable.name, date) %>
   <td>
     <%= link_to variable.name, project_lot_variable_history_path(lot.project.id, lot.id, variable.id) %>
   </td>
   <td>
-    <%= number_field_tag "variables[#{variable.name}][amount]", lot.getValue(variable.name)[:amount], class: 'form-control' %>
+    <%= number_field_tag "variables[#{variable.name}][amount]", hash[:amount], step: 0.001, class: 'form-control' %>
   </td>
   <td>
-    <%= number_field_tag "variables[#{variable.name}][cost_mano]", lot.getValue(variable.name)[:cost_mano], :step => 0.01, class: 'form-control' %>
+    <%= number_field_tag "variables[#{variable.name}][cost_mano]", hash[:cost_mano], step: 0.001, class: 'form-control' %>
   </td>
   <td>
-    <%= number_field_tag "variables[#{variable.name}][cost_insumo]", lot.getValue(variable.name)[:cost_insumo], :step => 0.01, class: 'form-control' %>
+    <%= number_field_tag "variables[#{variable.name}][cost_insumo]", hash[:cost_insumo], step: 0.001, class: 'form-control' %>
   </td>
   <td>
-    <%= number_to_currency(lot.getValue(variable.name)[:unit_cost_mano], :unit => "Lps. ", :precision => 2) %>
+    <%= number_to_currency(hash[:unit_cost_mano], unit: "Lps. ", precision: 3) %>
   </td>
   <td>
-    <%= number_to_currency(lot.getValue(variable.name)[:unit_cost_insumo], :unit => "Lps. ", :precision => 2) %>
+    <%= number_to_currency(hash[:unit_cost_insumo], unit: "Lps. ", precision: 3) %>
   </td>
   <td>
-    <%= number_to_currency(lot.getValue(variable.name)[:unit_cost_total], :unit => "Lps. ", :precision => 2) %>
+    <%= number_to_currency(hash[:unit_cost_total], unit: "Lps. ", precision: 3) %>
   </td>
   <td>
-    <%= number_to_currency(lot.getValue(variable.name)[:cost_total], :unit => "Lps. ", :precision => 2) %>
+    <%= number_to_currency(hash[:cost_total], unit: "Lps. ", precision: 3) %>
   </td>
 </tr>

@@ -16,22 +16,25 @@
             <thead>
               <tr>
                 <th>Variable</th>
-                <th>Hectáreas</th>
-                <th>Costo por Mano de Obra</th>
-                <th>Costo por Insumo</th>
-                <th>CxH por Mano de Obra</th>
-                <th>CxH por Insumo</th>
-                <th>Costo por Hectárea</th>
-                <th>Costo Total</th>
+                <th>HAS Recorridas</th>
+                <th>T.M.FF</th>
+                <th>Costo Cosecha</th>
+                <th>Racimos Cosechados</th>
+                <th>Sacos Recolectados</th>
+                <th>Costo/Toneladas</th>
+                <th>Racimos/HAS Totales</th>
+                <th>Racimos/Plantas</th>
+                <th>Sacos Recolectados/HAS Recorridas</th>
+                <th>Peso Racimos</th>
               </tr>
             </thead>
             <tbody>
-              <%= render partial: "variable", collection: category.variables, locals: {lot: lot, date: date} %>
+              <%= render partial: "variables_cosecha", collection: category.variables, locals: {lot: lot, date: date} %>
             </tbody>
           </table>
         </div>
-        <%= f.hidden_field :date, value: "", id: "hidden_date" %>
-        <%= f.hidden_field :category, value: "Mantenimiento" %>
+        <%= f.hidden_field :date, value: "", id: "hidden_date_cosecha" %>
+        <%= f.hidden_field :category, value: "Cosecha" %>
         <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
       <% end %>
     </div>
@@ -39,5 +42,5 @@
 </div>
 
 <script>
-  $('#hidden_date').val($('#date').val());
+  $('#hidden_date_cosecha').val($('#date').val());
 </script>

@@ -15,6 +15,7 @@ class VariablesController < ApplicationController
         format.js { render action: "index" }
       end
     end
+
   end
 
   def edit
@@ -41,10 +42,12 @@ class VariablesController < ApplicationController
   def history
 
     respond_to do |format|
-      format.html
-      format.js { render "history", locals: {graph: params[:history][:graph], variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to]).next_day)}}
+      format.html {}
+      format.js { render "history", locals: { graph: params[:history][:graph],
+            variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to])),
+            category_id: Variable.find(params[:variable_id]).category.id,
+            check_box: params[:history][:check_box]}}
     end
-    #.variables.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)
     @lot = Lot.find(params[:lot_id])
     @variable = Variable.find(params[:variable_id])
   end
@@ -54,4 +57,7 @@ class VariablesController < ApplicationController
       params.require(:variable).permit(:name, :category_id, :measurement_unit, :unit_cost_mano, :unit_cost_insumo)
     end
 
+    def variable_cosecha_params
+      params.require(:variable).permit(:name, :category_id, :amount, :metric_tons, :clusters, :bags)
+    end
 end

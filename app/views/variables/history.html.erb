@@ -11,37 +11,62 @@
     <%= f.label :to, "Hasta: ", class:"col-md-2"%>
     <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <%= f.select :graph, ["Barra", "Linea"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+  </div>
+  <div class="col-md-2">
+    <%= modal_button("btn-info", "fa-filter", "Gráficos") %>
   </div>
   <%= f.hidden_field :lot_id, value: @lot.id %>
   <%= f.hidden_field :variable_id, value: @variable.id %>
+  <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
 <% end %>
-
 <div id="charts", class="row">
-  <%= render partial: "shared/history_chart", locals: {val: 3, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 4, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
-  <%= render partial: "shared/history_chart", locals: {val: 7, variable: @lot.variables.find(@variable).valorizations, graph: "Barra"}%>
+  <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
+  <% if @variable.category.id == 1%>
+    <% range = 1..7 %>
+  <% else %>
+    <% range = 8..17 %>
+  <% end %>
+  <% for x in range %>
+    <%= render partial: "shared/history_chart", locals: {val: x, variable: var, graph: "Barra"}%>
+  <% end %>
 </div>
 
 <div class="table-responsive">
-    <table width="100%" class="table">
+  <table width="100%" class="table">
+    <% if @variable.category.id == 1 %>
+      <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
+    <% else %>
+      <%= render partial: "history_cosecha", locals: {lot: @lot, variable: @variable}%>
+    <% end %>
+  </table>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div role="document">
+  	<div class="modal-header">
+  		<h3>Elección de Gráficos</h3>
+  	</div>
+  	<div class="modal-body">
+      <table class= "table">
         <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Cantidad de Hectáreas</th>
-                <th>Costo por Mano de Obra</th>
-                <th>Costo por Insumo</th>
-                <th>Costo por Hectárea por Mano de Obra</th>
-                <th>Costo por Hectárea por Insumo</th>
-                <th>Costo por Hectárea</th>
-                <th>Costo Total</th>
-            </tr>
+          <tr>
+            <th class="col-md-9">Gráfico</th>
+            <th class="col-md-3">Mostrar</th>
+          </tr>
         </thead>
         <tbody>
-          <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
+          <% for x in range %>
+            <tr>
+              <td class="col-md-9"> <%=Lot.chart_values(x)["vAxisLabel"] %> </td>
+              <td class="col-md-3"> <%= check_box("", x, {}, x, 0) %> </td>
+            </tr>
+          <% end %>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -50,4 +75,23 @@
     dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
     maxDate: "+0d",
     dateFormat: 'yy-mm-dd'});
+
+  var check = [];
+
+  $(":checkbox").change(function() {
+    check = [];
+    $(':checkbox:checked').each(function() {
+        var tmp = $(this).val();
+        check.push(parseInt(tmp));
+        var div = $("#chart_div"+tmp)
+        div.removeClass("hidden")
+    });
+    $(':checkbox:not(:checked)').each(function() {
+        var div = $("#chart_div"+$(this).val())
+        if(!div.hasClass("hidden")){
+          div.addClass("hidden")
+        }
+    });
+    $('#checked_boxes').val(check);
+  });
 </script>

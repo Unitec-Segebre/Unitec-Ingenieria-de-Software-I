@@ -1,0 +1,36 @@
+<tr>
+  <% hash = lot.getValue(variables_cosecha.name, date) %>
+  <td>
+    <%= link_to hash[:name], project_lot_variable_history_path(lot.project.id, lot.id, variables_cosecha.id) %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_cosecha.name}][amount]", hash[:amount], step: 0.001, class: 'form-control' %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_cosecha.name}][metric_tons]", hash[:metric_tons], step: 0.001, class: 'form-control' %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_cosecha.name}][cost_mano]", hash[:cost_mano], step: 0.001, class: 'form-control' %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_cosecha.name}][clusters]", hash[:clusters], step: 0.001, class: 'form-control' %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_cosecha.name}][bags]", hash[:bags], step: 0.001, class: 'form-control' %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:unit_cost_ton], unit: "Lps. ", precision: 3) %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:clusters_per_amount], unit: "", precision: 3) %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:plants], unit: "", precision: 3) %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:bags_per_amount], unit: "", precision: 3) %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:cluster_weight], unit: "", precision: 3) %>
+  </td>
+</tr>

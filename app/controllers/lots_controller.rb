@@ -1,5 +1,12 @@
 class LotsController < ApplicationController
 
+  def date
+    respond_to do |format|
+      format.html
+      format.js { render "daily", locals: {lot: params[:lot_id], date: params[:lot][:date]} }
+    end
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @lot = @project.lots.build(lot_params)
@@ -17,7 +24,8 @@ class LotsController < ApplicationController
   def show
     @project = Project.find(params[:project_id])
     @lot = @project.lots.find(params[:id])
-    @categories = Category.all
+    @category_mantenimiento = Category.find(1)
+    @category_cosecha = Category.find(2)
   end
 
   def update
@@ -26,7 +34,11 @@ class LotsController < ApplicationController
     @variables = params[:variables]
 
     @variables.each do |key, values|
-      @lot.setValue(key, values[:amount], values[:cost_mano], values[:cost_insumo])
+      if params[:lot][:category] == "Mantenimiento"
+        @lot.setValueMantenimiento(key, values[:amount], values[:cost_mano], values[:cost_insumo], params[:lot][:date])
+      elsif params[:lot][:category] == "Cosecha"
+        @lot.setValueCosecha(key, values[:amount], values[:metric_tons], values[:cost_mano], values[:clusters], values[:bags], params[:lot][:date])
+      end
     end
 
     redirect_to project_lot_path(@project, @lot)
@@ -34,13 +46,13 @@ class LotsController < ApplicationController
 
   def report
     respond_to do |format|
-      format.html
-      format.js { render "report", locals: {graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.created_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
+      format.html {}
+      format.js { render "report", locals: {check_box: params[:report][:check_box], graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
     end
 
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
-    @lot_variables = @lot.variables.where('valorizations.created_at BETWEEN ? AND ?',  (Date.today - Date.today.wday + 1), Date.tomorrow)
+    @lot_variables = @lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?',  (Date.today - Date.today.wday + 1), Date.tomorrow)
     @total = nil
     @hAxis = 'variables.name'
     @hAxisLabel = "Variable"

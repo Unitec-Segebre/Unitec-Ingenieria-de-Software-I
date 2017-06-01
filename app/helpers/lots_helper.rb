@@ -5,7 +5,7 @@ module LotsHelper
     lot
     .where("category": category)
     .where("id": var_id)
-    .select("variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.cost_mano, valorizations.unit_cost_insumo, valorizations.cost_insumo, valorizations.unit_cost_total, valorizations.cost_total, valorizations.assigned_at")
+    .select("valorizations.assigned_at, variables.id, variables.name, valorizations.amount, valorizations.unit_cost_mano, valorizations.cost_mano, valorizations.unit_cost_insumo, valorizations.cost_insumo, valorizations.unit_cost_total, valorizations.cost_total, valorizations.assigned_at")
     .order("valorizations.assigned_at ASC")
 
     case category.id

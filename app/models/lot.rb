@@ -64,7 +64,7 @@
     self.variables
       .where("category": category)
       .where("id": var_id)
-      .select("variables.id, variables.name, valorizations.*")
+      .select("variables.id, variables.name, valorizations.*, valorizations.assigned_at")
       .order("valorizations.assigned_at ASC")
   end
 

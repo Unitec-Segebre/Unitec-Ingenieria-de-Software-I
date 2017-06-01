@@ -33,7 +33,7 @@
   </div>
   <div class="panel-body">
     <div class="panel-group" id="accordion">
-      <%= render partial: "reports", locals: {category: Category.find(1), lot: @lot_variables} %>
+      <%= render partial: "reports_mantenimiento", locals: {category: Category.find(1), lot: @lot_variables} %>
       <%= render partial: "reports_cosecha", locals: {category: Category.find(2), lot: @lot_variables} %>
     </div>
   </div>
@@ -94,6 +94,7 @@
         }
     });
     $('#checked_boxes').val(check);
+    print();
   });
 
 </script>

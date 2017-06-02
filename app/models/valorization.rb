@@ -98,7 +98,7 @@ class Valorization < ApplicationRecord
 
      def calculate_fertilization
       if(self.variable.category.id == 3)
-        self.cost_total = ((self.amount * self.unit_cost_insumo)+ self.cost_mano)/self.lot.hectares
+        self.cost_total = ((amount * unit_cost_insumo)+ cost_mano)/lot.hectares
       end
     end
 end

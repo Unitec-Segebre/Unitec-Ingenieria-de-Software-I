@@ -94,6 +94,11 @@
       unless value.nil?
         hash.merge!({ amount: value.amount, metric_tons: value.metric_tons, cost_mano: value.cost_mano, clusters: value.clusters, bags: value.bags, unit_cost_ton: value.unit_cost_ton, clusters_per_amount: value.clusters_per_amount, plants: value.plants, bags_per_amount: value.bags_per_amount, cluster_weight: value.cluster_weight })
       end
+    when 3
+      hash = { name: var.name, amount: 0, unit_cost_insumo: 0, cost_mano: 0, cost_total: 0}
+      unless value.nil?
+        hash.merge!({ amount: value.amount, unit_cost_insumo: value.unit_cost_insumo, cost_mano: value.cost_mano, cost_total: value.cost_total })
+      end
     end
     return hash
   end
@@ -130,4 +135,20 @@
     end
   end
 
+  #Sets today's current amount of the given variable
+  #Returns true on success, otherwise false
+  def setValueFer(name, amount, unit_cost_insumo, cost_mano, date)
+    var = Variable.find_by_name(name)
+    return false if var.nil?
+
+    value = self.valorizations.find_by(variable: var, assigned_at: date)
+    unless value.nil?
+      puts "Updating Valorization"
+      value.update_attributes(amount: amount, unit_cost_insumo: unit_cost_insumo, cost_mano: cost_mano)
+    else
+      puts "Creating Valorization"
+      value = self.valorizations.build(variable: var, amount: amount, unit_cost_insumo: unit_cost_insumo, cost_mano: cost_mano, assigned_at: date)
+      value.save
+    end
+  end  
 end

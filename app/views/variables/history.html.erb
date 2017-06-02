@@ -25,8 +25,10 @@
   <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
   <% if @variable.category.id == 1%>
     <% range = 1..7 %>
-  <% else %>
+  <%elsif @variable.category.id == 2%>
     <% range = 8..17 %>
+  <% else %>
+    
   <% end %>
   <% for x in range %>
     <%= render partial: "shared/history_chart", locals: {val: x, variable: var, graph: "Barra"}%>
@@ -37,8 +39,10 @@
   <table width="100%" class="table">
     <% if @variable.category.id == 1 %>
       <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
-    <% else %>
+    <%elsif @variable.category.id == 2 %>
       <%= render partial: "history_cosecha", locals: {lot: @lot, variable: @variable}%>
+    <% else %>
+      <%= render partial: "history_fer", locals: {lot: @lot, variable: @variable}%>
     <% end %>
   </table>
 </div>

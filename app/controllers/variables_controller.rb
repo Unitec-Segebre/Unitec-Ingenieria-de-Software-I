@@ -60,4 +60,8 @@ class VariablesController < ApplicationController
     def variable_cosecha_params
       params.require(:variable).permit(:name, :category_id, :amount, :metric_tons, :clusters, :bags)
     end
+
+    def variable_fer_params
+      params.require(:variable).permit(:name, :category_id, :amount, :unit_cost_insumo, :cost_mano, :cost_total)
+    end
 end

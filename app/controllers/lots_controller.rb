@@ -26,6 +26,7 @@ class LotsController < ApplicationController
     @lot = @project.lots.find(params[:id])
     @category_mantenimiento = Category.find(1)
     @category_cosecha = Category.find(2)
+    @category_fer = Category.find(3)
   end
 
   def update
@@ -38,6 +39,8 @@ class LotsController < ApplicationController
         @lot.setValueMantenimiento(key, values[:amount], values[:cost_mano], values[:cost_insumo], params[:lot][:date])
       elsif params[:lot][:category] == "Cosecha"
         @lot.setValueCosecha(key, values[:amount], values[:metric_tons], values[:cost_mano], values[:clusters], values[:bags], params[:lot][:date])
+      elsif params[:lot][:category] == "Fertilizacion"
+        @lot.setValueFer(key, values[:amount], values[:unit_cost_insumo], values[:cost_mano], params[:lot][:date])
       end
     end
 

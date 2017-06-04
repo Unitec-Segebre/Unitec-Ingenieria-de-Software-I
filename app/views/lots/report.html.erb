@@ -22,7 +22,7 @@
 <% end %>
 
 <div id="charts", class="row">
-<% for x in 1..17 %>
+<% for x in 1..21 %>
   <%= render partial: "shared/column_chart", locals: {val: x, lot: @lot_variables, graph: "Barra"}%>
 <% end %>
 </div>
@@ -35,6 +35,7 @@
     <div class="panel-group" id="accordion">
       <%= render partial: "reports", locals: {category: Category.find(1), lot: @lot_variables} %>
       <%= render partial: "reports_cosecha", locals: {category: Category.find(2), lot: @lot_variables} %>
+      <%= render partial: "reports_fer", locals: {category: Category.find(3), lot: @lot_variables} %>
     </div>
   </div>
 </div>
@@ -53,14 +54,16 @@
           </tr>
         </thead>
         <tbody>
-          <% for x in 1..17 %>
+          <% for x in 1..21 %>
             <% if x == 1 %>
               <tr><th>Mantenimiento</th></tr>
             <% elsif x == 8 %>
               <tr><th>Cosechas</th></tr>
+            <% elsif x == 18 %>
+              <tr><th>Fertilizacion</th></tr>
             <% end %>
             <tr>
-              <td class="col-md-9"> <%=Lot.chart_values(x)["vAxisLabel"] %> </td>
+              <td class="col-md-9"> <%= Lot.chart_values(x)["vAxisLabel"] %> </td>
               <td class="col-md-3"> <%= check_box("", x, {}, x, 0) %> </td>
             </tr>
           <% end %>
@@ -79,7 +82,9 @@
 
   var check = [];
 
-  $(":checkbox").change(function() {
+  $(":checkbox").change(update_graphs);
+
+  function update_graphs() {
     check = [];
     $(':checkbox:checked').each(function() {
         var tmp = $(this).val();
@@ -94,6 +99,6 @@
         }
     });
     $('#checked_boxes').val(check);
-  });
+  }
 
 </script>

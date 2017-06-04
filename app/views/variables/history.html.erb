@@ -28,7 +28,7 @@
   <%elsif @variable.category.id == 2%>
     <% range = 8..17 %>
   <% else %>
-
+    <% range = 18..21 %>
   <% end %>
   <% for x in range %>
     <%= render partial: "shared/history_chart", locals: {val: x, variable: var, graph: "Barra"}%>

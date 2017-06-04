@@ -44,6 +44,14 @@
         {'vAxis' => 'valorizations.bags_per_amount', 'vAxisLabel' => 'Sacos Recolectados / Hectareas Recorridas'}
       when 17
         {'vAxis' => 'valorizations.cluster_weight', 'vAxisLabel' => 'Peso De Racimos'}
+      when 18 #>= 18 == Ferilizacion
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad de Sacos'}
+      when 19
+        {'vAxis' => 'valorizations.unit_cost_insumo', 'vAxisLabel' => 'Costo Unidad de Sacos'}
+      when 20
+        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo Mano de Obra'}
+      when 21
+        {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Por Hectarea'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end
@@ -150,5 +158,5 @@
       value = self.valorizations.build(variable: var, amount: amount, unit_cost_insumo: unit_cost_insumo, cost_mano: cost_mano, assigned_at: date)
       value.save
     end
-  end  
+  end
 end

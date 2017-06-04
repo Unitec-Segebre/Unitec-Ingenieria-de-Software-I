@@ -5,7 +5,7 @@
 <%= form_for(:report, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
   <div class="col-md-4">
     <%= f.label :from, "Desde: ", class:"col-md-2"%>
-    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
+    <%= f.text_field :from, class: "datepicker col-md-10", value: Date.today.beginning_of_week, id: "from_date", onchange: "$('#form_date').submit();" %>
   </div>
   <div class="col-md-4">
     <%= f.label :to, "Hasta: ", class:"col-md-2"%>

@@ -3,8 +3,8 @@ class Valorization < ApplicationRecord
   belongs_to :variable
 
   before_create :assign_default_amount
-  before_create :copy_unit_cost_mano
-  before_create :copy_unit_cost_insumo
+  #before_create :copy_unit_cost_mano
+  #before_create :copy_unit_cost_insumo
   before_create :calculate_unit_cost_mano
   before_create :calculate_unit_cost_insumo
   before_create :calculate_unit_cost_total
@@ -98,6 +98,10 @@ class Valorization < ApplicationRecord
 
      def calculate_fertilization
       if(self.variable.category.id == 3)
+        puts amount
+        puts unit_cost_insumo
+        puts cost_mano
+        puts lot.hectares
         self.cost_total = ((amount * unit_cost_insumo)+ cost_mano)/lot.hectares
       end
     end

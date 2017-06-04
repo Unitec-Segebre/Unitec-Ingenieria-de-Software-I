@@ -5,7 +5,7 @@
 <%= form_for(:history, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
   <div class="col-md-4">
     <%= f.label :from, "Desde: ", class:"col-md-2"%>
-    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
+    <%= f.text_field :from, class: "datepicker col-md-10", value: Date.today.beginning_of_week, id: "from_date", onchange: "$('#form_date').submit();" %>
   </div>
   <div class="col-md-4">
     <%= f.label :to, "Hasta: ", class:"col-md-2"%>
@@ -22,13 +22,13 @@
   <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
 <% end %>
 <div id="charts", class="row">
-  <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', (Date.today - Date.today.wday + 1), Date.today) %>
+  <% var =  @lot.variables.find(@variable).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today) %>
   <% if @variable.category.id == 1%>
     <% range = 1..7 %>
   <%elsif @variable.category.id == 2%>
     <% range = 8..17 %>
   <% else %>
-    
+
   <% end %>
   <% for x in range %>
     <%= render partial: "shared/history_chart", locals: {val: x, variable: var, graph: "Barra"}%>

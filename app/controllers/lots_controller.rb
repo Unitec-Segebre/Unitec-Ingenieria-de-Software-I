@@ -55,7 +55,7 @@ class LotsController < ApplicationController
 
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
-    @lot_variables = @lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?',  (Date.today - Date.today.wday + 1), Date.tomorrow)
+    @lot_variables = @lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?',  Date.today.beginning_of_week, Date.tomorrow)
     @total = nil
     @hAxis = 'variables.name'
     @hAxisLabel = "Variable"

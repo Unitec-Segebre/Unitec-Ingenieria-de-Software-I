@@ -1,4 +1,10 @@
 class VariablesController < ApplicationController
+
+  def print_history
+    @lot = Lot.find(params[:lot_id])
+    @variable = Variable.find(params[:variable_id])
+  end
+
   def index
     @variables = Variable.all
     @variable = Variable.new

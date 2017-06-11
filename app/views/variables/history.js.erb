@@ -10,6 +10,16 @@ charts.append("<% for x in range %>");
 charts.append("<%= j render partial: 'shared/history_chart', locals: {val: x, variable: variable, graph: graph}%>");
 charts.append("<% end %>");
 
+var tab = $("#tab");
+tab.html("<% local_vars = {lot: lot, variable: var, from: from, to: to} %>");
+tab.append("<% if var.category.id == 1 %>");
+tab.append("<%= j render partial: 'history', locals: local_vars %>");
+tab.append("<% elsif var.category.id == 2 %>");
+tab.append("<%= j render partial: 'history_cosecha, locals: local_vars' %>");
+tab.append("<% else %>");
+tab.append("<%= j render partial: 'history_fer', locals: local_vars %>");
+tab.append("<% end %>");
+
 var checkboxes = "<%= check_box %>"
 $(":checkbox").each(function(){
   var tmp = $(this).val();

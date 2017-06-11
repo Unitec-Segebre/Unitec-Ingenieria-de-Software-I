@@ -1,5 +1,5 @@
 <% days = lot.range_values(variable.category, variable.id) %>
-<% total = sum_values_date(lot.variables, variable.category, variable.id) %>
+<% total = sum_values_date(lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?', from, to), variable.category, variable.id) %>
 
 <thead>
   <tr>

@@ -68,10 +68,11 @@
       .where("valorizations.assigned_at = ?", Date.today)
   end
 
-  def range_values(category, var_id)
+  def range_values(category, var_id, from, to)
     self.variables
       .where("category": category)
       .where("id": var_id)
+      .where('valorizations.assigned_at BETWEEN ? AND ?', from, to)
       .select("variables.id, variables.name, valorizations.*")
       .order("valorizations.assigned_at ASC")
   end

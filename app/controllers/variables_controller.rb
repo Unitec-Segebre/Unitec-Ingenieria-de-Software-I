@@ -47,9 +47,15 @@ class VariablesController < ApplicationController
 
   def history
 
+    #TODO: Literally all of this can be optimized incredibly
     respond_to do |format|
       format.html {}
-      format.js { render "history", locals: { graph: params[:history][:graph],
+      format.js { render "history", locals: {
+            lot: Lot.find(params[:history][:lot_id]),
+            var: Variable.find(params[:history][:variable_id]),
+            from: Date.parse(params[:history][:from]),
+            to: Date.parse(params[:history][:to]),
+            graph: params[:history][:graph],
             variable: Lot.find(params[:history][:lot_id]).variables.find(params[:history][:variable_id]).valorizations.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:history][:from]), Date.parse(params[:history][:to])),
             category_id: Variable.find(params[:variable_id]).category.id,
             check_box: params[:history][:check_box]}}

@@ -40,13 +40,14 @@
 </div>
 
 <div class="table-responsive">
-  <table width="100%" class="table">
+  <table width="100%" class="table" id="tab">
+    <% local_vars = {lot: @lot, variable: @variable, from: Date.today.beginning_of_week, to: Date.today} %>
     <% if @variable.category.id == 1 %>
-      <%= render partial: "history", locals: {lot: @lot, variable: @variable}%>
+      <%= render partial: "history", locals: local_vars %>
     <%elsif @variable.category.id == 2 %>
-      <%= render partial: "history_cosecha", locals: {lot: @lot, variable: @variable}%>
+      <%= render partial: "history_cosecha", locals: local_vars %>
     <% else %>
-      <%= render partial: "history_fer", locals: {lot: @lot, variable: @variable}%>
+      <%= render partial: "history_fer", locals: local_vars %>
     <% end %>
   </table>
 </div>

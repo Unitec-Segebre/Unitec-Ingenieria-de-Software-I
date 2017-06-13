@@ -30,10 +30,6 @@
 
 img.figura{
 	float: left;
-	margin-right: 10px;
-	max-width: 62%;
-	max-height: 62%;
-	background-color: white;
 	border: 3px solid white;
 	border-radius: 2px;
 }
@@ -47,9 +43,8 @@ img.figura{
 .login{
 	position: absolute;
 	top: calc(50% - 75px);
-	left: calc(50% - 50px);
+	left: calc(50% - 400px);
 	height: 150px;
-	width: 350px;
 	padding: 10px;
 	z-index: 2;
 }

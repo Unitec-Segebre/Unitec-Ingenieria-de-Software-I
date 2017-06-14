@@ -7,7 +7,6 @@
     <tr>
       <th class="col-md-6"> Nombre </th>
       <th class="col-md-2"> Categoría </th>
-      <th class="col-md-2"> Unidad </th>
       <th class="col-md-1" style="text-align:center"> Borrar </th>
     </tr>
   </thead>
@@ -16,7 +15,6 @@
       <tr>
         <td><%= variable.name %></td>
         <td><%= variable.category.name %></td>
-        <td><%= variable.measurement_unit %></td>
         <td style="text-align:center">
           <%= link_to variable_path(variable.id), data: {method: :delete, confirm: "Seguro que desea eliminar esta variable?"} do %>
             <span class="fa fa-trash fa-2x"></span>

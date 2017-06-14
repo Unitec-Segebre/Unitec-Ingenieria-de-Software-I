@@ -14,13 +14,9 @@
           <thead>
             <tr>
               <th>Variable</th>
-              <th>Hectáreas</th>
-              <th>Costo por Mano de Obra</th>
-              <th>Costo por Insumo</th>
-              <th>CxH por Mano de Obra</th>
-              <th>CxH por Insumo</th>
-              <th>Costo por Hectárea</th>
-              <th>Costo Total</th>
+              <% (18..21).each do |f| %>
+                <th><%= Lot.chart_values(f)['vAxisLabel'] %></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -28,13 +24,9 @@
               <% total = sum_values_date(lot, v.category, v.id) %>
               <tr>
                 <td><%= v.name %></td>
-                <!-- TODO: This first line is dumb, leave for now !-->
                 <td><%= number_to_currency(total[:amount], unit: "", precision: 3) %></td>
-                <td><%= number_to_currency(total[:cost_mano], unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(total[:cost_insumo], unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(total[:unit_cost_mano], unit: "Lps. ", precision: 3) %></td>
                 <td><%= number_to_currency(total[:unit_cost_insumo], unit: "Lps. ", precision: 3) %></td>
-                <td><%= number_to_currency(total[:unit_cost_total], unit: "Lps. ", precision: 3) %></td>
+                <td><%= number_to_currency(total[:cost_mano], unit: "Lps. ", precision: 3) %></td>
                 <td><%= number_to_currency(total[:cost_total], unit: "Lps. ", precision: 3) %></td>
               </tr>
             <% end %>

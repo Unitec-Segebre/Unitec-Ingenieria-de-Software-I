@@ -13,10 +13,6 @@
           <%= f.label :category_id, "Categoría" %>
           <%= f.select :category_id, Category.pluck(:name, :id), {}, class: "form-control" %>
         </div>
-        <div class="form-group">
-          <%= f.label :measurement_unit, "Unidad" %>
-          <%= f.select :measurement_unit, Variable.measurement_units, {}, class: "form-control" %>
-        </div>
     </div>
     <div class="modal-footer">
       <div class="btn-group" role="group">

@@ -1,28 +1,32 @@
-<h1 class="page-header">Reporte Lote #<%= @lot.id %> </h1>
+<h1 class="page-header">Lote #<%= @lot.id %> - Reporte</h1>
 
-<%= return_button(project_lot_path(@lot.project, @lot)) %>
+<div class="not-printable">
+  <%= return_button(project_lot_path(@lot.project, @lot)) %>
+  <%= print_button() %>
 
-<%= form_for(:report, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
-  <div class="col-md-4">
-    <%= f.label :from, "Desde: ", class:"col-md-2"%>
-    <%= f.text_field :from, class: "datepicker col-md-10", value: (Date.today - Date.today.wday + 1), id: "from_date", onchange: "$('#form_date').submit();" %>
-  </div>
-  <div class="col-md-4">
-    <%= f.label :to, "Hasta: ", class:"col-md-2"%>
-    <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
-  </div>
-  <div class="col-md-2">
-    <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
-  </div>
-  <div class="col-md-2">
-    <%= modal_button("btn-info", "fa-filter", "Gráficos") %>
-  </div>
-  <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
-  <%= f.hidden_field :lot_id, value: @lot.id %>
-<% end %>
+  <%= form_for(:report, remote: true, html: {id:'form_date', class:"row"}) do |f| %>
+    <div class="col-md-4">
+      <%= f.label :from, "Desde: ", class:"col-md-2"%>
+      <%= f.text_field :from, class: "datepicker col-md-10", value: Date.today.beginning_of_week, id: "from_date", onchange: "$('#form_date').submit();" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :to, "Hasta: ", class:"col-md-2"%>
+      <%= f.text_field :to, class: "datepicker col-md-10", value: Date.today, id: "to_date", onchange: "$('#form_date').submit();" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.select :graph, ["Barra", "Linea", "Pie"], {include_blank: false}, {onchange: "$('#form_date').submit();", class: "form-control"} %>
+    </div>
+    <div class="col-md-2">
+      <%= modal_button("btn-info", "fa-filter", "Gráficos") %>
+    </div>
+    <%= f.hidden_field :check_box, value: 0, id: "checked_boxes" %>
+    <%= f.hidden_field :lot_id, value: @lot.id %>
+  <% end %>
+
+</div>
 
 <div id="charts", class="row">
-<% for x in 1..17 %>
+<% for x in 1..21 %>
   <%= render partial: "shared/column_chart", locals: {val: x, lot: @lot_variables, graph: "Barra"}%>
 <% end %>
 </div>
@@ -35,6 +39,7 @@
     <div class="panel-group" id="accordion">
       <%= render partial: "reports", locals: {category: Category.find(1), lot: @lot_variables} %>
       <%= render partial: "reports_cosecha", locals: {category: Category.find(2), lot: @lot_variables} %>
+      <%= render partial: "reports_fer", locals: {category: Category.find(3), lot: @lot_variables} %>
     </div>
   </div>
 </div>
@@ -53,14 +58,16 @@
           </tr>
         </thead>
         <tbody>
-          <% for x in 1..17 %>
+          <% for x in 1..21 %>
             <% if x == 1 %>
               <tr><th>Mantenimiento</th></tr>
             <% elsif x == 8 %>
               <tr><th>Cosechas</th></tr>
+            <% elsif x == 18 %>
+              <tr><th>Fertilizacion</th></tr>
             <% end %>
             <tr>
-              <td class="col-md-9"> <%=Lot.chart_values(x)["vAxisLabel"] %> </td>
+              <td class="col-md-9"> <%= Lot.chart_values(x)["vAxisLabel"] %> </td>
               <td class="col-md-3"> <%= check_box("", x, {}, x, 0) %> </td>
             </tr>
           <% end %>
@@ -79,7 +86,9 @@
 
   var check = [];
 
-  $(":checkbox").change(function() {
+  $(":checkbox").change(update_graphs);
+
+  function update_graphs() {
     check = [];
     $(':checkbox:checked').each(function() {
         var tmp = $(this).val();
@@ -94,6 +103,45 @@
         }
     });
     $('#checked_boxes').val(check);
+  }
+
+  $(window).focus(function() {
+    $(".variables-panel").removeClass("page-break-before");
   });
+
+  function on_print() {
+    var x = 0;
+    $(':checkbox:checked').each(function() {
+      x++;
+    });
+
+    if(x > 0) {
+      $(".variables-panel").addClass("page-break-before");
+    }
+
+    /*
+    $(':checkbox:not(:checked)').each(function() {
+      var div = $("#chart_div"+$(this).val())
+      var canv = $("#chart-"+$(this).val())
+      div.removeClass("size-1 size-2");
+      canv.removeClass("size-1 size-2");
+    });
+
+    $(':checkbox:checked').each(function() {
+      var div = $("#chart_div"+$(this).val())
+      var canv = $("#chart-"+$(this).val())
+      div.removeClass("size-1 size-2");
+      canv.removeClass("size-1 size-2");
+
+      if(x < 3){
+        div.addClass("size-1");
+        canv.addClass("size-1");
+      }else if(x == 3){
+        div.addClass("size-2");
+        canv.addClass("size-2");
+      }
+    });
+    */
+  };
 
 </script>

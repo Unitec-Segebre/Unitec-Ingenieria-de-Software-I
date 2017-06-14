@@ -1,12 +1,24 @@
 var charts = $("#charts");
 charts.html("<% if category_id == 1 %>");
 charts.append("<% range = 1..7 %>");
-charts.append("<% else %>");
+charts.append("<% elsif category_id == 2 %>");
 charts.append("<% range = 8..17 %>");
+charts.append("<% elsif category_id == 3 %>");
+charts.append("<% range = 18..21 %>");
 charts.append("<% end %>");
 charts.append("<% for x in range %>");
 charts.append("<%= j render partial: 'shared/history_chart', locals: {val: x, variable: variable, graph: graph}%>");
 charts.append("<% end %>");
+
+var tab = $("#tab");
+tab.html("<% local_vars = {lot: lot, variable: var, from: from, to: to} %>");
+tab.append("<% if var.category.id == 1 %>");
+tab.append("<%= j render partial: 'history', locals: local_vars %>");
+tab.append("<% elsif var.category.id == 2 %>");
+tab.append("<%= j render partial: 'history_cosecha, locals: local_vars' %>");
+tab.append("<% else %>");
+tab.append("<%= j render partial: 'history_fer', locals: local_vars %>");
+tab.append("<% end %>");
 
 var checkboxes = "<%= check_box %>"
 $(":checkbox").each(function(){

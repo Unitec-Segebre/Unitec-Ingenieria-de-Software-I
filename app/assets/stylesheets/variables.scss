@@ -1,3 +1,32 @@
 // Place all the styles related to the variables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@media print {
+
+  [id^=chart] {
+    display: inline !important;
+    width: 30% !important;
+    height: 50% !important;
+  }
+
+  html, body {
+    height: auto;
+  }
+
+
+  table {
+    font-size: 11px;
+  }
+
+  .not-printable {
+    display: none;
+  }
+
+  .pre-scrollable {
+    overflow-y: visible !important;
+  }
+
+  .page-break-before {
+    page-break-before: always;
+  }
+}

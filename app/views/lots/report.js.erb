@@ -1,9 +1,10 @@
-$("#charts").html("<% for x in 1..17 %>");
+$("#charts").html("<% for x in 1..21 %>");
 $("#charts").append("<%= j render partial: 'shared/column_chart', locals: {val: x, lot: lot, graph: graph}%>");
 $("#charts").append("<% end %>");
 
 $("#accordion").html("<%= j render partial: 'reports', locals: {category: Category.find(1), lot: lot}%>");
 $("#accordion").append("<%= j render partial: 'reports_cosecha', locals: {category: Category.find(2), lot: lot}%>");
+$("#accordion").append("<%= j render partial: 'reports_fer', locals: {category: Category.find(3), lot: lot}%>");
 
 var checkboxes = "<%= check_box %>"
 $(":checkbox").each(function(){
@@ -15,3 +16,5 @@ $(":checkbox").each(function(){
     div.removeClass("hidden")
   }
 });
+
+update_graphs();

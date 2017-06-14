@@ -37,6 +37,7 @@
     <div class="panel-group" id="accordion">
       <%= render partial: "category", locals: {category: @category_mantenimiento, lot_id: @lot.id, date: Date.today} %>
       <%= render partial: "category_cosecha", locals: {category: @category_cosecha, lot_id: @lot.id, date: Date.today} %>
+      <%= render partial: "category_fer", locals: {category: @category_fer, lot_id: @lot.id, date: Date.today} %>
     </div>
   </div>
 </div>

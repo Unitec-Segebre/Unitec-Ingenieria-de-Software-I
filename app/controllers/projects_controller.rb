@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @new_project = Project.new
+    @users = User.all.pluck("username");
   end
 
   def create

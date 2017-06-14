@@ -26,6 +26,7 @@ class LotsController < ApplicationController
     @lot = @project.lots.find(params[:id])
     @category_mantenimiento = Category.find(1)
     @category_cosecha = Category.find(2)
+    @category_fer = Category.find(3)
   end
 
   def update
@@ -38,6 +39,8 @@ class LotsController < ApplicationController
         @lot.setValueMantenimiento(key, values[:amount], values[:cost_mano], values[:cost_insumo], params[:lot][:date])
       elsif params[:lot][:category] == "Cosecha"
         @lot.setValueCosecha(key, values[:amount], values[:metric_tons], values[:cost_mano], values[:clusters], values[:bags], params[:lot][:date])
+      elsif params[:lot][:category] == "Fertilizacion"
+        @lot.setValueFer(key, values[:amount], values[:unit_cost_insumo], values[:cost_mano], params[:lot][:date])
       end
     end
 
@@ -47,12 +50,12 @@ class LotsController < ApplicationController
   def report
     respond_to do |format|
       format.html {}
-      format.js { render "report", locals: {check_box: params[:report][:check_box], graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]).next_day)} }
+      format.js { render "report", locals: {check_box: params[:report][:check_box], graph: params[:report][:graph], lot: Lot.find(params[:report][:lot_id]).variables.where('valorizations.assigned_at BETWEEN ? AND ?', Date.parse(params[:report][:from]), Date.parse(params[:report][:to]))} }
     end
 
     @project = Project.find(params[:project_id])
     @lot = Lot.find(params[:lot_id])
-    @lot_variables = @lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?',  (Date.today - Date.today.wday + 1), Date.tomorrow)
+    @lot_variables = @lot.variables.where('valorizations.assigned_at BETWEEN ? AND ?',  Date.today.beginning_of_week, Date.tomorrow)
     @total = nil
     @hAxis = 'variables.name'
     @hAxisLabel = "Variable"

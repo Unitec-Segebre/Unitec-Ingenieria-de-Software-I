@@ -1,12 +1,24 @@
 <div class="background"></div>
-<div class="body"></div>
-	<div class="grad"></div>
-	<div class="header">
-    <%= image_tag('hc.png', class: :figura) %>
-	</div>
-	<br>
-	<div class="login">
-			<input class="login_inputs" type="text" placeholder="Usuario" name="user"><br>
-			<input class="login_inputs" type="password" placeholder="Contraseña" name="password"><br>
-      <%= button_to "Iniciar Sesión", projects_path, method: :get, class: :"login-button" %>
+	<div class="login row">
+    <%= image_tag('hc.png', class: "figura col-md-6", style: "background-color:white") %>
+    <div class="col-md-6">
+
+      <%= form_for :session, url: login_path do |f| %>
+          <div class="form-group">
+            <%= f.label :username %>
+            <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control", placeholder: "Username" %>
+          </div>
+          
+      <div class="btn-group">
+        <%= button_tag type: "submit", class: "btn btn-primary" do %>
+          <span class="fa fa-sign-in"></span>
+          Iniciar Sesion
+        <% end %>
+      </div> 
+      <%end%>   
+    </div>
 	</div>

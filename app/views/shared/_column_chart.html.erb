@@ -2,8 +2,10 @@
   <% hash = Lot.chart_values(val) %>
   <% if val < 8 %>
     <% data_val =  lot.where(category_id: 1).group(:name).order("valorizations.assigned_at").sum(hash['vAxis']) %>
-  <% else %>
+  <% elsif val < 18 %>
     <% data_val =  lot.where(category_id: 2).group(:name).order("valorizations.assigned_at").sum(hash['vAxis']) %>
+  <% elsif val < 22 %>
+    <% data_val =  lot.where(category_id: 3).group(:name).order("valorizations.assigned_at").sum(hash['vAxis']) %>
   <% end %>
 
   <% data = {
@@ -33,7 +35,7 @@
   <% options = {
     legend: {display: false},
     scales: {yAxes: [{ticks: {beginAtZero:true}}]},
-    title: {display: true, text: hash['vAxisLabel']}
+    title: {display: true, text: hash['vAxisLabel'], fontSize: 17}
   } %>
 
   <% if graph == "Linea" %>

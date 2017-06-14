@@ -1,0 +1,18 @@
+<tr>
+  <% hash = lot.getValue(variables_fer.name, date) %>
+  <td>
+    <%= link_to hash[:name], project_lot_variable_history_path(lot.project.id, lot.id, variables_fer.id) %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_fer.name}][amount]", hash[:amount], step: 0.001, class: 'form-control', onClick: "this.select();" %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_fer.name}][unit_cost_insumo]", hash[:unit_cost_insumo], step: 0.001, class: 'form-control', onClick: "this.select();" %>
+  </td>
+  <td>
+    <%= number_field_tag "variables[#{variables_fer.name}][cost_mano]", hash[:cost_mano], step: 0.001, class: 'form-control', onClick: "this.select();" %>
+  </td>
+  <td>
+    <%= number_to_currency(hash[:cost_total], unit: "Lps. ", precision: 3) %>
+  </td>
+</tr>

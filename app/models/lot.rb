@@ -44,6 +44,14 @@
         {'vAxis' => 'valorizations.bags_per_amount', 'vAxisLabel' => 'Sacos Recolectados / Hectareas Recorridas'}
       when 17
         {'vAxis' => 'valorizations.cluster_weight', 'vAxisLabel' => 'Peso De Racimos'}
+      when 18 #>= 18 == Ferilizacion
+        {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad de Sacos'}
+      when 19
+        {'vAxis' => 'valorizations.unit_cost_insumo', 'vAxisLabel' => 'Costo Unidad de Sacos'}
+      when 20
+        {'vAxis' => 'valorizations.cost_mano', 'vAxisLabel' => 'Costo Mano de Obra'}
+      when 21
+        {'vAxis' => 'valorizations.cost_total', 'vAxisLabel' => 'Costo Por Hectarea'}
       else
         {'vAxis' => 'valorizations.amount', 'vAxisLabel' => 'Cantidad'}
     end
@@ -60,10 +68,11 @@
       .where("valorizations.assigned_at = ?", Date.today)
   end
 
-  def range_values(category, var_id)
+  def range_values(category, var_id, from, to)
     self.variables
       .where("category": category)
       .where("id": var_id)
+      .where('valorizations.assigned_at BETWEEN ? AND ?', from, to)
       .select("variables.id, variables.name, valorizations.*")
       .order("valorizations.assigned_at ASC")
   end
@@ -93,6 +102,11 @@
       hash = { name: var.name, amount: 0, metric_tons: 0, cost_mano: 0, clusters: 0, bags: 0, unit_cost_ton: 0, clusters_per_amount: 0, plants: 0, bags_per_amount: 0, cluster_weight: 0}
       unless value.nil?
         hash.merge!({ amount: value.amount, metric_tons: value.metric_tons, cost_mano: value.cost_mano, clusters: value.clusters, bags: value.bags, unit_cost_ton: value.unit_cost_ton, clusters_per_amount: value.clusters_per_amount, plants: value.plants, bags_per_amount: value.bags_per_amount, cluster_weight: value.cluster_weight })
+      end
+    when 3
+      hash = { name: var.name, amount: 0, unit_cost_insumo: 0, cost_mano: 0, cost_total: 0}
+      unless value.nil?
+        hash.merge!({ amount: value.amount, unit_cost_insumo: value.unit_cost_insumo, cost_mano: value.cost_mano, cost_total: value.cost_total })
       end
     end
     return hash
@@ -130,4 +144,20 @@
     end
   end
 
+  #Sets today's current amount of the given variable
+  #Returns true on success, otherwise false
+  def setValueFer(name, amount, unit_cost_insumo, cost_mano, date)
+    var = Variable.find_by_name(name)
+    return false if var.nil?
+
+    value = self.valorizations.find_by(variable: var, assigned_at: date)
+    unless value.nil?
+      puts "Updating Valorization"
+      value.update_attributes(amount: amount, unit_cost_insumo: unit_cost_insumo, cost_mano: cost_mano)
+    else
+      puts "Creating Valorization"
+      value = self.valorizations.build(variable: var, amount: amount, unit_cost_insumo: unit_cost_insumo, cost_mano: cost_mano, assigned_at: date)
+      value.save
+    end
+  end
 end
